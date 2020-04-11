@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1aMVCup9cjf6dWDpfBlAEHWeTG3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyqt5-binary-classifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
+      <option name="PARAMETERS" value="--img-dir /media/imt/data/dataset/dataset_for_multilabel_classification/cls1 --l face_visible --lv wrong,too_far,unclear,noface,face" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.classifier" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="" />
+      <created>1586545325790</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586545325790</updated>
+      <workItem from="1586545329764" duration="355000" />
+      <workItem from="1586560701221" duration="10219000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial load">
+      <created>1586606827648</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586606827648</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial load">
+      <created>1586606938302</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586606938302</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial load" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial load" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="189" y="368" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586605706211">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="189" y="368" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586605706211" />
+    <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586606452724">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser/43.27.1877.1053@43.27.1877.1053" timestamp="1586606452724" />
+    <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586606182989">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586606182989" />
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1586606938251">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1586606938251" />
+    <state width="1831" height="278" key="GridCell.Tab.0.bottom" timestamp="1586633313174">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="278" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313174" />
+    <state width="1831" height="278" key="GridCell.Tab.0.center" timestamp="1586633313173">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="278" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313173" />
+    <state width="1831" height="278" key="GridCell.Tab.0.left" timestamp="1586633313172">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="278" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313172" />
+    <state width="1831" height="278" key="GridCell.Tab.0.right" timestamp="1586633313174">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="278" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313174" />
+    <state x="470" y="187" key="SettingsEditor" timestamp="1586606924850">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1586606924850" />
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586606831095">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1586606831095" />
+    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1586606671037">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup/43.27.1877.1053@43.27.1877.1053" timestamp="1586606671037" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1586633425621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
