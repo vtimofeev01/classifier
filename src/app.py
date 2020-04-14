@@ -35,17 +35,40 @@ class CApp(CViewer):
         self.images = [x for x in os.listdir(os.path.abspath(imgdir)) if os.path.splitext(x)[1] in IMEXTS]
         self.path = [imgdir] * len(self.images)
 
-        self.label_values = label_values.split(',') if label_values is not None else ['True, False']
+        self.label_values = label_values.split(',') if label_values is not None else ['True', 'False']
         self.image_index = 0
         self.current_labels = {img: None for img in self.images}
 
         self._load_history()
+        self.label_values = self.sort_labels(self.label_values)
         self._render_window()
         self.len_of_label_values = len(self.label_values)
 
         self.cur_time = datetime.datetime.now()
         self.av_sec = None
-        self.av_count = 30
+        self.av_count = 10
+
+        self.file_to_check = opj(self.label_dir, 'files_to_check.csv')
+        self.has_to_check = os.path.exists(self.file_to_check)
+        self.item_to_check_i = 0
+        if self.has_to_check:
+            ftck = pd.read_csv(self.file_to_check)
+            ftck = ftck.fillna('')
+            self.list_items_to_check = ftck.to_dict('split')['data']
+            self.help_label_text += f'\n\nLoaded items to check:{len(self.list_items_to_check)}' \
+                                    '\n< q   e > previous/next item'
+            self.Help_label.setText(self.help_label_text)
+        else:
+            self.list_items_to_check = None
+        # print(self.items_to_check)
+
+    def sort_labels(self, l):
+        il = sorted(l)
+        if 'wrong' in il:
+            ix = il.index('wrong')
+            il.pop(ix)
+            il = ['wrong'] + il
+        return il
 
     def image_file_name(self, ix):
         return opj(self.path[ix], self.images[ix])
@@ -59,6 +82,10 @@ class CApp(CViewer):
             print(f'Load history file N={len(self.loaded_labels)} - {self.history_file}')
             loaded_label_values = {label: 0 for img, label in self.loaded_labels.items()}.keys()
             print('Loaded labels: ', list(loaded_label_values))
+            if len(loaded_labels) > 0:
+                if len(self.label_values) == 2 and set(self.label_values) == {'False', 'True'}:
+                    self.label_values = []
+
             self.label_values += [x for x in loaded_label_values if x not in self.label_values + [None, '']]
             self.current_labels.update(loaded_labels)
             self._goto_next_unlabeled_image()
@@ -70,27 +97,31 @@ class CApp(CViewer):
         df.to_csv(self.outfile, index=False)
         QMessageBox.information(self, 'Information', 'Export label result {}'.format(self.outfile))
 
-    def _render_window(self):
+    def _render_window(self, t=None):
         assert 0 <= self.image_index < len(self.images)
         image = QPixmap(self.image_file_name(self.image_index))
         image = image.scaled(self.imW, self.imH, Qt.KeepAspectRatio)
         self.label_image.setPixmap(image)
         self.label_image.resize(self.imW, self.imH)
-        self._render_status()
+        self._render_status(t=t)
         self.show()
 
-    def _render_status(self):
-        image_name = self.image_file_name(self.image_index)
-        labeled = self.current_labels[self.images[self.image_index]]
-        pad_zero = int(log10(len(self.images))) + 1
-        if labeled is not None:
-            self.label_status.setText('({}/{}) {} => Labeled as {}'.format(
-                str(self.image_index + 1).zfill(pad_zero), len(self.images), image_name, labeled
-            ))
+    def _render_status(self, t=None):
+        if t is None:
+            image_name = self.image_file_name(self.image_index)
+            labeled = self.current_labels[self.images[self.image_index]]
+            pad_zero = int(log10(len(self.images))) + 1
+            if labeled is not None:
+                self.label_status.setText('({}/{}) {} => Labeled as {}'.format(
+                    str(self.image_index + 1).zfill(pad_zero), len(self.images), image_name, labeled
+                ))
+            else:
+                self.label_status.setText('({}/{}) {}'.format(
+                    str(self.image_index + 1).zfill(pad_zero), len(self.images), image_name
+                ))
         else:
-            self.label_status.setText('({}/{}) {}'.format(
-                str(self.image_index + 1).zfill(pad_zero), len(self.images), image_name
-            ))
+            self.label_status.setText(t)
+
         self._redraw_labels_selection_list()
 
     def _prev(self):
@@ -135,6 +166,28 @@ class CApp(CViewer):
                 self.image_index = next_image_index
                 self._render_window()
 
+    def _item_to_check_next(self):
+        itclen =  len(self.list_items_to_check)
+        if self.item_to_check_i == itclen - 1:
+            self.item_to_check_i = 0
+        else:
+            self.item_to_check_i += 1
+        fn, reason = self.list_items_to_check[self.item_to_check_i]
+        self.image_index = self.images.index(fn)
+        t = f'{self.item_to_check_i}/{itclen}  {reason}'
+        self._render_window(t=t)
+
+    def _item_to_check_prev(self):
+        itclen = len(self.list_items_to_check)
+        if self.item_to_check_i == 0:
+            self.item_to_check_i = itclen - 1
+        else:
+            self.item_to_check_i -= 1
+        fn, reason = self.list_items_to_check[self.item_to_check_i]
+        self.image_index = self.images.index(fn)
+        t = f'{self.item_to_check_i}/{itclen}  {reason}'
+        self._render_window(t=t)
+
     def keyPressEvent(self, event):
 
         new_time = datetime.datetime.now()
@@ -168,9 +221,14 @@ class CApp(CViewer):
                 lv_index = min(kval - 48, self.len_of_label_values - 1)
                 imname = self.images[self.image_index]
                 self.current_labels[imname] = self.label_values[lv_index]
+            self._render_window()
+        elif kval == Qt.Key_Q:
+            self._item_to_check_prev()
+        elif kval == Qt.Key_E:
+            self._item_to_check_next()
         else:
-            LOGGER.debug('You Clicked {} but nothing happened...'.format(event.key()))
-        self._render_window()
+            print('You Clicked {} but nothing happened...'.format(event.key()))
+        # self._render_window()
 
     def _redraw_labels_selection_list(self, selected=-1):
         lst = []

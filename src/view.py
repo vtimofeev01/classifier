@@ -33,7 +33,7 @@ class CViewer(QWidget):
         self.font_default.setStyleHint(QFont.TypeWriter)
 
         self.font_2 = QFont("Monospace")
-        self.font_2.setPointSize(14)
+        self.font_2.setPointSize(12)
         self.font_2.setStyleHint(QFont.TypeWriter)
 
         self.font_3 = QFont("Monospace")
@@ -66,11 +66,10 @@ class CViewer(QWidget):
 
         self.Help_label = QLabel(self)
         self.Help_label.setFont(self.font_2)
-        self.Help_label.setGeometry(QRect(LINE2, 420, 641, 200))
+        self.Help_label.setGeometry(QRect(LINE2, 420, 641, WHIGH - 420))
         self.Help_label.setTextFormat(Qt.PlainText)
         self.help_label_text = '0...9   select label ' \
-                               '\na...... previous  ' \
-                               '\nd...... follows   ' \
+                               '\n<<a.d>> previous/next item  ' \
                                '\nspace.. new unlabeled image' \
                                '\ns...... store'
         self.Help_label.setText(self.help_label_text)

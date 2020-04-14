@@ -16,7 +16,7 @@ def argparser():
     parser = argparse.ArgumentParser('Binary Classifier building with PyQt5')
     parser.add_argument('--img-dir', dest='imgdir', required=True)
     parser.add_argument('--l', dest='label')
-    parser.add_argument('--lv', dest='labels_values', default='list of label values')
+    parser.add_argument('--lv', dest='labels_values')
     return parser
 
 def main(args):

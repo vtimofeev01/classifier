@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="" />
+    <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dl_src/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,11 +29,42 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dl_src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.classifier">
     <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pyqt5-binary-classifier" />
+      <module name="pyqt5-images-classifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
+      <option name="PARAMETERS" value="--img-dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/cls1 --l person --lv non_person,clear,non_clear,multy,wrong" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -36,8 +76,8 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
-      <option name="PARAMETERS" value="--img-dir /media/imt/data/dataset/dataset_for_multilabel_classification/cls1 --l face_visible --lv wrong,too_far,unclear,noface,face" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
+      <option name="PARAMETERS" value="--images_dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/cls1 --train_file $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/cls1/uniforme/results.csv --work_dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/cls1/uniforme --n_epochs 250" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -45,9 +85,14 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.classifier" />
+      <item itemvalue="Python.train" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.classifier" />
+        <item itemvalue="Python.train" />
       </list>
     </recent_temporary>
   </component>
@@ -63,6 +108,9 @@
       <updated>1586545325790</updated>
       <workItem from="1586545329764" duration="355000" />
       <workItem from="1586560701221" duration="10219000" />
+      <workItem from="1586633394222" duration="997000" />
+      <workItem from="1586719841774" duration="6474000" />
+      <workItem from="1586819635715" duration="8698000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -89,10 +137,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Initial load" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="189" y="368" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586605706211">
+    <state x="643" y="143" width="666" height="819" key="#classifier" timestamp="1586741067031">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="189" y="368" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586605706211" />
+    <state x="643" y="143" width="666" height="819" key="#classifier/43.27.1877.1053@43.27.1877.1053" timestamp="1586741067031" />
+    <state x="403" y="75" width="1301" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586902172587">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="403" y="75" width="1301" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586902172587" />
     <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586606452724">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -105,22 +157,30 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1586606938251" />
-    <state width="1831" height="278" key="GridCell.Tab.0.bottom" timestamp="1586633313174">
+    <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586634388815">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="278" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313174" />
-    <state width="1831" height="278" key="GridCell.Tab.0.center" timestamp="1586633313173">
+    <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl/43.27.1877.1053@43.27.1877.1053" timestamp="1586634388815" />
+    <state x="773" y="473" key="Github.CreateGistDialog" timestamp="1586633543040">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="278" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313173" />
-    <state width="1831" height="278" key="GridCell.Tab.0.left" timestamp="1586633313172">
+    <state x="773" y="473" key="Github.CreateGistDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586633543040" />
+    <state width="1831" height="507" key="GridCell.Tab.0.bottom" timestamp="1586902176078">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="278" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313172" />
-    <state width="1831" height="278" key="GridCell.Tab.0.right" timestamp="1586633313174">
+    <state width="1831" height="507" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1586902176078" />
+    <state width="1831" height="507" key="GridCell.Tab.0.center" timestamp="1586902176076">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="278" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1586633313174" />
+    <state width="1831" height="507" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1586902176076" />
+    <state width="1831" height="507" key="GridCell.Tab.0.left" timestamp="1586902176074">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="507" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1586902176074" />
+    <state width="1831" height="507" key="GridCell.Tab.0.right" timestamp="1586902176077">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="507" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1586902176077" />
     <state x="470" y="187" key="SettingsEditor" timestamp="1586606924850">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -136,6 +196,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1586633425621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1586902176060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1586899909543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
