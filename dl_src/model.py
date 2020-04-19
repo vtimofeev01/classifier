@@ -2,27 +2,28 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
+from torchvision.models.resnet import resnet50
 
 from dl_src.dataset import AttributesDataset
+
+mean = [0.485, 0.456, 0.406]
+std = [0.229, 0.224, 0.225]
 
 
 class MultiOutputModel(nn.Module):
 
-    def __init__(self, trained_labels: list, attrbts: AttributesDataset):
+    def __init__(self, trained_labels: list, attrbts: AttributesDataset, use_resnet=False):
         super().__init__()
         self.fld_names = trained_labels
         print(f'Model trained attributes: {self.fld_names}')
-        self.base_model = models.mobilenet_v2().features  # take the model without classifier
+        # if use_resnet:
+        #     self.base_model = models.resnet.resnet50(pretrained=True)  # take the model without classifier
+        #     lt_chan = self.base_model.fc.shape[0]  # size of the layer before classifier
+        # else:
+        print(f'[MODEL] mobilenet_v2 loaded')
+        self.base_model = models.mobilenet_v2(pretrained=True).features  # take the model without classifier
         lt_chan = models.mobilenet_v2().last_channel  # size of the layer before classifier
-
-        # the input for the classifier should be two-dimensional, but we will have
-        # [batch_size, channels, width, height]
-        # so, let's do the spatial averaging: reduce width and height to 1
         self.pool = nn.AdaptiveAvgPool2d((1, 1))
-
-        # self.a0 = nn.Sequential(nn.Dropout(p=0.2), nn.Linear(in_features=lt_chan,
-        #                                                      out_features=attrbts.num_labels[trained_labels[0]]))
-        # for lbl, count in attributes.num_labels.items():
         self.outs = {}
         for lbl in trained_labels:
             count = attrbts.num_labels[lbl]

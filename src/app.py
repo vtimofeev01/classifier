@@ -2,18 +2,39 @@ import datetime
 import logging
 import os
 from collections import OrderedDict
+from queue import Queue
 
+import cv2
 import pandas as pd
 
 from math import log10
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt
 from .view import CViewer
+import collections
 
 LOGGER = logging.getLogger(__name__)
 opj = os.path.join
-IMEXTS = ['.pmg', '.jpg']
+IMEXTS = ['.png', '.jpg']
+
+def make_list_of_files(source, extensions=None):
+    if extensions is None:
+        extensions = ('.jpg', '.png')
+    q = Queue()
+    q.put(source)
+    paths = []
+    fnames = []
+    while not q.empty():
+        v = q.get()
+        if os.path.isdir(v):
+            for vs in sorted(os.listdir(v)):
+                q.put(os.path.join(v, vs))
+        elif os.path.splitext(v)[1] in extensions:
+            path, name = os.path.split(v)
+            paths.append(path)
+            fnames.append(name)
+    return paths, fnames
 
 
 class CApp(CViewer):
@@ -23,6 +44,10 @@ class CApp(CViewer):
         history = "results.csv"
 
         assert label is not None
+
+        self.fv_bv = collections.deque([], 10)
+        self.fv_bv_index = -1
+
         self.label = label
         self.label_dir = os.path.join(imgdir, self.label)
         if not os.path.exists(self.label_dir):
@@ -32,8 +57,10 @@ class CApp(CViewer):
         self.history_file = opj(self.label_dir, history)
         self.loaded_labels = {}
 
-        self.images = [x for x in os.listdir(os.path.abspath(imgdir)) if os.path.splitext(x)[1] in IMEXTS]
-        self.path = [imgdir] * len(self.images)
+        # self.images = [x for x in os.listdir(os.path.abspath(imgdir)) if os.path.splitext(x)[1] in IMEXTS]
+        # self.path = [imgdir] * len(self.images)
+
+        self.path, self.images = make_list_of_files(imgdir)
 
         self.label_values = label_values.split(',') if label_values is not None else ['True', 'False']
         self.image_index = 0
@@ -99,7 +126,16 @@ class CApp(CViewer):
 
     def _render_window(self, t=None):
         assert 0 <= self.image_index < len(self.images)
-        image = QPixmap(self.image_file_name(self.image_index))
+
+        cv_im = cv2.imread(self.image_file_name(self.image_index))
+        h, w = cv_im.shape[:2]
+        BORDER = 20
+        cv2.rectangle(cv_im, (BORDER, BORDER), (w - BORDER, h - BORDER), (0, 0, 255), 1)
+
+        image = QImage(cv_im, cv_im.shape[1], cv_im.shape[0], cv_im.shape[1] * 3, QImage.Format_RGB888)
+        image = QPixmap(image)
+        # image = QPixmap(self.image_file_name(self.image_index))
+
         image = image.scaled(self.imW, self.imH, Qt.KeepAspectRatio)
         self.label_image.setPixmap(image)
         self.label_image.resize(self.imW, self.imH)
@@ -126,11 +162,13 @@ class CApp(CViewer):
 
     def _prev(self):
         self.image_index = max(0, self.image_index - 1)
+        self.fv_bv.append(self.image_index)
         self._render_window()
         self.red_mark.setText('')
 
     def _next(self):
         self.image_index = min(self.image_index + 1, len(self.images) - 1)
+        self.fv_bv.append(self.image_index)
         self._render_window()
         self.red_mark.setText('')
 
@@ -149,6 +187,7 @@ class CApp(CViewer):
             else:
                 self.image_index = prev_image_index
                 self._render_window()
+        self.fv_bv.append(self.image_index)
 
     def _goto_next_unlabeled_image(self):
         self.red_mark.setText('')
@@ -165,9 +204,10 @@ class CApp(CViewer):
             else:
                 self.image_index = next_image_index
                 self._render_window()
+        self.fv_bv.append(self.image_index)
 
     def _item_to_check_next(self):
-        itclen =  len(self.list_items_to_check)
+        itclen = len(self.list_items_to_check)
         if self.item_to_check_i == itclen - 1:
             self.item_to_check_i = 0
         else:
@@ -176,6 +216,7 @@ class CApp(CViewer):
         self.image_index = self.images.index(fn)
         t = f'{self.item_to_check_i}/{itclen}  {reason}'
         self._render_window(t=t)
+        self.fv_bv.append(self.image_index)
 
     def _item_to_check_prev(self):
         itclen = len(self.list_items_to_check)
@@ -187,6 +228,7 @@ class CApp(CViewer):
         self.image_index = self.images.index(fn)
         t = f'{self.item_to_check_i}/{itclen}  {reason}'
         self._render_window(t=t)
+        self.fv_bv.append(self.image_index)
 
     def keyPressEvent(self, event):
 
@@ -201,9 +243,25 @@ class CApp(CViewer):
             self.Help_label.setText(self.help_label_text + t)
 
         kval = event.key()
-        if kval in [Qt.Key_Left, Qt.Key_A]:
+        if kval in [Qt.Key_A]:
             self.label_selection_list.setStyleSheet("color: black;")
             self._prev()
+        elif kval == Qt.Key_Left and len(self.fv_bv) > 0:
+            self.fv_bv_index = len(self.fv_bv) - 1 if self.fv_bv_index < 1 else self.fv_bv_index - 1
+            fv_bv_val = self.fv_bv[self.fv_bv_index]
+            if type(fv_bv_val) == int and fv_bv_val < len(self.images):
+                self.image_index = fv_bv_val
+                self._render_window()
+                self.red_mark.setText('')
+
+        elif kval == Qt.Key_Right and len(self.fv_bv) > 0:
+            self.fv_bv_index = 0 if self.fv_bv_index > len(self.fv_bv) - 2 else self.fv_bv_index + 1
+            fv_bv_val = self.fv_bv[self.fv_bv_index]
+            if type(fv_bv_val) == int and fv_bv_val < len(self.images):
+                self.image_index = fv_bv_val
+                self._render_window()
+                self.red_mark.setText('')
+
         elif kval in [Qt.Key_Right, Qt.Key_D]:
             self.label_selection_list.setStyleSheet("color: black;")
             self._next()

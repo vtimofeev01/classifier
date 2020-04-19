@@ -4,11 +4,99 @@ from datetime import datetime
 from PIL import Image
 import torch
 import torchvision.transforms as transforms
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 from dl_src.dataset import CSVDataset, AttributesDataset, mean, std
 from dl_src.model import MultiOutputModel
 from test import calculate_metrics, validate
 from torch.utils.data import DataLoader, random_split
 from torch.utils.tensorboard import SummaryWriter
+import csv
+
+
+def checkpoint_load(model, name):
+    print('Restoring checkpoint: {}'.format(name))
+    model.load_state_dict(torch.load(name, map_location='cpu'))
+    epoch = int(os.path.splitext(os.path.basename(name))[0].split('-')[1])
+    return epoch
+
+
+def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, checkpoint=None, csv_filename=None):
+    if checkpoint is not None:
+        checkpoint_load(model, checkpoint)
+    model.eval()
+
+    # imgs = []
+    gt_labels = {x: list() for x in attr.fld_names}
+    gt_all = {x: list() for x in attr.fld_names}
+    predicted_all = {x: list() for x in attr.fld_names}
+    accuracyes = {x: 0 for x in attr.fld_names}
+
+    list_of_images_to_check = []
+    loitc_columns = ['filename', 'choice']
+
+
+    # gt_labels = []
+    # gt_color_all = []
+    # gt_gender_all = []
+    # gt_article_all = []
+    # predicted_color_all = []
+    # predicted_gender_all = []
+    # predicted_article_all = []
+
+    # accuracy_color = 0
+    # accuracy_gender = 0
+    # accuracy_article = 0
+
+    with torch.no_grad():
+        for batch in dataloader:
+            img = batch['img'].to(device)
+            gt_s = {x: batch['labels'][x] for x in attr.fld_names}
+            fnames = batch['img_path']
+            output = model(img)
+            batches = calculate_metrics(output, gt_s)
+            for x in batches:
+                accuracyes[x] += batches[x]
+            predicted_s = {x: output[x].cpu().max(1)[1] for x in attr.fld_names}
+
+            for i in range(img.shape[0]):
+                predicted = {x: attr.labels_id_to_name[x][predicted_s[x][i].item()]
+                             for x in attr.fld_names}
+                gt = {x: attr.labels_id_to_name[x][gt_s[x][i].item()] for x in attr.fld_names}
+                for x in attr.fld_names:
+                    gt_v = gt[x]
+                    prdv = predicted[x]
+                    gt_all[x].append(gt_v)
+                    predicted_all[x].append(prdv)
+                    if gt_v == prdv:
+                        continue
+                    list_of_images_to_check.append(
+                        {loitc_columns[0]: os.path.split(fnames[i])[1],
+                         loitc_columns[1]: f'<{gt_v}> or <{prdv}>'}
+                    )
+
+    if csv_filename is not None and list_of_images_to_check:
+        with open(csv_filename, 'w', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames=loitc_columns)
+            writer.writeheader()
+            writer.writerows(list_of_images_to_check)
+
+    # Draw confusion matrices
+    if show_cn_matrices:
+        for x in attr.fld_names:
+            cn_matrix = confusion_matrix(
+                y_true=gt_all[x],
+                y_pred=predicted_all[x],
+                labels=attr.labels[x],
+                # )
+                normalize='true')
+            ConfusionMatrixDisplay(cn_matrix, attr.labels[x]).plot(
+                include_values=True, xticks_rotation='vertical')
+            plt.title(x)
+            plt.tight_layout()
+            plt.show()
+
+    model.train()
 
 
 def get_cur_time():
@@ -60,9 +148,10 @@ if __name__ == '__main__':
     # specify image transforms for augmentation during training
     train_transform = transforms.Compose([
         transforms.RandomHorizontalFlip(p=0.5),
-        transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0),
-        transforms.RandomAffine(degrees=10, translate=(0.1, 0.1), scale=(0.8, 1),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0),
+        transforms.RandomAffine(degrees=10, translate=(0.1, 0.1), # scale=(0.8, 1),
                                 shear=None, resample=False, fillcolor=(150, 150, 150)),
+        transforms.RandomHorizontalFlip(p=0.5),
         transforms.Lambda(lambd=cut_pil_image),
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -140,3 +229,7 @@ if __name__ == '__main__':
 
         if epoch % 25 == 0:
             chk_point = checkpoint_save(model, savedir, epoch)
+            visualize_grid(model=model,
+                           dataloader=val_dataloader,
+                           attr=whole_dataset.attr,
+                           device=device)

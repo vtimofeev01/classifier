@@ -4,14 +4,15 @@ import os
 import warnings
 from datetime import datetime
 from PIL import Image
-import matplotlib.pyplot as plt
-import numpy as np
 import torch
 import torchvision.transforms as transforms
 from dl_src.dataset import CSVDataset, AttributesDataset, mean, std
 from dl_src.model import MultiOutputModel
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, balanced_accuracy_score
 from torch.utils.data import DataLoader
+import matplotlib.pyplot as plt
+import json
+from torch import onnx
 
 
 def checkpoint_load(model, name):
@@ -54,27 +55,12 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
         checkpoint_load(model, checkpoint)
     model.eval()
 
-    # imgs = []
-    gt_labels = {x: list() for x in attr.fld_names}
     gt_all = {x: list() for x in attr.fld_names}
     predicted_all = {x: list() for x in attr.fld_names}
     accuracyes = {x: 0 for x in attr.fld_names}
 
     list_of_images_to_check = []
     loitc_columns = ['filename', 'choice']
-
-
-    # gt_labels = []
-    # gt_color_all = []
-    # gt_gender_all = []
-    # gt_article_all = []
-    # predicted_color_all = []
-    # predicted_gender_all = []
-    # predicted_article_all = []
-
-    # accuracy_color = 0
-    # accuracy_gender = 0
-    # accuracy_article = 0
 
     with torch.no_grad():
         for batch in dataloader:
@@ -126,8 +112,8 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
 
     model.train()
 
-def calculate_metrics(output, target):
 
+def calculate_metrics(output, target):
     predicts = {x: output[x].cpu().max(1)[1] for x in output}
     gts = {x: target[x].cpu() for x in target}
 
@@ -142,7 +128,7 @@ def calculate_metrics(output, target):
 
 def cut_pil_image(image: Image, border=20):
     w, h = image.size
-    return image.crop((border, border, w-border, h-border))
+    return image.crop((border, border, w - border, h - border))
 
 
 if __name__ == '__main__':
@@ -191,3 +177,30 @@ if __name__ == '__main__':
                    attr=attributes,
                    device=device, checkpoint=args.checkpoint,
                    csv_filename=csv_filename)
+
+    dummy_input = torch.randn(1, 3, 224, 224, device=device)
+    core_name = f'mnv2_single_attribute'
+    input_names = ["input1"]  # + [ "learned_%d" % i for i in range(16) ]
+    output_names = ["output1"]
+    onnx.export(model=model, args=dummy_input,
+                f=f"{core_name}.onnx",
+                verbose=True,
+                input_names=input_names,
+                output_names=output_names)
+
+    # mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
+    #          f'mo.py --input_model {core_name}.onnx --data_type FP16' \
+    #          f'--output_dir {os.curdir}'
+    mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
+             f'mo.py --input_model {core_name}.onnx  --reverse_input_channels --mean_values=[123.675,116.28,103.53] ' \
+             f'--scale_values=[58.395,57.12,57.375]  --data_type FP16' \
+             f' --output_dir {os.curdir}'
+    os.system(mo_run)
+
+    json_object = json.dumps({'labels_id_to_name': attributes.labels_id_to_name,
+                              'labels_name_to_id': attributes.labels_name_to_id}, indent=4)
+    with open(f'{core_name}.json', "w") as outfile:
+        outfile.write(json_object)
+
+    mean = [0.485, 0.456, 0.406]
+    std = [0.229, 0.224, 0.225]

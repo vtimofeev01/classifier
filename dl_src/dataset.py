@@ -1,13 +1,34 @@
 import csv
 import os
+from queue import Queue
 
 import numpy as np
 from PIL import Image
 from torch.utils.data import Dataset
 import pandas as pd
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, balanced_accuracy_score
 
 mean = [0.485, 0.456, 0.406]
 std = [0.229, 0.224, 0.225]
+
+
+def make_list_of_files(source, extensions=None):
+    if extensions is None:
+        extensions = ('.jpg', '.png')
+    q = Queue()
+    q.put(source)
+    paths = []
+    fnames = []
+    while not q.empty():
+        v = q.get()
+        if os.path.isdir(v):
+            for vs in sorted(os.listdir(v)):
+                q.put(os.path.join(v, vs))
+        elif os.path.splitext(v)[1] in extensions:
+            path, name = os.path.split(v)
+            paths.append(path)
+            fnames.append(name)
+    return paths, fnames
 
 
 class AttributesDataset:
@@ -26,9 +47,11 @@ class AttributesDataset:
                     datas[fn].append(row[fn])
 
         self.fld_names = fld_names
-        print(f"Annotated attributes: {', '.join(self.fld_names)}")
+        print(f"[ANNOTATION] attributes: {', '.join(self.fld_names)}")
         self.labels = {fn: np.unique(datas[fn]) for fn in fld_names}
+        print(f"[ANNOTATION] labels: {self.labels}")
         self.num_labels = {fn: len(self.labels[fn]) for fn in fld_names}
+        print(f"[ANNOTATION] len: { self.num_labels}")
 
         self.labels_id_to_name = {fn: dict(zip(range(len(self.labels[fn])), self.labels[fn])) for fn in fld_names}
         self.labels_name_to_id = {fn: dict(zip(self.labels[fn], range(len(self.labels[fn])))) for fn in fld_names}
@@ -45,11 +68,6 @@ class CSVDataset(Dataset):
         self.data = []
         self.labels = {}
 
-        # df = pd.read_csv(annotation_path)
-        # df = df.fillna('')
-        # loaded_labels = df.to_dict('split')['data']
-
-
         # read the annotations from the CSV file
         with open(annotation_path) as f:
             reader = csv.DictReader(f)
@@ -58,9 +76,16 @@ class CSVDataset(Dataset):
             print(f'train data Attributes {annotation_path}: {", ".join(attr_names)}')
             self.attr_names = attr_names
             self.labels = {fn: list() for fn in self.attr_names}
+            image2full = {a: os.path.join(b, a) for b, a in zip(* make_list_of_files(images_dir))}
+
             for row in reader:
                 # print(row)
-                self.data.append(os.path.join(images_dir, row[data_name]))
+                # imfile = os.path.join(images_dir, row[data_name])
+                imfile = image2full.get(row[data_name], False)
+                if not imfile or not os.path.exists(imfile):
+                    # print('zopa')
+                    continue
+                self.data.append(imfile)
                 for attr in attr_names:
                     self.labels[attr].append(self.attr.labels_name_to_id[attr][row[attr]])
 
