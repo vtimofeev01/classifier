@@ -5,6 +5,14 @@ import argparse
 from PyQt5.QtWidgets import QApplication
 from src.app import CApp
 
+# TODO dropout list where to navigate
+# TODO navigate new within last week
+# TODO navigate new within 3 days week
+# TODO navigate in wrongs
+# TODO navigate in class
+# TODO navigate in unlaveled (asd= default)
+# TODO doubled History protection
+
 LOGGER = logging.getLogger(__name__)
 LOGGERS = [
     LOGGER,

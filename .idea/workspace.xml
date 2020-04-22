@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test_area_for_new_trained_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dl_src/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dl_src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +44,8 @@
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.train">
+    <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -61,7 +59,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
-      <option name="PARAMETERS" value="--img-dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification --l person --lv non_person,clear,non_clear,multy,wrong" />
+      <option name="PARAMETERS" value="--img-dir $USER_HOME$/dataset/dataset_for_multilabel_classification --l face_visible" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -83,7 +81,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="--checkpoint $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/person/checkpoint-000250.pth --images_dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/ --test_file $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/person/results.csv" />
+      <option name="PARAMETERS" value="--checkpoint $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible/checkpoint-000250.pth --images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --test_file $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible/results.csv" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -127,7 +125,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
-      <option name="PARAMETERS" value="--images_dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/ --train_file $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/person/results.csv --work_dir $PROJECT_DIR$/../dataset/dataset_for_multilabel_classification/person --n_epochs 250 --train_val 0.8" />
+      <option name="PARAMETERS" value="--images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --train_file $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible/results.csv --work_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible --n_epochs 250 --train_val 0.6" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -137,16 +135,15 @@
     </configuration>
     <list>
       <item itemvalue="Python.classifier" />
-      <item itemvalue="Python.train" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.test_area_for_new_trained_model" />
+      <item itemvalue="Python.train" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.test_area_for_new_trained_model" />
-        <item itemvalue="Python.train" />
-        <item itemvalue="Python.classifier" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +168,18 @@
       <workItem from="1587148229619" duration="7218000" />
       <workItem from="1587169063249" duration="5829000" />
       <workItem from="1587219381066" duration="2246000" />
-      <workItem from="1587221874525" duration="27036000" />
+      <workItem from="1587221874525" duration="29182000" />
+      <workItem from="1587332984021" duration="2447000" />
+      <workItem from="1587393009078" duration="2000" />
+      <workItem from="1587393190868" duration="9000" />
+      <workItem from="1587403021763" duration="1725000" />
+      <workItem from="1587417325687" duration="185000" />
+      <workItem from="1587420608843" duration="2544000" />
+      <workItem from="1587424073325" duration="232000" />
+      <workItem from="1587467654205" duration="2560000" />
+      <workItem from="1587526530528" duration="3000" />
+      <workItem from="1587526658689" duration="15000" />
+      <workItem from="1587529709939" duration="12962000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -194,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586905734209</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add DL">
+      <created>1587258836311</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587258836311</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,10 +225,10 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="643" y="143" width="666" height="819" key="#classifier/43.27.1877.1053@43.27.1877.1053" timestamp="1586741067031" />
-    <state x="276" y="183" width="1301" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587254822592">
+    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587555718831">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="276" y="183" width="1301" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587254822592" />
+    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587555718831" />
     <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586606452724">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -222,10 +237,10 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586606182989" />
-    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1586905734073">
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1587258836204">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1586905734073" />
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1587258836204" />
     <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586634388815">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -234,30 +249,38 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="773" y="473" key="Github.CreateGistDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586633543040" />
-    <state width="1831" height="299" key="GridCell.Tab.0.bottom" timestamp="1587258681793">
+    <state width="1831" height="364" key="GridCell.Tab.0.bottom" timestamp="1587555720411">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="299" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1587258681793" />
-    <state width="1831" height="299" key="GridCell.Tab.0.center" timestamp="1587258681793">
+    <state width="1831" height="364" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720411" />
+    <state width="1831" height="364" key="GridCell.Tab.0.center" timestamp="1587555720409">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="299" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1587258681793" />
-    <state width="1831" height="299" key="GridCell.Tab.0.left" timestamp="1587258681793">
+    <state width="1831" height="364" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720409" />
+    <state width="1831" height="364" key="GridCell.Tab.0.left" timestamp="1587555720407">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="299" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1587258681793" />
-    <state width="1831" height="299" key="GridCell.Tab.0.right" timestamp="1587258681793">
+    <state width="1831" height="364" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720407" />
+    <state width="1831" height="364" key="GridCell.Tab.0.right" timestamp="1587555720410">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="299" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1587258681793" />
+    <state width="1831" height="364" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720410" />
     <state x="470" y="187" key="SettingsEditor" timestamp="1586606924850">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1586606924850" />
-    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586905737766">
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1587258838087">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1586905737766" />
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1587258838087" />
+    <state x="143" y="214" width="1450" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587421421498">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="143" y="214" width="1450" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587421421498" />
+    <state x="143" y="125" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1587423066280">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="143" y="125" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587423066280" />
     <state x="644" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1587258674511">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -265,9 +288,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1587227405361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1587553938511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test_area_for_new_trained_model.coverage" NAME="test_area_for_new_trained_model Coverage Results" MODIFIED="1587256477515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1587258681784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1587243036764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1587553895387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1587555720392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

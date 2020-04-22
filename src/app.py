@@ -162,13 +162,15 @@ class CApp(CViewer):
 
     def _prev(self):
         self.image_index = max(0, self.image_index - 1)
-        self.fv_bv.append(self.image_index)
+        if self.image_index not in self.fv_bv:
+            self.fv_bv.append(self.image_index)
         self._render_window()
         self.red_mark.setText('')
 
     def _next(self):
         self.image_index = min(self.image_index + 1, len(self.images) - 1)
-        self.fv_bv.append(self.image_index)
+        if self.image_index not in self.fv_bv:
+            self.fv_bv.append(self.image_index)
         self._render_window()
         self.red_mark.setText('')
 
@@ -187,7 +189,8 @@ class CApp(CViewer):
             else:
                 self.image_index = prev_image_index
                 self._render_window()
-        self.fv_bv.append(self.image_index)
+        if self.image_index not in self.fv_bv:
+            self.fv_bv.append(self.image_index)
 
     def _goto_next_unlabeled_image(self):
         self.red_mark.setText('')
@@ -204,7 +207,8 @@ class CApp(CViewer):
             else:
                 self.image_index = next_image_index
                 self._render_window()
-        self.fv_bv.append(self.image_index)
+        if self.image_index not in self.fv_bv:
+            self.fv_bv.append(self.image_index)
 
     def _item_to_check_next(self):
         itclen = len(self.list_items_to_check)
@@ -216,7 +220,8 @@ class CApp(CViewer):
         self.image_index = self.images.index(fn)
         t = f'{self.item_to_check_i}/{itclen}  {reason}'
         self._render_window(t=t)
-        self.fv_bv.append(self.image_index)
+        if self.image_index not in self.fv_bv:
+            self.fv_bv.append(self.image_index)
 
     def _item_to_check_prev(self):
         itclen = len(self.list_items_to_check)
@@ -228,7 +233,8 @@ class CApp(CViewer):
         self.image_index = self.images.index(fn)
         t = f'{self.item_to_check_i}/{itclen}  {reason}'
         self._render_window(t=t)
-        self.fv_bv.append(self.image_index)
+        if self.image_index not in self.fv_bv:
+            self.fv_bv.append(self.image_index)
 
     def keyPressEvent(self, event):
 
@@ -291,11 +297,14 @@ class CApp(CViewer):
     def _redraw_labels_selection_list(self, selected=-1):
         lst = []
         imcode = ''
+        t_len = 0
         for ii, lv in enumerate(self.label_values):
             imcode = self.current_labels[self.images[self.image_index]]
             mark = ' ' if imcode is None or ii != self.label_values.index(imcode) else '*'
             lv_n = len([v for z, v in self.current_labels.items() if v == lv])
+            t_len += lv_n
             lst.append(f'{mark}{ii}  {lv:.<15} {lv_n}')
+        lst.append(f'\n{"-"*25}\n    total ......... {t_len}    \n    left .......... {len(self.images) - t_len}')
         t = '\n'.join(lst)
         self.red_mark.setText(imcode)
         self.label_selection_list.setText(t)

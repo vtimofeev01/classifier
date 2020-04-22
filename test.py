@@ -192,8 +192,9 @@ if __name__ == '__main__':
     #          f'mo.py --input_model {core_name}.onnx --data_type FP16' \
     #          f'--output_dir {os.curdir}'
     mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
-             f'mo.py --input_model {core_name}.onnx  --reverse_input_channels --mean_values=[123.675,116.28,103.53] ' \
-             f'--scale_values=[58.395,57.12,57.375]  --data_type FP16' \
+             f'mo.py --input_model {core_name}.onnx  ' \
+             f'--reverse_input_channels --mean_values=[123.675, 116.28, 103.53]' \
+             f'--scale_values=[58.395, 57.12, 57.375]  --data_type FP32' \
              f' --output_dir {os.curdir}'
     os.system(mo_run)
 
