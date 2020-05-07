@@ -6,12 +6,16 @@ import torch
 import torchvision.transforms as transforms
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
+from torch.optim import lr_scheduler
+
 from dl_src.dataset import CSVDataset, AttributesDataset, mean, std
 from dl_src.model import MultiOutputModel
 from test import calculate_metrics, validate
 from torch.utils.data import DataLoader, random_split
 from torch.utils.tensorboard import SummaryWriter
 import csv
+import random
+from random import randint
 
 
 def checkpoint_load(model, name):
@@ -25,28 +29,12 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
     if checkpoint is not None:
         checkpoint_load(model, checkpoint)
     model.eval()
-
-    # imgs = []
-    gt_labels = {x: list() for x in attr.fld_names}
     gt_all = {x: list() for x in attr.fld_names}
     predicted_all = {x: list() for x in attr.fld_names}
     accuracyes = {x: 0 for x in attr.fld_names}
 
     list_of_images_to_check = []
     loitc_columns = ['filename', 'choice']
-
-
-    # gt_labels = []
-    # gt_color_all = []
-    # gt_gender_all = []
-    # gt_article_all = []
-    # predicted_color_all = []
-    # predicted_gender_all = []
-    # predicted_article_all = []
-
-    # accuracy_color = 0
-    # accuracy_gender = 0
-    # accuracy_article = 0
 
     with torch.no_grad():
         for batch in dataloader:
@@ -110,9 +98,35 @@ def checkpoint_save(model, name, epoch):
     return f
 
 
-def cut_pil_image(image: Image, border=20):
+def cut_pil_image_(image: Image, border=20):
     w, h = image.size
-    return image.crop((border, border, w-border, h-border))
+    return image.crop((border, border, w - border, h - border))
+
+
+def cut_pil_image__(image: Image, border=20, spread=.1):
+    w, h = image.size
+    s = spread * random.random()
+    shift = int(w * s)
+    return image.crop((border + shift, border + shift, w - border - shift, h - border - shift))
+
+
+def cut_pil_image3(image: Image, border=20, spread=.1):
+    w, h = image.size
+    shiftx = border // 2 + int(border * random.random())
+    shifty = border // 2 + int(border * random.random())
+    w2, h2 = w - 2 * border, h - 2 * border
+    return image.crop((shiftx, shifty, w2, h2))
+
+
+def cut_pil_image(image: Image, border=20, spread=.05):
+    w, h = image.size
+    iw, ih = w - 2 * border, h - 2 * border
+    dw, dh = int(iw * spread), int(ih * spread)
+    return image.crop((
+        randint(border // 2, border + dw),
+        randint(border // 2, border + dh),
+        randint(w - border - dw, w - border // 2),
+        randint(h - border - dh, h - border // 2)))
 
 
 if __name__ == '__main__':
@@ -133,7 +147,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_workers', type=int, default=10, help="number of workers")
     parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
     args = parser.parse_args()
-
+    TRAIN_PERIODE = 15
     start_epoch = 1
     N_epochs = args.n_epochs
     batch_size = args.batch_size
@@ -143,15 +157,15 @@ if __name__ == '__main__':
     if args.attributes_file is None:
         args.attributes_file = args.train_file
 
-    attributes = AttributesDataset(args.attributes_file)
+    attributes = AttributesDataset('traindata/train.csv')
 
     # specify image transforms for augmentation during training
     train_transform = transforms.Compose([
         transforms.RandomHorizontalFlip(p=0.5),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0),
-        transforms.RandomAffine(degrees=10, translate=(0.1, 0.1), # scale=(0.8, 1),
-                                shear=None, resample=False, fillcolor=(150, 150, 150)),
-        transforms.RandomHorizontalFlip(p=0.5),
+        # transforms.RandomRotation(degrees=10),
+        transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
+        # transforms.RandomAffine(degrees=5, translate=(0.1, 0.1), # scale=(0.8, 1),
+        #                         shear=None, resample=False, fillcolor=(150, 150, 150)),
         transforms.Lambda(lambd=cut_pil_image),
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -166,21 +180,29 @@ if __name__ == '__main__':
         transforms.Normalize(mean, std)
     ])
 
-    whole_dataset = CSVDataset(annotation_path=args.train_file, images_dir=args.images_dir, attributes=attributes,
+    train_dataset = CSVDataset(annotation_path='traindata/train.csv', images_dir=args.images_dir, attributes=attributes,
                                transform=train_transform)
-    ll = len(whole_dataset)
-    train_len = int(ll * args.train_val)
-    valid_len = ll - train_len
-    train_dataset, val_dataset = random_split(whole_dataset, [train_len, valid_len])
-    val_dataset.transform = val_transform
+    val_dataset = CSVDataset(annotation_path='traindata/test.csv', images_dir=args.images_dir, attributes=attributes,
+                             transform=val_transform)
+
+    # ll = len(whole_dataset)
+    # train_len = int(ll * args.train_val)
+    # valid_len = ll - train_len
+    # train_dataset, val_dataset = random_split(whole_dataset, [train_len, valid_len])
+    # val_dataset.transform = val_transform
 
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
-    model = MultiOutputModel(trained_labels=whole_dataset.attr_names,
+    model = MultiOutputModel(trained_labels=train_dataset.attr_names,
                              attrbts=attributes).to(device)
 
-    optimizer = torch.optim.Adam(model.parameters())
+    # optimizer = torch.optim.Adam(model.parameters())
+    # Using Adam as the parameter optimizer
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999))
+
+    # Decay LR by a factor of 0.1 every 7 epochs
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=TRAIN_PERIODE, gamma=0.3)
 
     logdir = os.path.join(args.work_dir)
     savedir = os.path.join(args.work_dir)
@@ -191,10 +213,14 @@ if __name__ == '__main__':
     n_train_samples = len(train_dataloader)
 
     print("Starting training ...")
+    best_acc = 0
+    best_acc_epoch = 0
+    best_acc_loads = 0
+    best_acc_last_load = 0
 
-    for epoch in range(start_epoch, N_epochs + 1):
+    for epoch in range(start_epoch, N_epochs + 2):
         total_loss = 0
-        accuracy = {x: 0 for x in whole_dataset.attr.fld_names}
+        accuracy = {x: 0 for x in train_dataset.attr.fld_names}
         epoch_start_time = datetime.now()
         for batch in train_dataloader:
             optimizer.zero_grad()
@@ -202,7 +228,6 @@ if __name__ == '__main__':
             target_labels = batch['labels']
             target_labels = {t: batch['labels'][t].to(device) for t in target_labels}
             output = model(img)
-
             loss_train, losses_train = model.get_loss(output, target_labels)
             total_loss += loss_train.item()
             batches = calculate_metrics(output, target_labels)
@@ -214,22 +239,37 @@ if __name__ == '__main__':
 
         print(f'epoch:{epoch} ' +
               ' '.join([f'{a}: {accuracy[a] / n_train_samples:.4f}'
-                        for a in whole_dataset.attr_names]) + f' {datetime.now() - epoch_start_time}')
+                        for a in train_dataset.attr_names]) + f' {datetime.now() - epoch_start_time}')
         logger.add_scalar('train_loss', total_loss / n_train_samples, epoch)
 
         chk_point = None
 
-        if epoch % 5 == 0:
-            validate(model=model,
-                     dataloader=val_dataloader,
-                     fld_names=whole_dataset.attr_names,
-                     logger=logger,
-                     iteration=epoch,
-                     device=device)
+        if epoch % 3 == 1:
+            cur_best_acc = validate(model=model,
+                                    dataloader=val_dataloader,
+                                    fld_names=train_dataset.attr_names,
+                                    logger=logger,
+                                    iteration=epoch,
+                                    device=device)
+            if cur_best_acc > best_acc:
+                best_acc = cur_best_acc
+                best_acc_epoch = epoch
+                best_acc_last_load = epoch
+                best_acc_loads = 0
+                f = os.path.join(savedir, 'checkpoint-best.pth')
+                torch.save(model.state_dict(), f)
+                print(f'Stored model on best acc @{best_acc:.4f}')
+                visualize_grid(model=model,
+                               dataloader=val_dataloader,
+                               attr=train_dataset.attr,
+                               device=device)
+            if best_acc_last_load + TRAIN_PERIODE <= epoch:
+                f = os.path.join(savedir, 'checkpoint-best.pth')
+                best_acc_loads += 1
+                print(f'loaded best thr ptr. back to: {best_acc_epoch} @{best_acc:.2f}')
+                best_acc_last_load = epoch
+                model.load_state_dict(torch.load(f, map_location=device))
+            if best_acc_loads > 4:
+                break
 
-        if epoch % 25 == 0:
-            chk_point = checkpoint_save(model, savedir, epoch)
-            visualize_grid(model=model,
-                           dataloader=val_dataloader,
-                           attr=whole_dataset.attr,
-                           device=device)
+        exp_lr_scheduler.step()

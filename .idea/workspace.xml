@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dl_src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poligon.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/split_singl_label_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_area/results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dl_src/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dl_src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,14 +38,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="last_opened_file_path" value="$USER_HOME$/rt-motion-detection-opencv-python" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test_area" />
+      <recent name="$PROJECT_DIR$/dl_src" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/traindata" />
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
@@ -59,8 +67,49 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
-      <option name="PARAMETERS" value="--img-dir $USER_HOME$/dataset/dataset_for_multilabel_classification --l face_visible" />
+      <option name="PARAMETERS" value="--img-dir $USER_HOME$/dataset/dataset_for_multilabel_classification --l person" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="poligon" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyqt5-images-classifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/poligon.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="split_singl_label_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyqt5-images-classifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/split_singl_label_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -81,7 +130,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="--checkpoint $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible/checkpoint-000250.pth --images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --test_file $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible/results.csv" />
+      <option name="PARAMETERS" value="--checkpoint $USER_HOME$/dataset/dataset_for_multilabel_classification/person/checkpoint-best.pth --images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --test_file $USER_HOME$/dataset/dataset_for_multilabel_classification/person/results.csv" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -125,7 +174,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
-      <option name="PARAMETERS" value="--images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --train_file $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible/results.csv --work_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/face_visible --n_epochs 250 --train_val 0.6" />
+      <option name="PARAMETERS" value="--images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --train_file $USER_HOME$/dataset/dataset_for_multilabel_classification/person/results.csv --work_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/person --n_epochs 500 --train_val 0.8" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -138,11 +187,15 @@
       <item itemvalue="Python.test" />
       <item itemvalue="Python.test_area_for_new_trained_model" />
       <item itemvalue="Python.train" />
+      <item itemvalue="Python.poligon" />
+      <item itemvalue="Python.split_singl_label_data" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.train" />
+        <item itemvalue="Python.split_singl_label_data" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.poligon" />
         <item itemvalue="Python.test_area_for_new_trained_model" />
       </list>
     </recent_temporary>
@@ -180,6 +233,20 @@
       <workItem from="1587526530528" duration="3000" />
       <workItem from="1587526658689" duration="15000" />
       <workItem from="1587529709939" duration="12962000" />
+      <workItem from="1587591569376" duration="31000" />
+      <workItem from="1587595288871" duration="661000" />
+      <workItem from="1587624863964" duration="13861000" />
+      <workItem from="1587643287848" duration="11959000" />
+      <workItem from="1587684192818" duration="4303000" />
+      <workItem from="1587690369545" duration="5798000" />
+      <workItem from="1587734591840" duration="448000" />
+      <workItem from="1587735260230" duration="11894000" />
+      <workItem from="1588202124523" duration="18429000" />
+      <workItem from="1588358252298" duration="280000" />
+      <workItem from="1588739282889" duration="6373000" />
+      <workItem from="1588792122032" duration="2338000" />
+      <workItem from="1588812838204" duration="7000" />
+      <workItem from="1588812872515" duration="4583000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -221,14 +288,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="add DL" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="851" y="421" width="251" height="263" key="#Notifications" timestamp="1587736166685">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state x="851" y="421" width="251" height="263" key="#Notifications/43.27.1877.1053@43.27.1877.1053" timestamp="1587736166685" />
     <state x="643" y="143" width="666" height="819" key="#classifier" timestamp="1586741067031">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="643" y="143" width="666" height="819" key="#classifier/43.27.1877.1053@43.27.1877.1053" timestamp="1586741067031" />
-    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587555718831">
+    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588812920704">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587555718831" />
+    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1588812920704" />
     <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586606452724">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -241,34 +312,34 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1587258836204" />
-    <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586634388815">
+    <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1587776130872">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl/43.27.1877.1053@43.27.1877.1053" timestamp="1586634388815" />
+    <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl/43.27.1877.1053@43.27.1877.1053" timestamp="1587776130872" />
     <state x="773" y="473" key="Github.CreateGistDialog" timestamp="1586633543040">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="773" y="473" key="Github.CreateGistDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586633543040" />
-    <state width="1831" height="364" key="GridCell.Tab.0.bottom" timestamp="1587555720411">
+    <state width="1831" height="364" key="GridCell.Tab.0.bottom" timestamp="1588878764185">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720411" />
-    <state width="1831" height="364" key="GridCell.Tab.0.center" timestamp="1587555720409">
+    <state width="1831" height="364" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764185" />
+    <state width="1831" height="364" key="GridCell.Tab.0.center" timestamp="1588878764184">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720409" />
-    <state width="1831" height="364" key="GridCell.Tab.0.left" timestamp="1587555720407">
+    <state width="1831" height="364" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764184" />
+    <state width="1831" height="364" key="GridCell.Tab.0.left" timestamp="1588878764184">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720407" />
-    <state width="1831" height="364" key="GridCell.Tab.0.right" timestamp="1587555720410">
+    <state width="1831" height="364" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764184" />
+    <state width="1831" height="364" key="GridCell.Tab.0.right" timestamp="1588878764185">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1587555720410" />
-    <state x="470" y="187" key="SettingsEditor" timestamp="1586606924850">
+    <state width="1831" height="364" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764185" />
+    <state x="470" y="187" key="SettingsEditor" timestamp="1587643348293">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1586606924850" />
+    <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1587643348293" />
     <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1587258838087">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -277,20 +348,22 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="143" y="214" width="1450" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587421421498" />
-    <state x="143" y="125" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1587423066280">
+    <state x="193" y="225" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1587649072821">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="143" y="125" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587423066280" />
-    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1587258674511">
+    <state x="193" y="225" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587649072821" />
+    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1588740401765">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup/43.27.1877.1053@43.27.1877.1053" timestamp="1587258674511" />
+    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup/43.27.1877.1053@43.27.1877.1053" timestamp="1588740401765" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$split_singl_label_data.coverage" NAME="split_singl_label_data Coverage Results" MODIFIED="1587731685641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1587553938511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1588786335043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test_area_for_new_trained_model.coverage" NAME="test_area_for_new_trained_model Coverage Results" MODIFIED="1587256477515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1587553895387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1587555720392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1588800748028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1588878764177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$poligon.coverage" NAME="poligon Coverage Results" MODIFIED="1588272420966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

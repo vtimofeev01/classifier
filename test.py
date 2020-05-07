@@ -18,7 +18,10 @@ from torch import onnx
 def checkpoint_load(model, name):
     print('Restoring checkpoint: {}'.format(name))
     model.load_state_dict(torch.load(name, map_location='cpu'))
-    epoch = int(os.path.splitext(os.path.basename(name))[0].split('-')[1])
+    try:
+        epoch = int(os.path.splitext(os.path.basename(name))[0].split('-')[1])
+    except:
+        epoch = 20
     return epoch
 
 
@@ -42,12 +45,15 @@ def validate(model, dataloader, fld_names, logger, iteration, device, checkpoint
             batches = calculate_metrics(output, target_labels)
             for x in batches:
                 accuracy[x] += batches[x]
+        totalacc = sum([y for x, y in accuracy.items()])
 
     n_samples = len(dataloader)
     print(f'epoch:{iteration} val loss: {total_loss / n_samples:.4f} ' +
           ' '.join([f'{a}: {accuracy[a] / n_samples:.4f}'
-                    for a in fld_names]) + f' {datetime.now() - epoch_start_time}')
+                    for a in fld_names]) + f' {datetime.now() - epoch_start_time}'
+                                           f' total_acc:{totalacc / n_samples:.4f}')
     model.train()
+    return totalacc /n_samples
 
 
 def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, checkpoint=None, csv_filename=None):
@@ -182,26 +188,30 @@ if __name__ == '__main__':
     core_name = f'mnv2_single_attribute'
     input_names = ["input1"]  # + [ "learned_%d" % i for i in range(16) ]
     output_names = ["output1"]
-    onnx.export(model=model, args=dummy_input,
-                f=f"{core_name}.onnx",
-                verbose=True,
-                input_names=input_names,
-                output_names=output_names)
+    for data_type in ['FP16', 'FP32']:
+        onnx.export(model=model, args=dummy_input,
+                    f=f"{core_name}.onnx",
+                    verbose=True,
+                    input_names=input_names,
+                    output_names=output_names)
 
-    # mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
-    #          f'mo.py --input_model {core_name}.onnx --data_type FP16' \
-    #          f'--output_dir {os.curdir}'
-    mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
-             f'mo.py --input_model {core_name}.onnx  ' \
-             f'--reverse_input_channels --mean_values=[123.675, 116.28, 103.53]' \
-             f'--scale_values=[58.395, 57.12, 57.375]  --data_type FP32' \
-             f' --output_dir {os.curdir}'
-    os.system(mo_run)
+        # mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
+        #          f'mo.py --input_model {core_name}.onnx --data_type FP16' \
+        #          f'--output_dir {os.curdir}'
+        mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
+                 f'mo.py --input_model {core_name}.onnx  ' \
+                 f"--reverse_input_channels " \
+                 f"--mean_values=[123.675,116.28,103.53] " \
+                 f'--scale_values=[58.395,57.12,57.375]  ' \
+                 f'--data_type {data_type}' \
+                 f' --output_dir {os.curdir}/{data_type}'
+        print('\n', mo_run, '\n')
+        os.system(mo_run)
 
-    json_object = json.dumps({'labels_id_to_name': attributes.labels_id_to_name,
-                              'labels_name_to_id': attributes.labels_name_to_id}, indent=4)
-    with open(f'{core_name}.json', "w") as outfile:
-        outfile.write(json_object)
+        json_object = json.dumps({'labels_id_to_name': attributes.labels_id_to_name,
+                                  'labels_name_to_id': attributes.labels_name_to_id}, indent=4)
+        with open(f'{os.curdir}/{data_type}/{core_name}.json', "w") as outfile:
+            outfile.write(json_object)
 
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
