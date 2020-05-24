@@ -13,8 +13,9 @@ std = [0.229, 0.224, 0.225]
 class MultiOutputModel(nn.Module):
 
     def __init__(self, trained_labels: list, attrbts: AttributesDataset, netname='mobilenetv2.2',
-                 freeze=False):
+                 freeze=False, first_stage_dict = None):
         self.netname = netname
+        self.first_stage_dict = first_stage_dict
         if netname == 'mobilenetv2':
             super().__init__()
             self.fld_names = trained_labels
@@ -42,7 +43,7 @@ class MultiOutputModel(nn.Module):
         elif netname == 'mobilenetv2.2':
             super().__init__()
             self.fld_names = trained_labels
-            print(f'mnasnet Model trained attributes: {self.fld_names}')
+            print(f'mobilenetv2.2 trained attributes: {self.fld_names}')
             self.base_model = models.mobilenet_v2(pretrained=True)  #
             in_ftrs = self.base_model.last_channel
             # self.pool = nn.AdaptiveAvgPool2d((1, 1))
@@ -80,7 +81,7 @@ class MultiOutputModel(nn.Module):
         elif netname == 'mnasnet-2':
             super().__init__()
             self.fld_names = trained_labels
-            print(f'mnasnet Model trained attributes: {self.fld_names}')
+            print(f'mnasnet-2 Model trained attributes: {self.fld_names}')
             self.base_model = models.mnasnet1_0(pretrained=True).layers  # take the model without classifier
             lt_chan = 1280  # self.base_model.last_channel  # size of the layer before classifier
             print(f'backbone output shape: {lt_chan}')
@@ -98,7 +99,7 @@ class MultiOutputModel(nn.Module):
         elif netname == 'wide_resnet50_2':
             super().__init__()
             self.fld_names = trained_labels
-            print(f'mnasnet Model trained attributes: {self.fld_names}')
+            print(f'wide_resnet50_2 Model trained attributes: {self.fld_names}')
             self.base_model = models.wide_resnet50_2(pretrained=True)  #
             in_ftrs = self.base_model.fc.in_features
             self.pool = nn.AdaptiveAvgPool2d((1, 1))
@@ -118,29 +119,19 @@ class MultiOutputModel(nn.Module):
 
     def forward(self, x):
         if self.netname == 'mobilenetv2':
-            # print(x.shape)
             x = self.base_model(x)
-            # print(x.shape)
             x = self.pool(x)
             x = torch.flatten(x, 1)
-            # print(x.shape)
-            # return {'label': self._modules['label'](x)}
             return {an: self._modules[an](x) for an in self.fld_names}
         elif self.netname == 'mnasnet':
             x = self.base_model(x)
             x = self.pool(x)
             x = torch.flatten(x, 1)
-            # print(x.shape)
             return {an: self._modules[an](x) for an in self.fld_names}
         elif self.netname == 'wide_resnet50_2':
             return {self.lll: self.base_model(x)}
         elif self.netname == 'mobilenetv2.2':
             return {self.lll: self.base_model(x)}
-            # x = self.base_model(x)
-            # x = self.pool(x)
-            # x = torch.flatten(x, 1)
-            # print(x.shape)
-            # return {self.lll: self._modules[an](x) for an in self.fld_names}
 
     def get_loss(self, net_output, ground_truth):
         out = {an: F.cross_entropy(net_output[an], ground_truth[an]) for an in self.fld_names}

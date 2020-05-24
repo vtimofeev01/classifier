@@ -1,22 +1,24 @@
 # read the annotations from the CSV file
 import csv
 import os
-from queue import Queue
 
 import cv2
-import pandas as pd
-
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
 
 from dl_src.dataset import make_list_of_files
 
+
+
 annotation_path = '/home/imt/dataset/dataset_for_multilabel_classification/person/results.csv'
 images_dir = '/home/imt/dataset/dataset_for_multilabel_classification'
-factor = .2
-pv = int(1/factor)
+union_rule = {}
 
-minw = 30 + 40
+factor = .2
+pv = int(1 / factor)
+
+minw = 28 + 40
 minh = 50 + 40
 
 # data_name, attr_names, reader = None, None, None
@@ -35,9 +37,11 @@ if __name__ == '__main__':
                 continue
             img = cv2.imread(image2full[row[data_name]])
             if (img.shape[0] < minh) or (img.shape[1] < minw):
+                print(f'[OUTSIZED] {img.shape[0]}x{img.shape[1]} {image2full[row[data_name]]}')
+                # os.remove(image2full[row[data_name]])
                 continue
             fnames.append(row[data_name])
-            labels.append(row[attr_names])
+            labels.append(union_rule.get(row[attr_names], row[attr_names]))
 
     print(f'total not found {not_exists}')
     lvalues, lcounts = np.unique(labels, return_counts=True)
@@ -52,7 +56,6 @@ if __name__ == '__main__':
         else:
             train.append(fn)
             train_attr.append(atr)
-
 
     trainfile = 'traindata/train.csv'
     df = pd.DataFrame(data={data_name: train, attr_names: train_attr}, dtype='uint8')

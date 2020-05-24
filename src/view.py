@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import Qt, QRect, pyqtSlot
+from PyQt5.QtWidgets import QApplication, QComboBox, QPushButton
 from PyQt5.QtWidgets import QDesktopWidget
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QLabel
@@ -64,6 +64,9 @@ class CViewer(QWidget):
         self.label.setGeometry(QRect(LINE1, 380, 67, 17))
         self.label.setObjectName("label")
 
+
+
+
         self.Help_label = QLabel(self)
         self.Help_label.setFont(self.font_2)
         self.Help_label.setGeometry(QRect(LINE2, 420, 641, WHIGH - 420))
@@ -75,6 +78,22 @@ class CViewer(QWidget):
         self.Help_label.setText(self.help_label_text)
         self.Help_label.setObjectName("Help_label")
 
+        self.filter_list = QComboBox(self)
+        self.filter_list.setGeometry(QRect(LINE2, 440, 420, 30))
+        # self.filter_list.move(LINE2, 420)
+        self.filter_list.keyPressEvent = self.keyPressEvent
+
+        # button = QPushButton('S', self)
+        # button.setToolTip('This is an example button')
+        # button.move(LINE2 - 20, 420)
+        # button.clicked.connect(self.on_click)
+
+        self.show()
+
+
+    # @pyqtSlot()
+    # def on_click(self):
+    #     print('PyQt5 button click')
 
 if __name__ == '__main__':
     import sys

@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dl_src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poligon.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/split_singl_label_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_area/results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dl_src/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dl_src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/split_singl_label_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/split_singl_label_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,14 +48,11 @@
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.classifier">
     <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="/usr/bin/python3.6" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -67,7 +60,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
-      <option name="PARAMETERS" value="--img-dir $USER_HOME$/dataset/dataset_for_multilabel_classification --l person" />
+      <option name="PARAMETERS" value="--img-dir $USER_HOME$/dataset/dataset_for_multilabel_classification --l person --lv corrupted" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -174,7 +167,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
-      <option name="PARAMETERS" value="--images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --train_file $USER_HOME$/dataset/dataset_for_multilabel_classification/person/results.csv --work_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/person --n_epochs 500 --train_val 0.8" />
+      <option name="PARAMETERS" value="--images_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/ --train_file $USER_HOME$/dataset/dataset_for_multilabel_classification/person/results.csv --work_dir $USER_HOME$/dataset/dataset_for_multilabel_classification/person --n_epochs 500 --train_val 0.75" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -184,17 +177,17 @@
     </configuration>
     <list>
       <item itemvalue="Python.classifier" />
+      <item itemvalue="Python.poligon" />
+      <item itemvalue="Python.split_singl_label_data" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.test_area_for_new_trained_model" />
       <item itemvalue="Python.train" />
-      <item itemvalue="Python.poligon" />
-      <item itemvalue="Python.split_singl_label_data" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.split_singl_label_data" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.poligon" />
         <item itemvalue="Python.test_area_for_new_trained_model" />
       </list>
@@ -246,7 +239,10 @@
       <workItem from="1588739282889" duration="6373000" />
       <workItem from="1588792122032" duration="2338000" />
       <workItem from="1588812838204" duration="7000" />
-      <workItem from="1588812872515" duration="4583000" />
+      <workItem from="1588812872515" duration="5298000" />
+      <workItem from="1588915892677" duration="18809000" />
+      <workItem from="1589008954247" duration="3764000" />
+      <workItem from="1590189207081" duration="26025000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -276,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587258836311</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add DL">
+      <created>1588890256379</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588890256379</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,10 +299,10 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="643" y="143" width="666" height="819" key="#classifier/43.27.1877.1053@43.27.1877.1053" timestamp="1586741067031" />
-    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588812920704">
+    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590272788542">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1588812920704" />
+    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1590272788542" />
     <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586606452724">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -308,10 +311,10 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586606182989" />
-    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1587258836204">
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1588890256319">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1587258836204" />
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1588890256319" />
     <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1587776130872">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -320,30 +323,46 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="773" y="473" key="Github.CreateGistDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586633543040" />
-    <state width="1831" height="364" key="GridCell.Tab.0.bottom" timestamp="1588878764185">
+    <state width="1831" height="300" key="GridCell.Tab.0.bottom" timestamp="1590282501461">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764185" />
-    <state width="1831" height="364" key="GridCell.Tab.0.center" timestamp="1588878764184">
+    <state width="1831" height="300" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501461" />
+    <state width="1831" height="300" key="GridCell.Tab.0.center" timestamp="1590282501461">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764184" />
-    <state width="1831" height="364" key="GridCell.Tab.0.left" timestamp="1588878764184">
+    <state width="1831" height="300" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501461" />
+    <state width="1831" height="300" key="GridCell.Tab.0.left" timestamp="1590282501460">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764184" />
-    <state width="1831" height="364" key="GridCell.Tab.0.right" timestamp="1588878764185">
+    <state width="1831" height="300" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501460" />
+    <state width="1831" height="300" key="GridCell.Tab.0.right" timestamp="1590282501461">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="364" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1588878764185" />
+    <state width="1831" height="300" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501461" />
+    <state width="1831" height="344" key="GridCell.Tab.1.bottom" timestamp="1590281405443">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.1.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405443" />
+    <state width="1831" height="344" key="GridCell.Tab.1.center" timestamp="1590281405442">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.1.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405442" />
+    <state width="1831" height="344" key="GridCell.Tab.1.left" timestamp="1590281405442">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.1.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405442" />
+    <state width="1831" height="344" key="GridCell.Tab.1.right" timestamp="1590281405443">
+      <screen x="43" y="27" width="1877" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.1.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405443" />
     <state x="470" y="187" key="SettingsEditor" timestamp="1587643348293">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1587643348293" />
-    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1587258838087">
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588890258463">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1587258838087" />
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1588890258463" />
     <state x="143" y="214" width="1450" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587421421498">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -352,18 +371,18 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="193" y="225" width="1677" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1587649072821" />
-    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1588740401765">
+    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1589007215494">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup/43.27.1877.1053@43.27.1877.1053" timestamp="1588740401765" />
+    <state x="644" y="257" width="672" height="678" key="search.everywhere.popup/43.27.1877.1053@43.27.1877.1053" timestamp="1589007215494" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$split_singl_label_data.coverage" NAME="split_singl_label_data Coverage Results" MODIFIED="1587731685641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1588786335043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1590282501449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test_area_for_new_trained_model.coverage" NAME="test_area_for_new_trained_model Coverage Results" MODIFIED="1587256477515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1588800748028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1588878764177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1590268487949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1590258771345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$poligon.coverage" NAME="poligon Coverage Results" MODIFIED="1588272420966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

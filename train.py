@@ -1,4 +1,5 @@
 import argparse
+import copy
 import os
 from datetime import datetime
 from PIL import Image
@@ -25,7 +26,7 @@ def checkpoint_load(model, name):
     return epoch
 
 
-def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, checkpoint=None, csv_filename=None):
+def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, checkpoint=None, csv_filename=None, caption=''):
     if checkpoint is not None:
         checkpoint_load(model, checkpoint)
     model.eval()
@@ -80,7 +81,7 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
                 normalize='true')
             ConfusionMatrixDisplay(cn_matrix, attr.labels[x]).plot(
                 include_values=True, xticks_rotation='vertical')
-            plt.title(x)
+            plt.title(f"{x}:{caption}")
             plt.tight_layout()
             plt.show()
 
@@ -147,7 +148,9 @@ if __name__ == '__main__':
     parser.add_argument('--num_workers', type=int, default=10, help="number of workers")
     parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
     args = parser.parse_args()
+
     TRAIN_PERIODE = 15
+
     start_epoch = 1
     N_epochs = args.n_epochs
     batch_size = args.batch_size
@@ -164,8 +167,6 @@ if __name__ == '__main__':
         transforms.RandomHorizontalFlip(p=0.5),
         # transforms.RandomRotation(degrees=10),
         transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
-        # transforms.RandomAffine(degrees=5, translate=(0.1, 0.1), # scale=(0.8, 1),
-        #                         shear=None, resample=False, fillcolor=(150, 150, 150)),
         transforms.Lambda(lambd=cut_pil_image),
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -196,14 +197,21 @@ if __name__ == '__main__':
 
     model = MultiOutputModel(trained_labels=train_dataset.attr_names,
                              attrbts=attributes).to(device)
-
+    normal = True
+    if normal:
+        optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999))  # lr-.001 gamma=.3
+        exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.3)
+    else:
+        optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, nesterov=True)
     # optimizer = torch.optim.Adam(model.parameters())
     # Using Adam as the parameter optimizer
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999))
+    #
 
     # Decay LR by a factor of 0.1 every 7 epochs
-    exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=TRAIN_PERIODE, gamma=0.3)
-
+    #
+    # Stored model on best acc @0.7408
+    # exp_lr_scheduler = lr_scheduler.CyclicLR(optimizer, base_lr=0.00001, max_lr=0.001, step_size_up=14,
+    #                                          step_size_down=14, mode='exp_range', gamma=.95)
     logdir = os.path.join(args.work_dir)
     savedir = os.path.join(args.work_dir)
     os.makedirs(logdir, exist_ok=True)
@@ -237,12 +245,13 @@ if __name__ == '__main__':
             loss_train.backward()
             optimizer.step()
 
-        print(f'epoch:{epoch} ' +
+        print(f'epoch:{epoch} loss:{ total_loss / n_train_samples:.4f} ' +
               ' '.join([f'{a}: {accuracy[a] / n_train_samples:.4f}'
                         for a in train_dataset.attr_names]) + f' {datetime.now() - epoch_start_time}')
         logger.add_scalar('train_loss', total_loss / n_train_samples, epoch)
 
         chk_point = None
+        opt_chk_pnt  = None
 
         if epoch % 3 == 1:
             cur_best_acc = validate(model=model,
@@ -258,18 +267,25 @@ if __name__ == '__main__':
                 best_acc_loads = 0
                 f = os.path.join(savedir, 'checkpoint-best.pth')
                 torch.save(model.state_dict(), f)
+                fp = os.path.join(savedir, 'checkpoint-best_optim.pth')
+                torch.save(optimizer.state_dict(), fp)
+                # opt_chk_pnt = copy.deepcopy(optimizer.state_dict())  # TODO CHECK
                 print(f'Stored model on best acc @{best_acc:.4f}')
                 visualize_grid(model=model,
                                dataloader=val_dataloader,
                                attr=train_dataset.attr,
-                               device=device)
+                               device=device,
+                               caption=f'{best_acc:.4f}@{best_acc_epoch}')
             if best_acc_last_load + TRAIN_PERIODE <= epoch:
                 f = os.path.join(savedir, 'checkpoint-best.pth')
                 best_acc_loads += 1
-                print(f'loaded best thr ptr. back to: {best_acc_epoch} @{best_acc:.2f}')
+                print(f'loaded best thr ptr. {best_acc_loads} time(s) back to: {best_acc_epoch} @{best_acc:.4f}')
                 best_acc_last_load = epoch
                 model.load_state_dict(torch.load(f, map_location=device))
-            if best_acc_loads > 4:
+                optimizer.load_state_dict(torch.load(fp, map_location=device))
+                # optimizer.load_state_dict(opt_chk_pnt)
+                exp_lr_scheduler.step()
+            if best_acc_loads > 5:
                 break
+        # if normal:
 
-        exp_lr_scheduler.step()
