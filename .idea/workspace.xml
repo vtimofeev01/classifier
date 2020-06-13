@@ -2,11 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dl_src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dl_src/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dl_src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poligon.py" beforeDir="false" afterPath="$PROJECT_DIR$/poligon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/split_singl_label_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/split_singl_label_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_area/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test_area/results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_area_for_new_trained_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_area_for_new_trained_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/rt-motion-detection-opencv-python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -48,11 +59,14 @@
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.classifier">
+  <component name="RunManager" selected="Python.train">
     <configuration name="classifier" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="/usr/bin/python3.6" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -94,6 +108,9 @@
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -185,9 +202,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.split_singl_label_data" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.poligon" />
         <item itemvalue="Python.test_area_for_new_trained_model" />
       </list>
@@ -242,7 +259,9 @@
       <workItem from="1588812872515" duration="5298000" />
       <workItem from="1588915892677" duration="18809000" />
       <workItem from="1589008954247" duration="3764000" />
-      <workItem from="1590189207081" duration="26025000" />
+      <workItem from="1590189207081" duration="26042000" />
+      <workItem from="1590316138547" duration="13000" />
+      <workItem from="1592051412598" duration="1870000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -279,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588890256379</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add DL">
+      <created>1590282662136</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590282662136</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,10 +325,11 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="643" y="143" width="666" height="819" key="#classifier/43.27.1877.1053@43.27.1877.1053" timestamp="1586741067031" />
-    <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590272788542">
-      <screen x="43" y="27" width="1877" height="1053" />
+    <state x="67" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592051464031">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1590272788542" />
+    <state x="67" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1592051464031" />
     <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586606452724">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -311,10 +338,10 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586606182989" />
-    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1588890256319">
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1590282661859">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1588890256319" />
+    <state x="520" y="100" width="912" height="904" key="CommitChangelistDialog2/43.27.1877.1053@43.27.1877.1053" timestamp="1590282661859" />
     <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1587776130872">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -323,46 +350,51 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="773" y="473" key="Github.CreateGistDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586633543040" />
-    <state width="1831" height="300" key="GridCell.Tab.0.bottom" timestamp="1590282501461">
+    <state width="1684" height="260" key="GridCell.Tab.0.bottom" timestamp="1592065221832">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
+    <state width="1684" height="260" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1592065221832" />
+    <state width="1684" height="260" key="GridCell.Tab.0.center" timestamp="1592065221832">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
+    <state width="1684" height="260" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1592065221832" />
+    <state width="1684" height="260" key="GridCell.Tab.0.left" timestamp="1592065221831">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
+    <state width="1684" height="260" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1592065221831" />
+    <state width="1684" height="260" key="GridCell.Tab.0.right" timestamp="1592065221832">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1831" height="344" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
+    <state width="1684" height="260" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1592065221832" />
+    <state width="1831" height="344" key="GridCell.Tab.1.bottom" timestamp="1590282672476">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="300" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501461" />
-    <state width="1831" height="300" key="GridCell.Tab.0.center" timestamp="1590282501461">
+    <state width="1831" height="344" key="GridCell.Tab.1.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672476" />
+    <state width="1831" height="344" key="GridCell.Tab.1.center" timestamp="1590282672476">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="300" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501461" />
-    <state width="1831" height="300" key="GridCell.Tab.0.left" timestamp="1590282501460">
+    <state width="1831" height="344" key="GridCell.Tab.1.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672476" />
+    <state width="1831" height="344" key="GridCell.Tab.1.left" timestamp="1590282672475">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="300" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501460" />
-    <state width="1831" height="300" key="GridCell.Tab.0.right" timestamp="1590282501461">
+    <state width="1831" height="344" key="GridCell.Tab.1.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
+    <state width="1831" height="344" key="GridCell.Tab.1.right" timestamp="1590282672476">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state width="1831" height="300" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590282501461" />
-    <state width="1831" height="344" key="GridCell.Tab.1.bottom" timestamp="1590281405443">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state width="1831" height="344" key="GridCell.Tab.1.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405443" />
-    <state width="1831" height="344" key="GridCell.Tab.1.center" timestamp="1590281405442">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state width="1831" height="344" key="GridCell.Tab.1.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405442" />
-    <state width="1831" height="344" key="GridCell.Tab.1.left" timestamp="1590281405442">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state width="1831" height="344" key="GridCell.Tab.1.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405442" />
-    <state width="1831" height="344" key="GridCell.Tab.1.right" timestamp="1590281405443">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state width="1831" height="344" key="GridCell.Tab.1.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590281405443" />
-    <state x="470" y="187" key="SettingsEditor" timestamp="1587643348293">
-      <screen x="43" y="27" width="1877" height="1053" />
+    <state width="1831" height="344" key="GridCell.Tab.1.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672476" />
+    <state x="489" y="187" key="SettingsEditor" timestamp="1592051608241">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1587643348293" />
-    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588890258463">
+    <state x="489" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1592051608241" />
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1590282663966">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
-    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1588890258463" />
+    <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1590282663966" />
     <state x="143" y="214" width="1450" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587421421498">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -382,7 +414,7 @@
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1590282501449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test_area_for_new_trained_model.coverage" NAME="test_area_for_new_trained_model Coverage Results" MODIFIED="1587256477515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1590268487949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1590258771345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train Coverage Results" MODIFIED="1592056339013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$poligon.coverage" NAME="poligon Coverage Results" MODIFIED="1588272420966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

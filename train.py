@@ -79,7 +79,7 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
                 labels=attr.labels[x],
                 # )
                 normalize='true')
-            ConfusionMatrixDisplay(cn_matrix, attr.labels[x]).plot(
+            ConfusionMatrixDisplay(cn_matrix, display_labels=attr.labels[x]).plot(
                 include_values=True, xticks_rotation='vertical')
             plt.title(f"{x}:{caption}")
             plt.tight_layout()
