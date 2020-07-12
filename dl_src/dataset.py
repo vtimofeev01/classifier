@@ -1,6 +1,8 @@
 import csv
 import os
+from pprint import pprint
 from queue import Queue
+import cv2
 
 import numpy as np
 from PIL import Image
@@ -34,9 +36,6 @@ def make_list_of_files(source, extensions=None):
 class AttributesDataset:
     def __init__(self, annotation_path, echo=True):
 
-        datas = {}
-        fld_names = []
-
         with open(annotation_path) as f:
             reader = csv.DictReader(f)
 
@@ -55,6 +54,7 @@ class AttributesDataset:
 
         self.labels_id_to_name = {fn: dict(zip(range(len(self.labels[fn])), self.labels[fn])) for fn in fld_names}
         self.labels_name_to_id = {fn: dict(zip(self.labels[fn], range(len(self.labels[fn])))) for fn in fld_names}
+        pprint(self.labels_name_to_id)
 
 
 class CSVDataset(Dataset):
@@ -79,15 +79,14 @@ class CSVDataset(Dataset):
             image2full = {a: os.path.join(b, a) for b, a in zip(*make_list_of_files(images_dir))}
 
             for row in reader:
-                # print(row)
-                # imfile = os.path.join(images_dir, row[data_name])
                 imfile = image2full.get(row[data_name], False)
                 if not imfile or not os.path.exists(imfile):
-                    # print('zopa')
                     continue
                 self.data.append(imfile)
                 for attr in attr_names:
                     self.labels[attr].append(self.attr.labels_name_to_id[attr][row[attr]])
+
+        print(f'len of {annotation_path} is {len(self.data)}')
 
     def __len__(self):
         return len(self.data)
@@ -101,13 +100,23 @@ class CSVDataset(Dataset):
         img = Image.open(img_path)
 
         # apply the image augmentations if needed
-        if self.transform:
-            img = self.transform(img)
-
+        try:
+            if self.transform:
+                if img.mode == 'RGBA':
+                    # print('IT IS RGBA')
+                    img = img.convert('RGB')
+                # print('xxxxxxxxxxxxxxxxxxxxxxxx', img.mode, img.getbands(), img.info)
+                img = self.transform(img)
+        except Exception as e:
+            print(img, img.mode)
+            exit()
+        # print('xxxxxxxxxxxxxxxx', img.size())
+        channels, width, height = img.size()
         # return the image and all the associated labels
         dict_data = {
             'img': img,
             'img_path': img_path,
-            'labels': {an: self.labels[an][idx] for an in self.attr_names}
+            'labels': {an: self.labels[an][idx] for an in self.attr_names},
+            'sizes': np.array([width, height, height / width])
         }
         return dict_data

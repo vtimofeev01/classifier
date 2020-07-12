@@ -5,7 +5,7 @@ import argparse
 from PyQt5.QtWidgets import QApplication
 from src.app import CApp
 
-# TODO dropout list where to navigate
+# TOO dropout list where to navigate
 # TODO navigate new within last week
 # TODO navigate new within 3 days week
 # TODO navigate in wrongs

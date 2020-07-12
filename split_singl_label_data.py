@@ -9,17 +9,15 @@ from tqdm import tqdm
 
 from dl_src.dataset import make_list_of_files
 
-
-
 annotation_path = '/home/imt/dataset/dataset_for_multilabel_classification/person/results.csv'
 images_dir = '/home/imt/dataset/dataset_for_multilabel_classification'
-union_rule = {}
+union_rule = {'corrupted': 'wrong', 'non_person': 'wrong'}
 
 factor = .2
 pv = int(1 / factor)
 
-minw = 28 + 40
-minh = 50 + 40
+minw = 30 + 40
+minh = 60 + 40
 
 # data_name, attr_names, reader = None, None, None
 if __name__ == '__main__':
@@ -30,8 +28,7 @@ if __name__ == '__main__':
         attr_names = reader.fieldnames[1]
         image2full = {a: os.path.join(b, a) for b, a in zip(*make_list_of_files(images_dir))}
         not_exists = 0
-        for row in reader:
-
+        for row in tqdm(reader):
             if (row[data_name] not in image2full) or (not os.path.exists(image2full[row[data_name]])):
                 not_exists += 1
                 continue
@@ -49,6 +46,7 @@ if __name__ == '__main__':
     counters = {x: 0 for x in lvalues}
     train, train_attr, test, test_attr = [], [], [], []
     for fn, atr in tqdm(zip(fnames, labels)):
+        # print(atr)
         counters[atr] += 1
         if counters[atr] % pv == 0:
             test.append(fn)

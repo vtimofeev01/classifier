@@ -250,32 +250,25 @@ class CApp(CViewer):
         print(f'pos={pos} #={self.navigations[self.main_index]["pos"]} self.main_index={self.main_index}')
 
 
-    # def _goto_prev_unlabeled_image(self):
-    #     self.red_mark.setText('')
-    #     if self.image_index == 0:
-    #         QMessageBox.warning(self, 'Warning', 'Reach the top of images')
-    #     else:
-    #         prev_image_index = self.image_index
-    #         for idx in range(self.image_index - 1, 0, -1):
-    #             if self.current_labels[self.images[idx]] is None:
-    #                 prev_image_index = idx
-    #                 break
-    #         if prev_image_index == self.image_index:
-    #             QMessageBox.information(self, 'Information', 'No more prev unlabeled image')
-    #         else:
-    #             self.image_index = prev_image_index
-    #             self._render_window()
-    #     if self.image_index not in self.fv_bv:
-    #         self.fv_bv.append(self.image_index)
 
     def _goto_next_unlabeled_image(self):
         self.red_mark.setText('')
         pos = self.navigations[self.main_index]['pos']
         imix = pos
+        # print('-----------------------------------------')
         for p in self.navigations[self.main_index]['data'][pos:] + self.navigations[self.main_index]['data'][:pos]:
-            imix = self.navigations[self.main_index]['data'][p]
-            imnm = self.images[imix]
-            if self.current_labels[imnm] is None:
+            # print(p, self.navigations[self.main_index]['data'][pos:] + self.navigations[self.main_index]['data'][:pos])
+            # print(self.navigations.keys(), self.main_index)
+            # print(self.main_index in self.navigations, p in self.navigations[self.main_index]['data'],
+            #       'data' in  self.navigations[self.main_index])
+            imix = self.navigations[self.main_index]['data'].index(p)
+            # imnm = self.images[imix]
+            # print(self.current_labels[imnm])
+            # print('----------------------------------')
+            # print(p)
+            # print()
+            # # print(self.current_labels)
+            if self.current_labels[self.images[p]] is None:
                 break
         if imix == pos:
             QMessageBox.information(self, 'Information', 'No more next unlabeled image')

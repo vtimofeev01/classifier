@@ -2,6 +2,8 @@ import argparse
 import copy
 import os
 from datetime import datetime
+from pprint import pprint
+
 from PIL import Image
 import torch
 import torchvision.transforms as transforms
@@ -141,31 +143,33 @@ if __name__ == '__main__':
     parser.add_argument('--attributes_file', type=str,
                         help="Path to the file with attributes. Must be set if train-file is a part "
                              "of a bigger file")
-    parser.add_argument('--train_val', type=float, default=.7,
+    parser.add_argument('--val_file', type=str, required=True,
                         help="Part of the dataset that will be used for training. Rest - for validation")
     parser.add_argument('--n_epochs', type=int, default=50, help="number of training epoch's")
     parser.add_argument('--batch_size', type=int, default=32, help="number of training epoch's")
     parser.add_argument('--num_workers', type=int, default=10, help="number of workers")
     parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
+    parser.add_argument('--graph_out', type=str, default='true', help="true* / false")
+    parser.add_argument('--checkpoint_best', type=str, default='checkpoint-best', help="checkpoint-best")
     args = parser.parse_args()
-
+    pprint(args.__dict__)
     TRAIN_PERIODE = 15
+    COUNT_OF_LR_STEPS = 7
 
     start_epoch = 1
     N_epochs = args.n_epochs
     batch_size = args.batch_size
     num_workers = args.num_workers  # number of processes to handle dataset loading
     device = torch.device("cuda" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
-    # attributes variable contains labels for the categories in the dataset and mapping between string names and IDs
     if args.attributes_file is None:
         args.attributes_file = args.train_file
 
-    attributes = AttributesDataset('traindata/train.csv')
+    attributes = AttributesDataset(os.path.join(args.work_dir, 'data.csv'))
 
     # specify image transforms for augmentation during training
     train_transform = transforms.Compose([
         transforms.RandomHorizontalFlip(p=0.5),
-        # transforms.RandomRotation(degrees=10),
+        transforms.RandomRotation(degrees=5),
         transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
         transforms.Lambda(lambd=cut_pil_image),
         transforms.Resize((224, 224)),
@@ -175,47 +179,44 @@ if __name__ == '__main__':
 
     # during validation we use only tensor and normalization transforms
     val_transform = transforms.Compose([
-        transforms.Lambda(lambd=cut_pil_image),
+        transforms.Lambda(lambd=lambda x: cut_pil_image(x, spread=0)),
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize(mean, std)
     ])
 
-    train_dataset = CSVDataset(annotation_path='traindata/train.csv', images_dir=args.images_dir, attributes=attributes,
+    train_dataset = CSVDataset(annotation_path=args.train_file,
+                               images_dir=args.images_dir, attributes=attributes,
                                transform=train_transform)
-    val_dataset = CSVDataset(annotation_path='traindata/test.csv', images_dir=args.images_dir, attributes=attributes,
+    val_dataset = CSVDataset(annotation_path=args.val_file,
+                             images_dir=args.images_dir, attributes=attributes,
                              transform=val_transform)
-
-    # ll = len(whole_dataset)
-    # train_len = int(ll * args.train_val)
-    # valid_len = ll - train_len
-    # train_dataset, val_dataset = random_split(whole_dataset, [train_len, valid_len])
-    # val_dataset.transform = val_transform
 
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
+    netname = 'mobilenetv2.2'
     model = MultiOutputModel(trained_labels=train_dataset.attr_names,
-                             attrbts=attributes).to(device)
-    normal = True
-    if normal:
+                             attrbts=attributes, netname=netname).to(device)
+    # normal = 1  # 1- usual 2 - experiment
+    if netname == 'mobilenetv2.2':
         optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999))  # lr-.001 gamma=.3
         exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.3)
+    elif netname == 'mnasnet':
+        optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=.9)  # lr-.001 gamma=.3
+        exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.5)
+    elif netname == 'wide_resnet50_2':
+        optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999))  # lr-.001 gamma=.3
+        exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.5)
     else:
-        optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, nesterov=True)
-    # optimizer = torch.optim.Adam(model.parameters())
-    # Using Adam as the parameter optimizer
-    #
+        exit(200)
+        # optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9, nesterov=True)
 
-    # Decay LR by a factor of 0.1 every 7 epochs
-    #
-    # Stored model on best acc @0.7408
-    # exp_lr_scheduler = lr_scheduler.CyclicLR(optimizer, base_lr=0.00001, max_lr=0.001, step_size_up=14,
-    #                                          step_size_down=14, mode='exp_range', gamma=.95)
-    logdir = os.path.join(args.work_dir)
-    savedir = os.path.join(args.work_dir)
+    logdir = os.path.join(args.work_dir, 'log')
+    savedir = os.path.join(args.work_dir, 'save')
     os.makedirs(logdir, exist_ok=True)
     os.makedirs(savedir, exist_ok=True)
+
     logger = SummaryWriter(logdir)
 
     n_train_samples = len(train_dataloader)
@@ -251,41 +252,41 @@ if __name__ == '__main__':
         logger.add_scalar('train_loss', total_loss / n_train_samples, epoch)
 
         chk_point = None
-        opt_chk_pnt  = None
+        opt_chk_pnt = None
 
-        if epoch % 3 == 1:
-            cur_best_acc = validate(model=model,
-                                    dataloader=val_dataloader,
-                                    fld_names=train_dataset.attr_names,
-                                    logger=logger,
-                                    iteration=epoch,
-                                    device=device)
-            if cur_best_acc > best_acc:
-                best_acc = cur_best_acc
-                best_acc_epoch = epoch
-                best_acc_last_load = epoch
-                best_acc_loads = 0
-                f = os.path.join(savedir, 'checkpoint-best.pth')
-                torch.save(model.state_dict(), f)
-                fp = os.path.join(savedir, 'checkpoint-best_optim.pth')
-                torch.save(optimizer.state_dict(), fp)
-                # opt_chk_pnt = copy.deepcopy(optimizer.state_dict())  # TODO CHECK
-                print(f'Stored model on best acc @{best_acc:.4f}')
+        # if epoch % 1 == 0:
+        cur_best_acc = validate(model=model,
+                                dataloader=val_dataloader,
+                                fld_names=train_dataset.attr_names,
+                                logger=logger,
+                                iteration=epoch,
+                                device=device)
+        if cur_best_acc > best_acc:
+            best_acc = cur_best_acc
+            best_acc_epoch = epoch
+            best_acc_last_load = epoch
+            best_acc_loads = 0
+            f = os.path.join(savedir, f'{args.checkpoint_best}.pth')
+            torch.save(model.state_dict(), f)
+            fp = os.path.join(savedir, 'checkpoint-best_optim.pth')
+            torch.save(optimizer.state_dict(), fp)
+            print(f'Stored model on best acc @{best_acc:.4f}')
+            if args.graph_out == 'true':
                 visualize_grid(model=model,
                                dataloader=val_dataloader,
                                attr=train_dataset.attr,
                                device=device,
                                caption=f'{best_acc:.4f}@{best_acc_epoch}')
-            if best_acc_last_load + TRAIN_PERIODE <= epoch:
-                f = os.path.join(savedir, 'checkpoint-best.pth')
-                best_acc_loads += 1
-                print(f'loaded best thr ptr. {best_acc_loads} time(s) back to: {best_acc_epoch} @{best_acc:.4f}')
-                best_acc_last_load = epoch
-                model.load_state_dict(torch.load(f, map_location=device))
-                optimizer.load_state_dict(torch.load(fp, map_location=device))
-                # optimizer.load_state_dict(opt_chk_pnt)
-                exp_lr_scheduler.step()
-            if best_acc_loads > 5:
+        if best_acc_last_load + TRAIN_PERIODE <= epoch:
+            f = os.path.join(savedir, f'{args.checkpoint_best}.pth')
+            best_acc_loads += 1
+            print(f'loaded best thr ptr. {best_acc_loads} time(s) back to: {best_acc_epoch} @{best_acc:.4f}')
+            best_acc_last_load = epoch
+            model.load_state_dict(torch.load(f, map_location=device))
+            optimizer.load_state_dict(torch.load(fp, map_location=device))
+            optimizer.step()
+            exp_lr_scheduler.step()
+            if best_acc_loads > COUNT_OF_LR_STEPS:
                 break
-        # if normal:
+
 

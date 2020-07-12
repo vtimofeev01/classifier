@@ -3,6 +3,8 @@ import csv
 import os
 import warnings
 from datetime import datetime
+from pprint import pprint
+
 from PIL import Image
 import torch
 import torchvision.transforms as transforms
@@ -48,7 +50,7 @@ def validate(model, dataloader, fld_names, logger, iteration, device, checkpoint
         totalacc = sum([y for x, y in accuracy.items()])
 
     n_samples = len(dataloader)
-    print(f'epoch:{iteration} val loss: {total_loss / n_samples:.4f} ' +
+    print(f'            val loss: {total_loss / n_samples:.4f} ' +
           ' '.join([f'{a}: {accuracy[a] / n_samples:.4f}'
                     for a in fld_names]) + f' {datetime.now() - epoch_start_time}'
                                            f' total_acc:{totalacc / n_samples:.4f}')
@@ -110,7 +112,7 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
                 labels=attr.labels[x],
                 # )
                 normalize='true')
-            ConfusionMatrixDisplay(cn_matrix, attr.labels[x]).plot(
+            ConfusionMatrixDisplay(cn_matrix, display_labels=attr.labels[x]).plot(
                 include_values=True, xticks_rotation='vertical')
             plt.title(x)
             plt.tight_layout()
@@ -139,16 +141,21 @@ def cut_pil_image(image: Image, border=20):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Inference pipeline')
-    parser.add_argument('--checkpoint', type=str, required=True, help="Path to the checkpoint")
-    parser.add_argument('--images_dir', type=str, required=True,
-                        help="Folder containing images described in CSV file")
-    parser.add_argument('--test_file', type=str, required=True,
-                        help="CSV-file format (image name, label1, label2, ...) to use for training")
+    parser.add_argument('--checkpoint', type=str, help="Path to the checkpoint",
+                        default='dataset/save/checkpoint-best.pth')
+    parser.add_argument('--images_dir', type=str,
+                        help="Folder containing images described in CSV file",
+                        default='dataset/data')
+    parser.add_argument('--test_file', type=str,
+                        help="CSV-file format (image name, label1, label2, ...) to use for training",
+                        default='dataset/data.csv')
     parser.add_argument('--attributes_file', type=str,
-                        help="Path to the file with attributes")
+                        help="Path to the file with attributes",
+                        default='dataset/data.csv')
     parser.add_argument('--device', type=str, default='cuda',
                         help="Device: 'cuda' or 'cpu'")
     args = parser.parse_args()
+    pprint(args.__dict__)
 
     if args.attributes_file is None:
         args.attributes_file = args.test_file
