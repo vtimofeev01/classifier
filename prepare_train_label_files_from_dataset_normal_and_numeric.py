@@ -17,7 +17,14 @@ from dl_src.dataset import make_list_of_files
 
 annotation_path = '/home/imt/dataset/dataset_for_multilabel_classification/person/results.csv'
 images_dir = '/home/imt/dataset/dataset_for_multilabel_classification'
-union_rule = {'corrupted': 'wrong', 'non_person': 'wrong', 'non_clear': 'clear'}
+union_rule = {'corrupted': 'wrong'}  # , 'non_person': 'wrong', 'non_clear': 'clear'}
+
+# "clear",
+# "multy",
+# "non-clear",
+# "non-person",
+# "wrong"
+
 export_dir = './dataset'
 # pattern = '{:0>5}.png'
 
@@ -37,8 +44,6 @@ if __name__ == '__main__':
     fnames = []
     heights = []
     widths = []
-
-
 
     with open(annotation_path) as f:
         reader = csv.DictReader(f)

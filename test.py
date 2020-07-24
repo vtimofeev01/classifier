@@ -141,25 +141,19 @@ def cut_pil_image(image: Image, border=20):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Inference pipeline')
-    parser.add_argument('--checkpoint', type=str, help="Path to the checkpoint",
-                        default='dataset/save/checkpoint-best.pth')
-    parser.add_argument('--images_dir', type=str,
-                        help="Folder containing images described in CSV file",
-                        default='dataset/data')
-    parser.add_argument('--test_file', type=str,
-                        help="CSV-file format (image name, label1, label2, ...) to use for training",
-                        default='dataset/data.csv')
-    parser.add_argument('--attributes_file', type=str,
-                        help="Path to the file with attributes",
-                        default='dataset/data.csv')
-    parser.add_argument('--device', type=str, default='cuda',
-                        help="Device: 'cuda' or 'cpu'")
+    parser.add_argument('--checkpoint', type=str, help="Path to the checkpoint")
+    parser.add_argument('--images_dir', type=str, help="Folder containing images described in CSV file")
+    parser.add_argument('--test_file', type=str, help="CSV-file format (image name, label1, label2, ...) for training")
+    parser.add_argument('--attributes_file', type=str, help="Path to the file with attributes")
+    parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
+    parser.add_argument('--workdir', type=str, help="workdir")
+
     args = parser.parse_args()
     pprint(args.__dict__)
 
     if args.attributes_file is None:
         args.attributes_file = args.test_file
-
+    core_name = os.path.splitext(os.path.split(args.checkpoint)[-1])[0]
     device = torch.device("cuda" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
     # attributes variable contains labels for the categories in the dataset and mapping between string names and IDs
     attributes = AttributesDataset(args.attributes_file)
@@ -183,41 +177,40 @@ if __name__ == '__main__':
 
     # Visualization of the trained model
     csv_filename = os.path.join(
-        os.path.split(args.test_file)[0], 'files_to_check.csv'
+        os.path.split(args.test_file)[0], f'{core_name}_to_check.csv'
     )
-    visualize_grid(model=model,
-                   dataloader=test_dataloader,
-                   attr=attributes,
-                   device=device, checkpoint=args.checkpoint,
-                   csv_filename=csv_filename)
+    # visualize_grid(model=model,
+    #                dataloader=test_dataloader,
+    #                attr=attributes,
+    #                device=device, checkpoint=args.checkpoint,
+    #                csv_filename=csv_filename)
 
     dummy_input = torch.randn(1, 3, 224, 224, device=device)
-    core_name = f'mnv2_single_attribute'
+    # core_name = os.path.split(args.checkpoint)
+
     input_names = ["input1"]  # + [ "learned_%d" % i for i in range(16) ]
     output_names = ["output1"]
-    for data_type in ['FP16', 'FP32']:
+    # for data_type in ['FP16', 'FP32']:
+    for data_type in ['FP16']:
         onnx.export(model=model, args=dummy_input,
                     f=f"{core_name}.onnx",
                     verbose=True,
                     input_names=input_names,
                     output_names=output_names)
 
-        # mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
-        #          f'mo.py --input_model {core_name}.onnx --data_type FP16' \
-        #          f'--output_dir {os.curdir}'
         mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
                  f'mo.py --input_model {core_name}.onnx  ' \
                  f"--reverse_input_channels " \
                  f"--mean_values=[123.675,116.28,103.53] " \
                  f'--scale_values=[58.395,57.12,57.375]  ' \
                  f'--data_type {data_type}' \
-                 f' --output_dir {os.curdir}/{data_type}'
+                 f' --output_dir {os.path.join(args.workdir, data_type)}'
         print('\n', mo_run, '\n')
         os.system(mo_run)
 
         json_object = json.dumps({'labels_id_to_name': attributes.labels_id_to_name,
                                   'labels_name_to_id': attributes.labels_name_to_id}, indent=4)
-        with open(f'{os.curdir}/{data_type}/{core_name}.json', "w") as outfile:
+        with open(f'{args.workdir}/{data_type}/{core_name}.json', "w") as outfile:
             outfile.write(json_object)
 
     mean = [0.485, 0.456, 0.406]

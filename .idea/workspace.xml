@@ -20,42 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/export_dataset_to_flat_format_numeric.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prepare_train_label_files_from_dataset_normal_and_numeric.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/batch_engine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/AttrDataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/annotation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_pa100k.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_peta.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_rap.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_rap2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/loss/CE_loss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/loss/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/models/base_block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/models/resnet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/models/senet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/tools/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/tools/function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/tools/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/alternate_train/train.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schrott/export_dataset_to_flat_format.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/save/ask.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xml_test_area.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dl_src/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poligon.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/split_singl_label_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/split_singl_label_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prepare_train_label_files_from_dataset_normal_and_numeric.py" beforeDir="false" afterPath="$PROJECT_DIR$/prepare_train_label_files_from_dataset_normal_and_numeric.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_area/results.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/test.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/train.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +72,7 @@
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.train.sh">
+  <component name="RunManager" selected="Python.classifier_person">
     <configuration name="classifier_face_visible" type="PythonConfigurationType" factoryName="Python">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,32 +95,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="export_dataset_to_flat_format_numeric" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="prepare_train_label_files_from_dataset_normal_and_numeric" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/export_dataset_to_flat_format_numeric.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="prepare_train_label_files_from_dataset_normal_and_numeric" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pyqt5-images-classifier" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -158,28 +111,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prepare_train_label_files_from_dataset_normal_and_numeric.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pyqt5-images-classifier" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -208,6 +139,39 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="xml_test_area" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyqt5-images-classifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xml_test_area.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test.sh" type="ShConfigurationType" temporary="true">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/test.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="train.sh" type="ShConfigurationType" temporary="true">
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/train.sh" />
@@ -222,19 +186,19 @@
     <list>
       <item itemvalue="Python.classifier_person" />
       <item itemvalue="Python.classifier_face_visible" />
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.train_partial_big" />
-      <item itemvalue="Python.export_dataset_to_flat_format_numeric" />
       <item itemvalue="Python.prepare_train_label_files_from_dataset_normal_and_numeric" />
+      <item itemvalue="Python.xml_test_area" />
       <item itemvalue="Shell Script.train.sh" />
+      <item itemvalue="Shell Script.test.sh" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.xml_test_area" />
         <item itemvalue="Shell Script.train.sh" />
         <item itemvalue="Python.prepare_train_label_files_from_dataset_normal_and_numeric" />
+        <item itemvalue="Shell Script.test.sh" />
         <item itemvalue="Python.train_partial_big" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.export_dataset_to_flat_format_numeric" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +265,10 @@
       <workItem from="1594442201985" duration="685000" />
       <workItem from="1594442919235" duration="3129000" />
       <workItem from="1594464988539" duration="8334000" />
-      <workItem from="1594480144658" duration="12268000" />
+      <workItem from="1594480144658" duration="25139000" />
+      <workItem from="1594617708357" duration="5311000" />
+      <workItem from="1594963125653" duration="22000" />
+      <workItem from="1595539748659" duration="2136000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -352,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592075511223</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <created>1594513442306</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1594513442306</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,24 +355,15 @@
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
     <state x="851" y="421" width="251" height="263" key="#Notifications/43.27.1877.1053@43.27.1877.1053" timestamp="1587736166685" />
-    <state x="643" y="143" width="666" height="819" key="#classifier" timestamp="1586741067031">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state x="643" y="143" width="666" height="819" key="#classifier/43.27.1877.1053@43.27.1877.1053" timestamp="1586741067031" />
-    <state x="307" y="396" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594512198735">
+    <state x="307" y="396" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594534868282">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="43" y="145" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1590272788542" />
-    <state x="307" y="396" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1594512198735" />
+    <state x="307" y="396" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1594534868282" />
     <state x="698" y="354" width="891" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593866721014">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="682" y="354" width="588" height="396" key="#com.intellij.fileTypes.FileTypeChooser/43.27.1877.1053@43.27.1877.1053" timestamp="1586606452724" />
     <state x="698" y="354" width="891" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1593866721014" />
-    <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586606182989">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state x="477" y="27" width="989" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586606182989" />
     <state x="263" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593852668777">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -412,30 +377,26 @@
     </state>
     <state x="764" y="310" width="424" height="484" key="FileChooserDialogImpl/43.27.1877.1053@43.27.1877.1053" timestamp="1587776130872" />
     <state x="779" y="310" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1593805434589" />
-    <state x="773" y="473" key="Github.CreateGistDialog" timestamp="1586633543040">
-      <screen x="43" y="27" width="1877" height="1053" />
-    </state>
-    <state x="773" y="473" key="Github.CreateGistDialog/43.27.1877.1053@43.27.1877.1053" timestamp="1586633543040" />
-    <state width="1807" height="212" key="GridCell.Tab.0.bottom" timestamp="1594512098574">
+    <state width="1807" height="212" key="GridCell.Tab.0.bottom" timestamp="1595631592620">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1831" height="344" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
-    <state width="1807" height="212" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1594512098574" />
-    <state width="1807" height="212" key="GridCell.Tab.0.center" timestamp="1594512098573">
+    <state width="1807" height="212" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595631592620" />
+    <state width="1807" height="212" key="GridCell.Tab.0.center" timestamp="1595631592618">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1831" height="344" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
-    <state width="1807" height="212" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1594512098573" />
-    <state width="1807" height="212" key="GridCell.Tab.0.left" timestamp="1594512098572">
+    <state width="1807" height="212" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595631592618" />
+    <state width="1807" height="212" key="GridCell.Tab.0.left" timestamp="1595631592617">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1831" height="344" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
-    <state width="1807" height="212" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1594512098572" />
-    <state width="1807" height="212" key="GridCell.Tab.0.right" timestamp="1594512098574">
+    <state width="1807" height="212" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595631592617" />
+    <state width="1807" height="212" key="GridCell.Tab.0.right" timestamp="1595631592619">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1831" height="344" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
-    <state width="1807" height="212" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1594512098574" />
+    <state width="1807" height="212" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595631592619" />
     <state width="1831" height="344" key="GridCell.Tab.1.bottom" timestamp="1590282672476">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -457,11 +418,11 @@
     </state>
     <state x="470" y="187" key="SettingsEditor/43.27.1877.1053@43.27.1877.1053" timestamp="1587643348293" />
     <state x="489" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1592051608241" />
-    <state x="593" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1592075514100">
+    <state x="593" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1594513445815">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1590282663966" />
-    <state x="593" y="288" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1592075514100" />
+    <state x="593" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1594513445815" />
     <state x="143" y="214" width="1450" height="589" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587421421498">
       <screen x="43" y="27" width="1877" height="1053" />
     </state>
@@ -475,10 +436,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="313" y="136" width="824" height="684" key="editAsTableFormatDialogDimension/67.27.1853.1053@67.27.1853.1053" timestamp="1593812134978" />
-    <state x="684" y="291" width="696" height="522" key="find.popup" timestamp="1594512007820">
+    <state x="684" y="291" width="696" height="522" key="find.popup" timestamp="1594963139647">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="684" y="291" width="696" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1594512007819" />
+    <state x="684" y="291" width="696" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1594963139647" />
     <state x="660" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1593813769959">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -492,12 +453,13 @@
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1593240948506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test_area_for_new_trained_model.coverage" NAME="test_area_for_new_trained_model Coverage Results" MODIFIED="1593755237273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier_person.coverage" NAME="classifier_person Coverage Results" MODIFIED="1594503637904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier_person.coverage" NAME="classifier_person Coverage Results" MODIFIED="1595631592593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1593822336686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/alternate_train" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1594473297514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$poligon.coverage" NAME="poligon Coverage Results" MODIFIED="1588272420966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$export_dataset_to_flat_format_numeric.coverage" NAME="export_dataset_to_flat_format_numeric Coverage Results" MODIFIED="1593840246331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$prepare_train_label_files_from_dataset_normal_and_numeric.coverage" NAME="prepare_train_label_files_from_dataset_normal_and_numeric Coverage Results" MODIFIED="1594474595369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train_partial_big Coverage Results" MODIFIED="1594494861449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$xml_test_area.coverage" NAME="xml_test_area Coverage Results" MODIFIED="1594663252715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

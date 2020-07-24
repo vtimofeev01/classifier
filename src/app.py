@@ -57,6 +57,7 @@ def parse_dataset_to_navigation_dict(datasetname, datasetfile, patternfiles):
     return out
 
 class CApp(CViewer):
+
     def __init__(self, imgdir, label: str = None, label_values: str = None):
         super().__init__(title=f'classifier for {label}')
         outfile = "results.csv"
@@ -119,7 +120,7 @@ class CApp(CViewer):
 
         all = list(range(len(self.images)))
         self.navigations = {'ALL': {'data': all, 'pos': 0},
-                            'items 2 check': {'data': [self.images.index(x) for x in self.images_2_check], 'pos': 0}
+                            'items 2 check': {'data': sorted(self.images.index(x) for x in self.images_2_check), 'pos': 0}
                             }
         for outer_label in [x for x in os.listdir(imgdir) if os.path.isdir(opj(imgdir, x))]:
             outer_label_dataset = opj(imgdir, outer_label, 'results.csv')
@@ -138,7 +139,6 @@ class CApp(CViewer):
         print('\n'.join(self.navigationtextes))
         self._render_window()
         self._goto_next_unlabeled_image()
-
 
     def set_other_items_filter(self, name):
         self.main_index = name
@@ -248,8 +248,6 @@ class CApp(CViewer):
             self.fv_bv.append(self.navigations[self.main_index]['pos'])
         self.red_mark.setText('')
         print(f'pos={pos} #={self.navigations[self.main_index]["pos"]} self.main_index={self.main_index}')
-
-
 
     def _goto_next_unlabeled_image(self):
         self.red_mark.setText('')
