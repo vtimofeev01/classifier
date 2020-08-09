@@ -145,8 +145,10 @@ if __name__ == '__main__':
     parser.add_argument('--images_dir', type=str, help="Folder containing images described in CSV file")
     parser.add_argument('--test_file', type=str, help="CSV-file format (image name, label1, label2, ...) for training")
     parser.add_argument('--attributes_file', type=str, help="Path to the file with attributes")
+    parser.add_argument('--modelname', type=str, default='persons_classifier', help="Path to the file with attributes")
     parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
     parser.add_argument('--workdir', type=str, help="workdir")
+    parser.add_argument('--visgrid', type=str, help="show", default='false')
 
     args = parser.parse_args()
     pprint(args.__dict__)
@@ -179,11 +181,12 @@ if __name__ == '__main__':
     csv_filename = os.path.join(
         os.path.split(args.test_file)[0], f'{core_name}_to_check.csv'
     )
-    # visualize_grid(model=model,
-    #                dataloader=test_dataloader,
-    #                attr=attributes,
-    #                device=device, checkpoint=args.checkpoint,
-    #                csv_filename=csv_filename)
+    if args.visgrid != 'false':
+        visualize_grid(model=model,
+                       dataloader=test_dataloader,
+                       attr=attributes,
+                       device=device, checkpoint=args.checkpoint,
+                       csv_filename=csv_filename)
 
     dummy_input = torch.randn(1, 3, 224, 224, device=device)
     # core_name = os.path.split(args.checkpoint)
@@ -193,18 +196,20 @@ if __name__ == '__main__':
     # for data_type in ['FP16', 'FP32']:
     for data_type in ['FP16']:
         onnx.export(model=model, args=dummy_input,
-                    f=f"{core_name}.onnx",
+                    f=f"{args.modelname}.onnx",
                     verbose=True,
                     input_names=input_names,
                     output_names=output_names)
 
         mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
-                 f'mo.py --input_model {core_name}.onnx  ' \
+                 f'mo.py --input_model {args.modelname}.onnx  ' \
                  f"--reverse_input_channels " \
                  f"--mean_values=[123.675,116.28,103.53] " \
                  f'--scale_values=[58.395,57.12,57.375]  ' \
-                 f'--data_type {data_type}' \
-                 f' --output_dir {os.path.join(args.workdir, data_type)}'
+                 f'--data_type {data_type} ' \
+                 f'--log_level ERROR ' \
+                 f'--progress ' \
+                 f' --output_dir {os.path.join(args.workdir, data_type, core_name)}'
         print('\n', mo_run, '\n')
         os.system(mo_run)
 

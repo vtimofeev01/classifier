@@ -53,7 +53,7 @@ def parse_dataset_to_navigation_dict(datasetname, datasetfile, patternfiles):
             ds_lbls.append(lbl)
         out[f'{datasetname}: All'] = {'data':[patternfiles.index(x) for x in ds_imgs], 'pos': 0}
         for ulbl in unique(ds_lbls):
-            out[f'{datasetname}: {ulbl}'] = {'data':[patternfiles.index(x) for ix, x in enumerate(ds_imgs) if ds_lbls[ix] == ulbl], 'pos': 0}
+            out[f'{datasetname}: {ulbl}'] = {'data': sorted([patternfiles.index(x) for ix, x in enumerate(ds_imgs) if ds_lbls[ix] == ulbl]), 'pos': 0}
     return out
 
 class CApp(CViewer):
@@ -195,7 +195,8 @@ class CApp(CViewer):
         BORDER = 20
         cv2.rectangle(cv_im, (BORDER, BORDER), (w - BORDER, h - BORDER), (0, 0, 255), 1)
 
-        image = QImage(cv_im, cv_im.shape[1], cv_im.shape[0], cv_im.shape[1] * 3, QImage.Format_RGB888)
+        # image = QImage(cv_im, cv_im.shape[1], cv_im.shape[0], cv_im.shape[1] * 3, QImage.Format_RGB888)
+        image = QImage(cv_im, cv_im.shape[1], cv_im.shape[0], cv_im.shape[1] * 3, QImage.Format_BGR888)
         image = QPixmap(image)
         # image = QPixmap(self.image_file_name(self.image_index))
 
@@ -255,17 +256,7 @@ class CApp(CViewer):
         imix = pos
         # print('-----------------------------------------')
         for p in self.navigations[self.main_index]['data'][pos:] + self.navigations[self.main_index]['data'][:pos]:
-            # print(p, self.navigations[self.main_index]['data'][pos:] + self.navigations[self.main_index]['data'][:pos])
-            # print(self.navigations.keys(), self.main_index)
-            # print(self.main_index in self.navigations, p in self.navigations[self.main_index]['data'],
-            #       'data' in  self.navigations[self.main_index])
             imix = self.navigations[self.main_index]['data'].index(p)
-            # imnm = self.images[imix]
-            # print(self.current_labels[imnm])
-            # print('----------------------------------')
-            # print(p)
-            # print()
-            # # print(self.current_labels)
             if self.current_labels[self.images[p]] is None:
                 break
         if imix == pos:
@@ -336,11 +327,36 @@ class CApp(CViewer):
             oldname = self.image_file_name(self.navigations[self.main_index]['data'][pos])
             self.images[self.navigations[self.main_index]['data'][pos]] = 'DELETED_' + self.images[self.navigations[self.main_index]['data'][pos]]
             shutil.move(oldname, self.image_file_name(self.navigations[self.main_index]['data'][pos]))
+        elif kval == Qt.Key_R:
+            pos = self.navigations[self.main_index]['pos']
+            im = cv2.imread(self.image_file_name(self.navigations[self.main_index]['data'][pos]))
+            im = im[:, :, ::-1]
+            cv2.imwrite(self.image_file_name(self.navigations[self.main_index]['data'][pos]), img=im)
         else:
             print('You Clicked {} but nothing happened...'.format(event.key()))
         self._render_window()
 
     def _redraw_labels_selection_list(self, selected=-1):
+        lst = []
+        imcode = ''
+        t_len = 0
+        for ii, lv in enumerate(self.label_values):
+        # for ii, lv in enumerate(self.label_values):
+            pos = self.navigations[self.main_index]['pos']
+            imcode = self.current_labels[self.images[self.navigations[self.main_index]['data'][pos]]]
+            mark = ' ' if imcode is None or ii != self.label_values.index(imcode) else '*'
+            lv_n = len([v for z, v in self.current_labels.items() if v == lv])
+            t_len += lv_n
+            lst.append(f'{mark}{ii}  {lv:.<15} {lv_n}')
+        t_len = len(self.navigations[self.main_index]['data'])
+        unlabeled = len([1 for x in self.navigations[self.main_index]['data'] if self.current_labels[self.images[x]] is None])
+
+        lst.append(f'\n{"-"*25}\n    total ......... {t_len}    \n    left .......... {unlabeled}')
+        t = '\n'.join(lst)
+        self.red_mark.setText(imcode)
+        self.label_selection_list.setText(t)
+
+    def _redraw_labels_selection_list_0(self, selected=-1):
         lst = []
         imcode = ''
         t_len = 0
