@@ -20,14 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/sh/persons/carring.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www-classifier/backend/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www-classifier/backend/app/module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www-classifier/backend/app/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www-classifier/backend/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/www-classifier/backend/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www-classifier/backend/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www-classifier/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/www-classifier/backend/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,7 @@
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.module">
+  <component name="RunManager" selected="Python.main">
     <configuration name="classifier_face_visible" type="PythonConfigurationType" factoryName="Python">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,6 +96,28 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classifier.py" />
       <option name="PARAMETERS" value="--img-dir $USER_HOME$/dataset/dataset_for_multilabel_classification --l face_visible" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyqt5-images-classifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/www-classifier/backend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/www-classifier/backend/main.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -182,33 +199,22 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="uniforme.sh" type="ShConfigurationType" temporary="true">
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/sh/persons/uniforme.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/sh/persons" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.classifier_person" />
       <item itemvalue="Python.classifier_face_visible" />
       <item itemvalue="Python.split_singl_label_data" />
       <item itemvalue="Python.prepare_train_label_files_from_dataset_normal_and_numeric" />
       <item itemvalue="Python.module" />
-      <item itemvalue="Shell Script.uniforme.sh" />
       <item itemvalue="Shell Script.carring.sh" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.module" />
         <item itemvalue="Python.prepare_train_label_files_from_dataset_normal_and_numeric" />
         <item itemvalue="Python.split_singl_label_data" />
         <item itemvalue="Shell Script.carring.sh" />
-        <item itemvalue="Shell Script.uniforme.sh" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +323,7 @@
       <workItem from="1598131430024" duration="5310000" />
       <workItem from="1598263257789" duration="657000" />
       <workItem from="1598893940938" duration="5705000" />
-      <workItem from="1598899700928" duration="4951000" />
+      <workItem from="1598899700928" duration="6588000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -389,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597001256909</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update">
+      <created>1598908731306</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598908731306</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,28 +450,28 @@
     </state>
     <state x="762" y="310" key="FileChooserDialogImpl/39.27.1881.1053@39.27.1881.1053" timestamp="1598906243691" />
     <state x="779" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1595823785082" />
-    <state width="1835" height="353" key="GridCell.Tab.0.bottom" timestamp="1598896111275">
+    <state width="1835" height="353" key="GridCell.Tab.0.bottom" timestamp="1598911134101">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="353" key="GridCell.Tab.0.bottom/39.27.1881.1053@39.27.1881.1053" timestamp="1598896111275" />
+    <state width="1835" height="353" key="GridCell.Tab.0.bottom/39.27.1881.1053@39.27.1881.1053" timestamp="1598911134101" />
     <state width="1831" height="344" key="GridCell.Tab.0.bottom/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
     <state width="1807" height="250" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="353" key="GridCell.Tab.0.center" timestamp="1598896111274">
+    <state width="1835" height="353" key="GridCell.Tab.0.center" timestamp="1598911134101">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="353" key="GridCell.Tab.0.center/39.27.1881.1053@39.27.1881.1053" timestamp="1598896111274" />
+    <state width="1835" height="353" key="GridCell.Tab.0.center/39.27.1881.1053@39.27.1881.1053" timestamp="1598911134101" />
     <state width="1831" height="344" key="GridCell.Tab.0.center/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
     <state width="1807" height="250" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="353" key="GridCell.Tab.0.left" timestamp="1598896111274">
+    <state width="1835" height="353" key="GridCell.Tab.0.left" timestamp="1598911134101">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="353" key="GridCell.Tab.0.left/39.27.1881.1053@39.27.1881.1053" timestamp="1598896111274" />
+    <state width="1835" height="353" key="GridCell.Tab.0.left/39.27.1881.1053@39.27.1881.1053" timestamp="1598911134101" />
     <state width="1831" height="344" key="GridCell.Tab.0.left/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
     <state width="1807" height="250" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="353" key="GridCell.Tab.0.right" timestamp="1598896111274">
+    <state width="1835" height="353" key="GridCell.Tab.0.right" timestamp="1598911134101">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="353" key="GridCell.Tab.0.right/39.27.1881.1053@39.27.1881.1053" timestamp="1598896111274" />
+    <state width="1835" height="353" key="GridCell.Tab.0.right/39.27.1881.1053@39.27.1881.1053" timestamp="1598911134101" />
     <state width="1831" height="344" key="GridCell.Tab.0.right/43.27.1877.1053@43.27.1877.1053" timestamp="1590282672475" />
     <state width="1807" height="250" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
     <state width="1831" height="344" key="GridCell.Tab.1.bottom" timestamp="1590282672476">
@@ -481,10 +494,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="489" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1592051608241" />
-    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1597001258476">
+    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1598908733476">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="573" y="288" key="Vcs.Push.Dialog.v2/39.27.1881.1053@39.27.1881.1053" timestamp="1597001258476" />
+    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/39.27.1881.1053@39.27.1881.1053" timestamp="1598908733476" />
     <state x="576" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/43.27.1877.1053@43.27.1877.1053" timestamp="1590282663966" />
     <state x="593" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1595634931920" />
     <state x="215" y="225" width="1656" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1593754332989">
@@ -499,10 +512,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="684" y="291" width="696" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1594963139647" />
-    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup" timestamp="1598908354810">
+    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup" timestamp="1598908699867">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup/39.27.1881.1053@39.27.1881.1053" timestamp="1598908354810" />
+    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup/39.27.1881.1053@39.27.1881.1053" timestamp="1598908699867" />
     <state x="660" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1593813769959" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
@@ -515,6 +528,7 @@
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$prepare_train_label_files_from_dataset_normal_and_numeric.coverage" NAME="prepare_train_label_files_from_dataset_normal_and_numeric Coverage Results" MODIFIED="1598166851959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$module.coverage" NAME="module Coverage Results" MODIFIED="1598896058154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/www-classifier/backend/app" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$train.coverage" NAME="train_partial_big Coverage Results" MODIFIED="1594494861449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$main.coverage" NAME="main Coverage Results" MODIFIED="1598911134095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/www-classifier/backend" />
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$split_singl_label_data.coverage" NAME="split_singl_label_data Coverage Results" MODIFIED="1598166565200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1594473297514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
