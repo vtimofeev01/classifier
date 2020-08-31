@@ -1,0 +1,7 @@
+addr:
+  port: 8088
+  host: 127.0.0.1
+
+data:
+  dataset: /home/imt/dataset/dataset_for_multilabel_classification
+

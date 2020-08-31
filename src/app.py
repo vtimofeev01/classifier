@@ -51,7 +51,7 @@ def parse_dataset_to_navigation_dict(datasetname, datasetfile, patternfiles):
                 continue
             ds_imgs.append(im)
             ds_lbls.append(lbl)
-        out[f'{datasetname}: All'] = {'data':[patternfiles.index(x) for x in ds_imgs], 'pos': 0}
+        out[f'{datasetname}: All'] = {'data': [patternfiles.index(x) for x in ds_imgs], 'pos': 0}
         for ulbl in unique(ds_lbls):
             out[f'{datasetname}: {ulbl}'] = {'data': sorted([patternfiles.index(x) for ix, x in enumerate(ds_imgs) if ds_lbls[ix] == ulbl]), 'pos': 0}
     return out
