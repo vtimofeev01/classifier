@@ -20,20 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599975301.imt-G7-7790.25110.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599868941.imt-G7-7790.3163.0" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599868941.imt-G7-7790.3163.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/train.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +83,7 @@
       <recent name="$PROJECT_DIR$/dl_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (2)">
+  <component name="RunManager" selected="Shell Script.train.sh">
     <configuration name="classifier_face_visible" type="PythonConfigurationType" factoryName="Python">
       <module name="pyqt5-images-classifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -228,8 +216,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (2)" />
         <item itemvalue="Shell Script.train.sh" />
+        <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.module" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main (1)" />
@@ -352,7 +340,7 @@
       <workItem from="1599795544168" duration="2563000" />
       <workItem from="1599841840555" duration="5788000" />
       <workItem from="1599868916313" duration="5097000" />
-      <workItem from="1599936021749" duration="1870000" />
+      <workItem from="1599936021749" duration="2319000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -445,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599871437426</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update">
+      <created>1599975240358</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599975240358</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,25 +496,25 @@
     </state>
     <state x="762" y="310" width="424" height="484" key="FileChooserDialogImpl/39.27.1881.1053@39.27.1881.1053" timestamp="1599306589548" />
     <state x="779" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1595823785082" />
-    <state width="1835" height="287" key="GridCell.Tab.0.bottom" timestamp="1599936067757">
+    <state width="1835" height="287" key="GridCell.Tab.0.bottom" timestamp="1599975272029">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.bottom/39.27.1881.1053@39.27.1881.1053" timestamp="1599936067757" />
+    <state width="1835" height="287" key="GridCell.Tab.0.bottom/39.27.1881.1053@39.27.1881.1053" timestamp="1599975272029" />
     <state width="1807" height="250" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="287" key="GridCell.Tab.0.center" timestamp="1599936067755">
+    <state width="1835" height="287" key="GridCell.Tab.0.center" timestamp="1599975272029">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.center/39.27.1881.1053@39.27.1881.1053" timestamp="1599936067755" />
+    <state width="1835" height="287" key="GridCell.Tab.0.center/39.27.1881.1053@39.27.1881.1053" timestamp="1599975272029" />
     <state width="1807" height="250" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="287" key="GridCell.Tab.0.left" timestamp="1599936067754">
+    <state width="1835" height="287" key="GridCell.Tab.0.left" timestamp="1599975272028">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.left/39.27.1881.1053@39.27.1881.1053" timestamp="1599936067754" />
+    <state width="1835" height="287" key="GridCell.Tab.0.left/39.27.1881.1053@39.27.1881.1053" timestamp="1599975272028" />
     <state width="1807" height="250" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="287" key="GridCell.Tab.0.right" timestamp="1599936067756">
+    <state width="1835" height="287" key="GridCell.Tab.0.right" timestamp="1599975272029">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.right/39.27.1881.1053@39.27.1881.1053" timestamp="1599936067756" />
+    <state width="1835" height="287" key="GridCell.Tab.0.right/39.27.1881.1053@39.27.1881.1053" timestamp="1599975272029" />
     <state width="1807" height="250" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
     <state width="1835" height="344" key="GridCell.Tab.1.bottom" timestamp="1599936039262">
       <screen x="39" y="27" width="1881" height="1053" />
@@ -541,10 +536,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="489" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1592051608241" />
-    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1599871438839">
+    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1599975242144">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/39.27.1881.1053@39.27.1881.1053" timestamp="1599871438839" />
+    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/39.27.1881.1053@39.27.1881.1053" timestamp="1599975242144" />
     <state x="593" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1595634931920" />
     <state x="215" y="225" width="1656" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1593754332989">
       <screen x="67" y="27" width="1853" height="1053" />
