@@ -34,6 +34,19 @@
     let storetext = 'store:'
     let store_rec = {}
 
+    async function read_label() {
+        const res = await fetch(`${source_server}/get_label_value_on_image/${seek_label}/${images[index]}`)
+        seekrec = await res.json()
+        seekvalue = seekrec.imlabel
+        console.log('seelvalue=', seekvalue)
+    }
+
+    function on_seek() {
+        console.log('seek')
+        read_label()
+    }
+
+
     function handleKeydown(event) {
         key = event.key;
         keyCode = event.keyCode;
@@ -63,6 +76,7 @@
         }
     }
 
+
     async function loadData() {
         console.log('in', filter_label, filter_value, seek_label)
         const res = await fetch(`${source_server}/set_filter/${filter_label}/${filter_value}/${seek_label}/${seek_only_clear}/${filter_size}`);
@@ -77,28 +91,17 @@
         filter_values.push('all')
         filter_values.push('to_check')
         filter_textes = ims.text
-        console.log('filtertextes=', filter_textes)
+        console.log('filtertextes =', filter_textes)
         seekvalues = ims.seekvalues
         counts_table = ims.counts
-        console.log("labelvalues", filter_values)
-
+        console.log("labelvalues =", filter_values)
+        console.log('set filter')
         read_label()
     }
 
     onMount(async () => {
         await loadData()
     });
-
-    async function read_label() {
-        const res = await fetch(`${source_server}/get_label_value_on_image/${seek_label}/${images[index]}`)
-        seekrec = await res.json()
-        seekvalue = seekrec.imlabel
-        console.log('seelvalue=', seekvalue)
-    }
-
-    function on_seek() {
-        read_label()
-    }
 
     async function set_new_label() {
         const res = await fetch(`${source_server}/set_value/${images[index]}/${seek_label}/${seekvalue}`)
@@ -212,7 +215,8 @@
     <table>
         <tr>
             <td>
-                <img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}"><br>
+                {#if images[index]=undefined}
+                <img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}">{/if}<br>
             </td>
             <td>
                 {#each seekvalues as sv, nn}

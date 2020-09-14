@@ -1,0 +1,25 @@
+[2020-09-14 22:20:51,091][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2020-09-14 22:20:56,321][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:20:56] "[37mGET /set_filter/none/all/person/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:20:56,325][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:20:56] "[37mGET /get_label_value_on_image/person/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:15,518][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:15] "[37mGET /set_filter/none/all/person/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:15,522][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:15] "[37mGET /get_label_value_on_image/person/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:17,805][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:17] "[37mGET /set_filter/none/all/l_carring/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:17,852][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:17] "[37mGET /get_label_value_on_image/l_carring/0104_09_28_28_i665149_id7699_cn1578130108206525000_thr541.Out%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:17,899][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:17] "[37mGET /marked_image/0104_09_28_28_i665149_id7699_cn1578130108206525000_thr541.Out%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:18,789][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:18] "[37mGET /set_filter/none/all/person/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:18,792][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:18] "[37mGET /get_label_value_on_image/person/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:18,793][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:18] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:19,815][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:19] "[37mGET /set_filter/none/all/person/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:19,855][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:19] "[37mGET /get_label_value_on_image/person/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:24,190][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:24] "[37mGET /set_filter/none/all/person/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:24,195][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:24] "[37mGET /get_label_value_on_image/person/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:21:24,195][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:21:24] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:23:54,683][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:23:54] "[37mGET /set_filter/none/all/none/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:23:54,683][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:23:54] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:23:54,717][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:23:54] "[37mGET /get_label_value_on_image/none/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 22:23:54,720][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:23:54] "[37mGET /marked_image/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 22:23:56,676][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:23:56] "[37mGET /set_filter/none/all/person/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:23:56,705][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:23:56] "[37mGET /get_label_value_on_image/person/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 22:24:01,912][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:24:01] "[37mGET /set_filter/none/all/person/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 22:24:01,915][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:24:01] "[37mGET /get_label_value_on_image/person/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 22:24:01,916][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 22:24:01] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -

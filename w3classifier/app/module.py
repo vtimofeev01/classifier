@@ -92,9 +92,6 @@ class Dbs:
         if loadsize:
             fl = [opj(p, f) for p, f in zip(self.main['path'], self.main.index)]
             fl_sz = np.array([Image.open(x).size for x in tqdm(fl)])
-            # im = Image.open("logo.jpg")
-            # (width, height) = im.size
-            # fl_sz = np.array([cv2.imread(x).shape[:2] for x in tqdm(fl)])
             self.main['x'] = fl_sz[:, 0]
             self.main['y'] = fl_sz[:, 1]
             self.l1 = np.percentile(fl_sz[:, 0], 40)
@@ -106,11 +103,12 @@ class Dbs:
             self.log(f'loaded: {pth} {nm}')
             self.main[lbl] = ''
             l_df = pd.read_csv(self.labels[lbl]['file'])
-            lbls = [x for x in list(l_df.label.unique()) if x not in (del_label)]
+            lbls = [x.strip() for x in list(l_df.label.unique()) if x not in (del_label)]
             lbls2 = []
             if 'wrong' in lbls:
                 lbls2.append('wrong')
-            lbls2 += sorted([x for x in lbls if x not in lbls2])
+            lbls2 += sorted([x for x in sorted(lbls) if x != 'wrong'])
+            print(f'lbl={lbl} lbls={lbls}  lbls2={lbls2}')
             self.labels[lbl]['values'] = lbls2.copy()
             l_df.set_index('image', inplace=True)
             l_df.rename(columns={'label': lbl}, inplace=True)
@@ -211,7 +209,10 @@ class Dbs:
                 'text': text}
 
     def get_label_value_on_image(self, label, im):
+        print(f'get_label_value_on_image(label={label}, im={im})')
         if label in ('undefined', '', None, 'none'):
+            return {'imlabel': ''}
+        if im in ('undefined', '', None, 'none'):
             return {'imlabel': ''}
         return {'imlabel': self.main.at[im, label]}
 

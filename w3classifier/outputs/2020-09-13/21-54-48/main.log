@@ -1,0 +1,26 @@
+[2020-09-13 21:54:51,543][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2020-09-14 19:44:43,058][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:44:43] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 19:44:43,075][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:44:43] "[37mGET /set_filter/none/all/none/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:44:43,103][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:44:43] "[37mGET /get_label_value_on_image/none/1434530__0718__11_15_16_P1____END.png HTTP/1.1[0m" 200 -
+[2020-09-14 19:44:43,109][w3classifier.app][ERROR] - Exception on /marked_image/1434530__0718__11_15_16_P1____END.png [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/views.py", line 35, in marked_image
+    jpeg = dbs.marked_image(nm)
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/module.py", line 241, in marked_image
+    h, w = frame.shape[:2]
+AttributeError: 'NoneType' object has no attribute 'shape'
+[2020-09-14 19:44:43,111][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:44:43] "[35m[1mGET /marked_image/1434530__0718__11_15_16_P1____END.png HTTP/1.1[0m" 500 -

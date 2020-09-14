@@ -1,0 +1,111 @@
+[2020-09-14 19:54:02,103][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2020-09-14 19:54:10,911][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:10] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:10,927][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:10] "[37mGET /set_filter/none/all/none/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:10,951][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:10] "[37mGET /get_label_value_on_image/none/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:10,957][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:10] "[37mGET /marked_image/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:15,287][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:15] "[37mGET /set_filter/none/all/identificable/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:15,312][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:15] "[37mGET /get_label_value_on_image/identificable/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:16,729][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:16] "[37mGET /set_filter/none/all/identificable/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:16,749][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:16] "[37mGET /get_label_value_on_image/identificable/0104_09_28_28_i665149_id7699_cn1578130108206525000_thr541.Out%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:16,834][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:16] "[37mGET /marked_image/0104_09_28_28_i665149_id7699_cn1578130108206525000_thr541.Out%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:20,412][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:20] "[37mGET /set_filter/identificable/all/identificable/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:20,415][w3classifier.app][ERROR] - Exception on /get_label_value_on_image/identificable/undefined [GET]
+Traceback (most recent call last):
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 2646, in get_loc
+    return self._engine.get_loc(key)
+  File "pandas/_libs/index.pyx", line 111, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1619, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1627, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'undefined'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/views.py", line 59, in get_label_value_on_image
+    return jsonify(dbs.get_label_value_on_image(label, im))
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/module.py", line 213, in get_label_value_on_image
+    return {'imlabel': self.main.at[im, label]}
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 2179, in __getitem__
+    return self.obj._get_value(*key, takeable=self._takeable)
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/frame.py", line 2919, in _get_value
+    index = self.index.get_loc(index)
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 2648, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 111, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1619, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1627, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'undefined'
+[2020-09-14 19:54:20,417][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:20] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:20,438][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:20] "[35m[1mGET /get_label_value_on_image/identificable/undefined HTTP/1.1[0m" 500 -
+[2020-09-14 19:54:38,485][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:38] "[37mGET /set_filter/identificable/all/identificable/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:38,489][w3classifier.app][ERROR] - Exception on /get_label_value_on_image/identificable/undefined [GET]
+Traceback (most recent call last):
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 2646, in get_loc
+    return self._engine.get_loc(key)
+  File "pandas/_libs/index.pyx", line 111, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1619, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1627, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'undefined'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/views.py", line 59, in get_label_value_on_image
+    return jsonify(dbs.get_label_value_on_image(label, im))
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/module.py", line 213, in get_label_value_on_image
+    return {'imlabel': self.main.at[im, label]}
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 2179, in __getitem__
+    return self.obj._get_value(*key, takeable=self._takeable)
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/frame.py", line 2919, in _get_value
+    index = self.index.get_loc(index)
+  File "/home/imt/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 2648, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 111, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1619, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1627, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'undefined'
+[2020-09-14 19:54:38,489][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:38] "[35m[1mGET /get_label_value_on_image/identificable/undefined HTTP/1.1[0m" 500 -
+[2020-09-14 19:54:39,595][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:39] "[37mGET /set_filter/identificable/all/identificable/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:39,599][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:39] "[37mGET /get_label_value_on_image/identificable/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:39,603][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:39] "[37mGET /marked_image/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:43,577][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:43] "[37mGET /set_filter/uniforme/all/identificable/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:43,579][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:43] "[37mGET /get_label_value_on_image/identificable/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:44,384][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:44] "[37mGET /set_filter/person/all/identificable/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:44,404][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:44] "[37mGET /get_label_value_on_image/identificable/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:48,637][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:48] "[37mGET /set_filter/person/clear/identificable/no/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:48,652][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:48] "[37mGET /get_label_value_on_image/identificable/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:55,638][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:55] "[37mGET /set_filter/person/clear/identificable/yes/none HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:55,649][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:55] "[37mGET /get_label_value_on_image/identificable/0104_10_29_45_i697483_id10352_cn1578133840571341000_thr839.Sg_bord%20looks_different.jpg HTTP/1.1[0m" 200 -
+[2020-09-14 19:54:55,655][werkzeug][INFO] - 127.0.0.1 - - [14/Sep/2020 19:54:55] "[37mGET /marked_image/0104_10_29_45_i697483_id10352_cn1578133840571341000_thr839.Sg_bord%20looks_different.jpg HTTP/1.1[0m" 200 -
