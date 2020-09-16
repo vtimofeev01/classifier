@@ -11,6 +11,7 @@
     let filter_values = []
     let filter_size = 'none'  // up low
     let filter_textes = []
+    let filter_text = 'none'
 
     let counts_table = ''
 
@@ -55,7 +56,7 @@
             index--;
             on_seek()
         }
-        if ((keyCode === 39) && (index < imslen)) {
+        if ((keyCode === 39) && (index < imslen - 1)) {
             index++;
             on_seek()
         }
@@ -79,7 +80,7 @@
 
     async function loadData() {
         console.log('in', filter_label, filter_value, seek_label)
-        const res = await fetch(`${source_server}/set_filter/${filter_label}/${filter_value}/${seek_label}/${seek_only_clear}/${filter_size}`);
+        const res = await fetch(`${source_server}/set_filter/${filter_label}/${filter_value}/${seek_label}/${seek_only_clear}/${filter_size}/${filter_text}`);
         ims = await res.json()
         console.log('ims', ims)
         images = ims.images
@@ -88,8 +89,8 @@
         all_labels = ims.labels
         label_data = ims.label
         filter_values = ims.values
-        filter_values.push('all')
         filter_values.push('to_check')
+        filter_values.push('all')
         filter_textes = ims.text
         console.log('filtertextes =', filter_textes)
         seekvalues = ims.seekvalues
@@ -123,7 +124,6 @@
             storetext = 'store';
             console.log('storetext finish')
         }, 3000)
-
     }
 
     console.log('started')
@@ -172,6 +172,10 @@
         color: #555;
     }
 
+    button {
+        margin: 0 0 0 0
+    }
+
     table, td, tr {
         border-width: 0;
     }
@@ -215,15 +219,19 @@
     <table>
         <tr>
             <td>
-                {#if images[index]=undefined}
-                <img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}">{/if}<br>
+
+                <img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}"><br>
             </td>
             <td>
                 {#each seekvalues as sv, nn}
                     <button class:active="{seekvalue === sv}" on:click="{() => {seekvalue = sv; set_new_label()}}">({nn}
-                        ) {sv}</button><br>
+                        ) {sv}</button>
+                    <br>
                 {/each}<br>
-                <button class:active="{seekvalue === 'DELETE'}" on:click="{() => {seekvalue = 'DELETE'; set_new_label()}}">Del</button><br>
+                <button class:active="{seekvalue === 'DELETE'}"
+                        on:click="{() => {seekvalue = 'DELETE'; set_new_label()}}">Del
+                </button>
+                <br>
                 {#if filter_value === 'to_check'}
                     <br>{filter_textes[index]}
                 {/if}
@@ -239,40 +247,64 @@
     {#if imslen > 1000}
         <button disabled='{index < 1000}' on:click="{() => {index -= 1000; on_seek()}}">-1000</button>
     {/if}
-    {index} / {imslen}
+    {index + 1} / {imslen}
     {#if imslen > 1000}
         <button disabled='{index > imslen - 1000}' on:click="{() => {index += 1000; on_seek()}}">+1000</button>
     {/if}
     {#if imslen > 100}
         <button disabled='{index > imslen - 100}' on:click="{() => {index += 100; on_seek()}}">+100</button>
     {/if}
-    <button disabled='{index === imslen}' on:click="{() => {index++; on_seek()}}">next</button>
+    <button disabled='{index === imslen - 1}' on:click="{() => {index++; on_seek()}}">next</button>
 </Box>
 
 <Box>
     <h3>select labels filter: total {images.length} imgs</h3>
-    {#each all_labels as ilabel}
-        <button class="label" class:selected="{filter_label === ilabel}"
-                on:click="{() => {filter_label = ilabel; loadData()}}">{ilabel}</button>
-    {/each}
-    <button class="label" class:selected="{filter_label === 'none'}"
-            on:click="{() => {filter_label = 'none'; loadData()}}">All
-    </button>
-    <br>
-    {#if filter_label !== 'none'}
-    {#each filter_values as lv}
-        <button class:selected="{filter_value === lv}" on:click="{() => {filter_value = lv; loadData()}}">{lv}</button>
-    {/each}
-    {/if}
-    {#each ['up', 'low', 'none'] as lv}
-        <button class:selected="{filter_size === lv}" on:click="{() => {filter_size = lv; loadData()}}">{lv}</button>
-    {/each}
+    <Box cls="thin_box">
 
+        {#each all_labels as ilabel}
+            {#if ilabel === filter_label || filter_label === 'none'}
+                <button class="label" class:selected="{filter_label === ilabel}"
+                        on:click="{() => {filter_label = ilabel; loadData()}}">{ilabel}</button>
+            {/if}
+        {/each}
+        <button class="label" class:selected="{filter_label === 'none'}"
+                on:click="{() => {filter_label = 'none'; loadData()}}">All
+        </button>
+    </Box>
+    <!--    <br>-->
+    {#if filter_label !== 'none'}
+
+        <Box cls="thin_box">
+
+            {#each filter_values as lv}
+                {#if filter_value === lv || filter_value === 'all' || lv === 'all'}
+                    <button class:selected="{filter_value === lv}"
+                            on:click="{() => {filter_value = lv; loadData()}}">{lv}</button>
+                {/if}
+            {/each}
+
+
+        </Box>
+    {/if}
+    {#if filter_value === 'to_check'}
+        <Box cls="thin_box">
+            {#each Array.from(new Set(filter_textes)).sort() as ft}
+                <button class:selected="{filter_text === ft}"
+                        on:click="{() => {filter_text = ft; loadData()}}">{ft}</button>
+            {/each}
+            <button class:selected="{filter_text === 'none'}"
+                    on:click="{() => {filter_text = 'none'; loadData()}}">{'All'}</button>
+        </Box>
+    {/if}
+
+    <Box cls="thin_box">
+        {#each ['up', 'low', 'none'] as lv}
+            <button class:selected="{filter_size === lv}"
+                    on:click="{() => {filter_size = lv; loadData()}}">{lv}</button>
+        {/each}
+    </Box>
 
 </Box>
-<!--<Box>-->
-<!--    {@html counts_table}-->
-<!--</Box>-->
-<!--<Box>-->
-<!--    { counts_table}-->
-<!--</Box>-->
+<Box>
+    {@html counts_table}
+</Box>

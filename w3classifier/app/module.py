@@ -158,7 +158,7 @@ class Dbs:
         except Exception as e:
             return {'res': f'fail: {e}'}
 
-    def set_filter(self, label, value, seek_label, seek_only_clear='no', size='none'):
+    def set_filter(self, label, value, seek_label, seek_only_clear='no', size='none', filter_text='none'):
         print(f'filter: label: "{label}" value: "{value}"  seek "{seek_label}"')
 
         is_label = label not in ('none', '', None, 'all')
@@ -166,7 +166,6 @@ class Dbs:
         if is_label:
             self.filter = self.main[label] != ''
         else:
-            # self.filter = pd.Series([True] * self.main.shape[0])
             self.filter = self.main.index != ''
         print(f'label {is_label} {label} {count_nonzero(self.filter)}')
 
@@ -178,15 +177,21 @@ class Dbs:
             self.filter = self.filter & fs
             print(f'filtered on size: {size} -> {count_nonzero(self.filter)}')
 
-        text = []
+        itchk_text = []
         if is_label and is_value:
             if value == 'to_check':
                 print(f'items to check={self.items_to_check.keys()}')
                 print(f'{label} items to check={label in self.items_to_check.keys()}')
-                print(f"cont of items={len(self.items_to_check.get(label, {}).get('file', []))}")
-                f2 = self.main.index.isin(self.items_to_check.get(label, {}).get('file', []))
-                text = self.items_to_check.get(label, {}).get('text', [])
-                print(text)
+                itchk_files = self.items_to_check.get(label, {}).get('file', [])
+                itchk_text = self.items_to_check.get(label, {}).get('text', [])
+                print(f"cont of items={len(itchk_files)}")
+                if filter_text == 'none':
+                    f2 = self.main.index.isin(itchk_files)
+                    # files_ = itchk_text
+                else:
+                    files_ = [fl for fl, txt in zip(itchk_files, itchk_text) if txt == filter_text]
+                    itchk_text = [txt for fl, txt in zip(itchk_files, itchk_text) if txt == filter_text]
+                    f2 = self.main.index.isin(files_)
             else:
                 f2 = self.main[label] == value
 
@@ -206,7 +211,7 @@ class Dbs:
                 'values': self.labels[label]['values'] if is_label else [],
                 'seekvalues': [] if seek_label == 'none' else self.labels[seek_label]['values'],
                 'counts': self.calc_counts(seeklabel=seek_label, filtervalue=value, filterlabel=label),
-                'text': text}
+                'text': itchk_text}
 
     def get_label_value_on_image(self, label, im):
         print(f'get_label_value_on_image(label={label}, im={im})')

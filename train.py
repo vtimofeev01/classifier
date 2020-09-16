@@ -204,7 +204,7 @@ if __name__ == '__main__':
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
-    netname = 'mobilenetv2.2'
+    netname = 'mnasnet'
     model = MultiOutputModel(trained_labels=train_dataset.attr_names,
                              attrbts=attributes, netname=netname).to(device)
     # normal = 1  # 1- usual 2 - experiment

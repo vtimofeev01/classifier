@@ -20,82 +20,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/build/bundle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/build/bundle.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/build/bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/build/bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public (1)/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend/public.tar.xz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/main.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/.hydra/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/.hydra/hydra.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/.hydra/overrides.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1600206094.imt-G7-7790.6777.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1600267141.imt-G7-7790.17511.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1600267211.imt-G7-7790.17671.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1600271654.imt-G7-7790.21803.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1600271905.imt-G7-7790.22035.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/14-37-03/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/14-37-03/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/14-37-03/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/14-37-03/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/21-17-30/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/21-17-30/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/21-17-30/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-15/21-17-30/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-48-26/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-48-26/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-48-26/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-48-26/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-49-08/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-49-08/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-49-08/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-49-08/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-58-12/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-58-12/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-58-12/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/15-58-12/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/18-40-34/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/18-40-34/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/18-40-34/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/2020-09-16/18-40-34/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/.hydra/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/.hydra/hydra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/.hydra/overrides.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599975301.imt-G7-7790.25110.0" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599975301.imt-G7-7790.25110.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599849438.imt-G7-7790.25136.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599868941.imt-G7-7790.3163.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/log/events.out.tfevents.1599975301.imt-G7-7790.25110.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/train.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/w3classifier/app/module.py" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/app/module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/w3classifier/frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/frontend/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend/src/Box.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/frontend/src/Box.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/main.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,8 +261,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (2)" />
         <item itemvalue="Shell Script.train.sh" />
+        <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.module" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main (1)" />
@@ -413,7 +385,8 @@
       <workItem from="1599795544168" duration="2563000" />
       <workItem from="1599841840555" duration="5788000" />
       <workItem from="1599868916313" duration="5097000" />
-      <workItem from="1599936021749" duration="12765000" />
+      <workItem from="1599936021749" duration="18208000" />
+      <workItem from="1600169300287" duration="16074000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -520,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599975690419</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update">
+      <created>1600111455672</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1600111455673</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,10 +534,10 @@
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
     <state x="741" y="336" width="467" height="432" key="#Web_Browsers/39.27.1881.1053@39.27.1881.1053" timestamp="1599306590217" />
-    <state x="174" y="142" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598911919513">
+    <state x="174" y="142" width="1301" height="872" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600169338240">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="174" y="142" key="#com.intellij.execution.impl.EditConfigurationsDialog/39.27.1881.1053@39.27.1881.1053" timestamp="1598911919513" />
+    <state x="174" y="142" key="#com.intellij.execution.impl.EditConfigurationsDialog/39.27.1881.1053@39.27.1881.1053" timestamp="1600169338240" />
     <state x="337" y="246" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595869958295" />
     <state x="698" y="354" width="891" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593866721014">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -571,30 +551,30 @@
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
     <state x="338" y="200" width="1482" height="731" key="DiffContextDialog/39.27.1881.1053@39.27.1881.1053" timestamp="1599071627222" />
-    <state x="762" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1599306589548">
+    <state x="762" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1600169353963">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="762" y="310" width="424" height="484" key="FileChooserDialogImpl/39.27.1881.1053@39.27.1881.1053" timestamp="1599306589548" />
+    <state x="762" y="310" width="424" height="484" key="FileChooserDialogImpl/39.27.1881.1053@39.27.1881.1053" timestamp="1600169353963" />
     <state x="779" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1595823785082" />
-    <state width="1835" height="287" key="GridCell.Tab.0.bottom" timestamp="1600111366924">
+    <state width="1835" height="287" key="GridCell.Tab.0.bottom" timestamp="1600169361176">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.bottom/39.27.1881.1053@39.27.1881.1053" timestamp="1600111366924" />
+    <state width="1835" height="287" key="GridCell.Tab.0.bottom/39.27.1881.1053@39.27.1881.1053" timestamp="1600169361176" />
     <state width="1807" height="250" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="287" key="GridCell.Tab.0.center" timestamp="1600111366923">
+    <state width="1835" height="287" key="GridCell.Tab.0.center" timestamp="1600169361176">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.center/39.27.1881.1053@39.27.1881.1053" timestamp="1600111366923" />
+    <state width="1835" height="287" key="GridCell.Tab.0.center/39.27.1881.1053@39.27.1881.1053" timestamp="1600169361176" />
     <state width="1807" height="250" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="287" key="GridCell.Tab.0.left" timestamp="1600111366922">
+    <state width="1835" height="287" key="GridCell.Tab.0.left" timestamp="1600169361175">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.left/39.27.1881.1053@39.27.1881.1053" timestamp="1600111366922" />
+    <state width="1835" height="287" key="GridCell.Tab.0.left/39.27.1881.1053@39.27.1881.1053" timestamp="1600169361175" />
     <state width="1807" height="250" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
-    <state width="1835" height="287" key="GridCell.Tab.0.right" timestamp="1600111366924">
+    <state width="1835" height="287" key="GridCell.Tab.0.right" timestamp="1600169361176">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state width="1835" height="287" key="GridCell.Tab.0.right/39.27.1881.1053@39.27.1881.1053" timestamp="1600111366924" />
+    <state width="1835" height="287" key="GridCell.Tab.0.right/39.27.1881.1053@39.27.1881.1053" timestamp="1600169361176" />
     <state width="1807" height="250" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1595872439018" />
     <state width="1835" height="344" key="GridCell.Tab.1.bottom" timestamp="1599936039262">
       <screen x="39" y="27" width="1881" height="1053" />
@@ -616,10 +596,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="489" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1592051608241" />
-    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1599975692318">
+    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1600111457279">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/39.27.1881.1053@39.27.1881.1053" timestamp="1599975692318" />
+    <state x="573" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/39.27.1881.1053@39.27.1881.1053" timestamp="1600111457279" />
     <state x="593" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1595634931920" />
     <state x="215" y="225" width="1656" height="855" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1593754332989">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -629,18 +609,19 @@
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
     <state x="589" y="166" width="770" height="773" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/39.27.1881.1053@39.27.1881.1053" timestamp="1599073004934" />
-    <state x="313" y="136" width="824" height="684" key="editAsTableFormatDialogDimension" timestamp="1593812134978">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="289" y="136" width="824" height="684" key="editAsTableFormatDialogDimension" timestamp="1600271753846">
+      <screen x="39" y="27" width="1881" height="1053" />
     </state>
+    <state x="289" y="136" width="824" height="684" key="editAsTableFormatDialogDimension/39.27.1881.1053@39.27.1881.1053" timestamp="1600271753846" />
     <state x="313" y="136" width="824" height="684" key="editAsTableFormatDialogDimension/67.27.1853.1053@67.27.1853.1053" timestamp="1593812134978" />
     <state x="684" y="291" width="696" height="522" key="find.popup" timestamp="1594963139647">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="684" y="291" width="696" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1594963139647" />
-    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup" timestamp="1599307987994">
+    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup" timestamp="1600265578701">
       <screen x="39" y="27" width="1881" height="1053" />
     </state>
-    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup/39.27.1881.1053@39.27.1881.1053" timestamp="1599307987994" />
+    <state x="641" y="257" width="683" height="678" key="search.everywhere.popup/39.27.1881.1053@39.27.1881.1053" timestamp="1600265578701" />
     <state x="660" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1593813769959" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
@@ -656,7 +637,7 @@
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$main.coverage" NAME="main Coverage Results" MODIFIED="1598911134095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/www-classifier/backend" />
     <SUITE FILE_PATH="coverage/pyqt5_binary_classifier$main.coverage" NAME="classifier Coverage Results" MODIFIED="1586606266288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$split_singl_label_data.coverage" NAME="split_singl_label_data Coverage Results" MODIFIED="1598166565200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1600111247329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/w3classifier" />
+    <SUITE FILE_PATH="coverage/pyqt5_images_classifier$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1600169334106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/w3classifier" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$test.coverage" NAME="test Coverage Results" MODIFIED="1594473297514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$export_dataset_to_flat_format.coverage" NAME="export_dataset_to_flat_format Coverage Results" MODIFIED="1593819077095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1598911846815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/www-classifier" />

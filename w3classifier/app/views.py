@@ -48,9 +48,9 @@ def set_value(im, label, code):
     return jsonify(v)
 
 
-@app.route('/set_filter/<label>/<value>/<seek_label>/<seek_only_clear>/<size>')
-def set_filter(label, value, seek_label, seek_only_clear, size):
-    resp = jsonify(dbs.set_filter(label, value, seek_label, seek_only_clear, size))
+@app.route('/set_filter/<label>/<value>/<seek_label>/<seek_only_clear>/<size>/<filter_text>')
+def set_filter(label, value, seek_label, seek_only_clear, size, filter_text):
+    resp = jsonify(dbs.set_filter(label, value, seek_label, seek_only_clear, size, filter_text))
     return resp  # ({'list': resp, 'len': len(resp)})
 
 

@@ -4,7 +4,7 @@ python3 /home/imt/work/pyqt5-images-classifier/prepare_train_label_files_from_da
 python3 train.py --images_dir /home/imt/dataset/dataset_for_multilabel_classification \
                  --train_file dataset/partial_big_train.csv \
                  --work_dir /home/imt/work/pyqt5-images-classifier/dataset \
-                 --n_epochs 100 \
+                 --n_epochs 250 \
                  --attributes_file /home/imt/work/pyqt5-images-classifier/dataset/data.csv \
                  --val_file /home/imt/work/pyqt5-images-classifier/dataset/partial_big_val.csv \
                  --batch_size 16 \

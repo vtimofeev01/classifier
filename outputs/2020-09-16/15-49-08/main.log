@@ -1,0 +1,25 @@
+[2020-09-16 15:49:11,056][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2020-09-16 15:49:14,998][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:14] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:15,019][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:15] "[37mGET /set_filter/none/all/none/no/none/none HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:15,045][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:15] "[37mGET /get_label_value_on_image/none/0914__08_46_22__i0403124__gcn0042630__0042630__person_____L2____.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:15,052][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:15] "[37mGET /marked_image/0914__08_46_22__i0403124__gcn0042630__0042630__person_____L2____.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:17,302][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:17] "[37mGET /set_filter/person/all/none/no/none/none HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:17,323][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:17] "[37mGET /get_label_value_on_image/none/0914__08_46_22__i0403124__gcn0042630__0042630__person_____L2____.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:18,445][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:18] "[37mGET /set_filter/person/to_check/none/no/none/none HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:18,457][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:18] "[37mGET /get_label_value_on_image/none/0114_14_09_01_i704333_id23288_tcn-23288_cn1579010944376610000_thr768.Sgl_.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:18,471][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:18] "[37mGET /marked_image/0114_14_09_01_i704333_id23288_tcn-23288_cn1579010944376610000_thr768.Sgl_.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:20,852][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:20] "[37mGET /set_filter/person/to_check/none/no/none/%3Cclear%3E%20or%20%3Cmulty%3E HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:20,855][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:20] "[37mGET /get_label_value_on_image/none/2019-08-31_11-08-15_id289_appears_way_area.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:20,859][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:20] "[37mGET /marked_image/2019-08-31_11-08-15_id289_appears_way_area.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:26,155][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:26] "[37mGET /set_filter/person/to_check/person/no/none/%3Cclear%3E%20or%20%3Cmulty%3E HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:26,158][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:26] "[37mGET /get_label_value_on_image/person/2019-08-31_11-08-15_id289_appears_way_area.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:29,104][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:29] "[37mGET /get_label_value_on_image/person/2019-09-16_14-19-22_id61433__appears_.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:29,109][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:29] "[37mGET /marked_image/2019-09-16_14-19-22_id61433__appears_.jpg HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:34,890][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:34] "[37mGET /get_label_value_on_image/person/0429_14_28_49___i3664638___________________CR_TP1_ID1179477_CAM0_TP1_THR674_CN-1179477_TCN-1179477___.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:34,892][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:34] "[37mGET /marked_image/0429_14_28_49___i3664638___________________CR_TP1_ID1179477_CAM0_TP1_THR674_CN-1179477_TCN-1179477___.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:35,916][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:35] "[37mGET /get_label_value_on_image/person/0506_07_21_10___i5___________________CR_TP1_ID1000000105_CAM0_TP1_THR650_CN-1000000105_TCN-1000000105_MN.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:35,924][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:35] "[37mGET /marked_image/0506_07_21_10___i5___________________CR_TP1_ID1000000105_CAM0_TP1_THR650_CN-1000000105_TCN-1000000105_MN.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:38,603][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:38] "[37mGET /get_label_value_on_image/person/0326_13_01_14___i82422_LOOK_CLR_TP1_ID26915_CAM0_TP1_THR847_CN1585227673441415000_TCN-26915.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:38,606][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:38] "[37mGET /marked_image/0326_13_01_14___i82422_LOOK_CLR_TP1_ID26915_CAM0_TP1_THR847_CN1585227673441415000_TCN-26915.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:50,528][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:50] "[37mGET /get_label_value_on_image/person/0429_17_09_06___i3674800__________SM_______CR_TP1_ID1196554_CAM0_TP1_THR717_CN1588180182164857000_TCN-1196554___.png HTTP/1.1[0m" 200 -
+[2020-09-16 15:49:50,531][werkzeug][INFO] - 127.0.0.1 - - [16/Sep/2020 15:49:50] "[37mGET /marked_image/0429_17_09_06___i3674800__________SM_______CR_TP1_ID1196554_CAM0_TP1_THR717_CN1588180182164857000_TCN-1196554___.png HTTP/1.1[0m" 200 -
