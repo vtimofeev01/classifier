@@ -1,0 +1,18 @@
+{
+    "labels_id_to_name": {
+        "label": {
+            "0": "00_unident",
+            "1": "01_lowident",
+            "2": "02_mediumident",
+            "3": "03_goodident"
+        }
+    },
+    "labels_name_to_id": {
+        "label": {
+            "00_unident": 0,
+            "01_lowident": 1,
+            "02_mediumident": 2,
+            "03_goodident": 3
+        }
+    }
+}

@@ -72,7 +72,7 @@ class Dbs:
         self._log = []
         self.main = pd.DataFrame()
         self.filter = None
-        self.l1, self.l2 = 0, 0
+        self.l1, self.l2, self.l2 = 0, 0, 0
         self.delete_path = ''
         self.items_to_check = {}
 
@@ -94,8 +94,9 @@ class Dbs:
             fl_sz = np.array([Image.open(x).size for x in tqdm(fl)])
             self.main['x'] = fl_sz[:, 0]
             self.main['y'] = fl_sz[:, 1]
-            self.l1 = np.percentile(fl_sz[:, 0], 40)
-            self.l2 = np.percentile(fl_sz[:, 0], 60)
+            self.l1 = np.percentile(fl_sz[:, 1], 40)
+            self.l2 = np.percentile(fl_sz[:, 1], 60)
+            self.l3 = np.percentile(fl_sz[:, 1], 80)
             print(f'percentiles {self.l1}, {self.l2}')
         for pth, nm in zip(*make_list_of_files_by_name(self.path, 'results.csv')):
             lbl = os.path.split(pth)[1]
@@ -171,9 +172,13 @@ class Dbs:
 
         if size != 'none':
             if size == 'up':
-                fs = self.main['y'] > self.l1
+                fs = (self.main['y'] >= self.l2) & (self.main['y'] <= self.l3)
+            elif size == 'height':
+                fs = self.main['y'] >= self.l3
+            elif size == 'small':
+                fs = (self.main['y'] >= self.l1) & (self.main['y'] <= self.l2)
             else:
-                fs = self.main['y'] < self.l2
+                fs = self.main['y'] <= self.l1
             self.filter = self.filter & fs
             print(f'filtered on size: {size} -> {count_nonzero(self.filter)}')
 

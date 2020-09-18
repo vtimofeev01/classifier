@@ -1,0 +1,22 @@
+{
+    "labels_id_to_name": {
+        "label": {
+            "0": "DELETE",
+            "1": "clear",
+            "2": "multy",
+            "3": "non_clear",
+            "4": "non_person",
+            "5": "wrong"
+        }
+    },
+    "labels_name_to_id": {
+        "label": {
+            "DELETE": 0,
+            "clear": 1,
+            "multy": 2,
+            "non_clear": 3,
+            "non_person": 4,
+            "wrong": 5
+        }
+    }
+}

@@ -1,4 +1,5 @@
 # read the annotations from the CSV file
+import argparse
 import csv
 import json
 import os
@@ -35,6 +36,15 @@ minw = 30 + 40
 minh = 60 + 40
 
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Inference pipeline')
+    parser.add_argument('--images_dir', type=str, help="Folder containing images described in CSV file")
+    parser.add_argument('--attributes_file', type=str, help="Path to the file with attributes")
+    args = parser.parse_args()
+
+    annotation_path = args.attributes_file
+    images_dir = args.images_dir
+
     if not os.path.exists(export_dir):
         os.mkdir(export_dir)
     data_dir = os.path.join(export_dir, 'data')

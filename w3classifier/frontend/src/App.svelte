@@ -90,7 +90,7 @@
         label_data = ims.label
         filter_values = ims.values
         filter_values.push('to_check')
-        filter_values.push('all')
+        // filter_values.push('all')
         filter_textes = ims.text
         console.log('filtertextes =', filter_textes)
         seekvalues = ims.seekvalues
@@ -201,20 +201,24 @@
 
 
 <Box>
-    <h3>select label to edit </h3>
+    {#if seek_label === 'none'}<h3>select label to edit</h3>{/if}
+    <!--{#if seek_label !== 'none'}<h3>XXXXX</h3>{/if}-->
     <button disabled='{seek_label === "none"}' on:click="{() => {seek_store()}}">{storetext}:{seek_label}</button>
     {#each all_labels as ilabel}
+        {#if ilabel === seek_label || seek_label === 'none'}
         <button class="label" class:selected="{seek_label === ilabel}"
-                on:click="{() => {seek_label = ilabel;loadData()}}">{ilabel}</button>
+                on:click="{() => {seek_label = (seek_label === 'none')? ilabel:'none';loadData()}}">{ilabel}</button>
+        {/if}
     {/each}
     <button class:selected="{seek_only_clear === 'yes'}" on:click="{() => {seek_only_clear = 'yes';loadData()}}">new
     </button>
     <button class:selected="{seek_only_clear === 'no'}" on:click="{() => {seek_only_clear = 'no';loadData()}}">all
     </button>
     <br>
-
 </Box>
-
+<!--PICTURE AREA -->
+<!--PICTURE AREA -->
+<!--PICTURE AREA -->
 <Box>
     <table>
         <tr>
@@ -257,6 +261,10 @@
     <button disabled='{index === imslen - 1}' on:click="{() => {index++; on_seek()}}">next</button>
 </Box>
 
+<!--Filter area -->
+<!--Filter area -->
+<!--Filter area -->
+
 <Box>
     <h3>select labels filter: total {images.length} imgs</h3>
     <Box cls="thin_box">
@@ -264,12 +272,12 @@
         {#each all_labels as ilabel}
             {#if ilabel === filter_label || filter_label === 'none'}
                 <button class="label" class:selected="{filter_label === ilabel}"
-                        on:click="{() => {filter_label = ilabel; loadData()}}">{ilabel}</button>
+                        on:click="{() => {filter_label = (filter_label === 'none')?ilabel:'none'; filter_value = 'all'; loadData()}}">{ilabel}</button>
             {/if}
         {/each}
-        <button class="label" class:selected="{filter_label === 'none'}"
-                on:click="{() => {filter_label = 'none'; loadData()}}">All
-        </button>
+<!--        <button class="label" class:selected="{filter_label === 'none'}"-->
+<!--                on:click="{() => {filter_label = 'none'; loadData()}}">All-->
+<!--        </button>-->
     </Box>
     <!--    <br>-->
     {#if filter_label !== 'none'}
@@ -279,7 +287,7 @@
             {#each filter_values as lv}
                 {#if filter_value === lv || filter_value === 'all' || lv === 'all'}
                     <button class:selected="{filter_value === lv}"
-                            on:click="{() => {filter_value = lv; loadData()}}">{lv}</button>
+                            on:click="{() => {filter_value = (filter_value === 'all')?lv:'all'; loadData()}}">{lv}</button>
                 {/if}
             {/each}
 
@@ -290,17 +298,19 @@
         <Box cls="thin_box">
             {#each Array.from(new Set(filter_textes)).sort() as ft}
                 <button class:selected="{filter_text === ft}"
-                        on:click="{() => {filter_text = ft; loadData()}}">{ft}</button>
+                        on:click="{() => {filter_text = (filter_text === 'none')?ft:'none'; loadData()}}">{ft}</button>
             {/each}
-            <button class:selected="{filter_text === 'none'}"
-                    on:click="{() => {filter_text = 'none'; loadData()}}">{'All'}</button>
+<!--            <button class:selected="{filter_text === 'none'}"-->
+<!--                    on:click="{() => {filter_text = 'none'; loadData()}}">{'All'}</button>-->
         </Box>
     {/if}
 
     <Box cls="thin_box">
-        {#each ['up', 'low', 'none'] as lv}
+        {#each ['height', 'up', 'low', 'small'] as lv}
+            {#if filter_size ==='none' || filter_size === lv || lv === 'none'}
             <button class:selected="{filter_size === lv}"
-                    on:click="{() => {filter_size = lv; loadData()}}">{lv}</button>
+                    on:click="{() => {filter_size = (filter_size==='none')?lv:'none'; loadData()}}">{lv}</button>
+            {/if}
         {/each}
     </Box>
 

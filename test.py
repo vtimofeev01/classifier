@@ -3,8 +3,6 @@ import csv
 import os
 import warnings
 from datetime import datetime
-from pprint import pprint
-
 from PIL import Image
 import torch
 import torchvision.transforms as transforms
@@ -17,9 +15,9 @@ import json
 from torch import onnx
 
 
-def checkpoint_load(model, name):
+def checkpoint_load(mmodel, name):
     print('Restoring checkpoint: {}'.format(name))
-    model.load_state_dict(torch.load(name, map_location='cpu'))
+    mmodel.load_state_dict(torch.load(name, map_location='cpu'))
     try:
         epoch = int(os.path.splitext(os.path.basename(name))[0].split('-')[1])
     except:
@@ -151,7 +149,7 @@ if __name__ == '__main__':
     parser.add_argument('--visgrid', type=str, help="show", default='false')
 
     args = parser.parse_args()
-    pprint(args.__dict__)
+    # pprint(args.__dict__)
 
     if args.attributes_file is None:
         args.attributes_file = args.test_file
@@ -173,14 +171,19 @@ if __name__ == '__main__':
                               attributes=attributes,
                               transform=val_transform)
     test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, num_workers=8)
-
+    netname = 'mnasnet'
     model = MultiOutputModel(trained_labels=test_dataset.attr_names,
-                             attrbts=attributes).to(device)
+                             attrbts=attributes, netname=netname).to(device)
 
     # Visualization of the trained model
+    # csv_filename = os.path.join(
+    #     os.path.split(args.test_file)[0], f'{core_name}_to_check.csv'
+    # )
+
     csv_filename = os.path.join(
-        os.path.split(args.test_file)[0], f'{core_name}_to_check.csv'
+        os.path.split(args.test_file)[0], f'files_to_check.csv'
     )
+
     if args.visgrid != 'false':
         visualize_grid(model=model,
                        dataloader=test_dataloader,
@@ -189,20 +192,21 @@ if __name__ == '__main__':
                        csv_filename=csv_filename)
 
     dummy_input = torch.randn(1, 3, 224, 224, device=device)
-    # core_name = os.path.split(args.checkpoint)
 
     input_names = ["input1"]  # + [ "learned_%d" % i for i in range(16) ]
     output_names = ["output1"]
     # for data_type in ['FP16', 'FP32']:
     for data_type in ['FP16']:
+        onnx_name = os.path.join(args.workdir, f"{args.modelname}.onnx")
+        print(f'[EXPORT] onnx: {onnx_name}')
         onnx.export(model=model, args=dummy_input,
-                    f=f"{args.modelname}.onnx",
-                    verbose=True,
+                    f=onnx_name,
+                    verbose=False,
                     input_names=input_names,
                     output_names=output_names)
-
+        print(f'[REXPORT] Model optimizer')
         mo_run = f'python3 /opt/intel/openvino/deployment_tools/model_optimizer/' \
-                 f'mo.py --input_model {args.modelname}.onnx  ' \
+                 f'mo.py --input_model {onnx_name}  ' \
                  f"--reverse_input_channels " \
                  f"--mean_values=[123.675,116.28,103.53] " \
                  f'--scale_values=[58.395,57.12,57.375]  ' \

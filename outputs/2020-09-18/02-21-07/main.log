@@ -1,0 +1,14 @@
+[2020-09-18 02:21:10,978][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2020-09-18 02:21:18,054][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:18] "[37mGET /set_filter/person/all/none/no/height/none HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:18,074][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:18] "[37mGET /get_label_value_on_image/none/0103_16_06_46_i40280_id1894_cn1578067608088507000_thr601.Out%20looks_different.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:18,084][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:18] "[37mGET /marked_image/0103_16_06_46_i40280_id1894_cn1578067608088507000_thr601.Out%20looks_different.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:20,194][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:20] "[37mGET /set_filter/person/all/none/no/up/none HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:20,211][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:20] "[37mGET /get_label_value_on_image/none/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:20,214][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:20] "[37mGET /marked_image/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:22,079][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:22] "[37mGET /set_filter/person/all/none/no/low/none HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:22,107][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:22] "[37mGET /get_label_value_on_image/none/0114_14_09_01_i704333_id23288_tcn-23288_cn1579010944376610000_thr768.Sgl_.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:21:22,111][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:21:22] "[37mGET /marked_image/0114_14_09_01_i704333_id23288_tcn-23288_cn1579010944376610000_thr768.Sgl_.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:23:37,829][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:23:37] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-18 02:23:37,849][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:23:37] "[37mGET /set_filter/none/all/none/no/none/none HTTP/1.1[0m" 200 -
+[2020-09-18 02:23:37,879][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:23:37] "[37mGET /get_label_value_on_image/none/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2020-09-18 02:23:37,883][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:23:37] "[37mGET /marked_image/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -

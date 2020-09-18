@@ -125,6 +125,16 @@ def cut_pil_image(image: Image, border=20, spread=.5):
     w, h = image.size
     dw, dh = int(border * spread), int(border * spread)
     return image.crop((
+        border,
+        randint(border - dw, border + dh),
+        w - border,
+        randint(h - border - dh, h - border + dw)))
+
+
+def cut_pil_image_v_old(image: Image, border=20, spread=.5):
+    w, h = image.size
+    dw, dh = int(border * spread), int(border * spread)
+    return image.crop((
         randint(border - dw, border + dw),
         randint(border - dw, border + dh),
         randint(w - border - dw, w - border + dw),
