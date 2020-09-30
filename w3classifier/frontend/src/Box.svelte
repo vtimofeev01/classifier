@@ -11,15 +11,12 @@
 		border-radius: 2px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 0.5em;
-		/*padding: 1em;*/
-		/*margin: 0 0 1em 0;*/
 		margin: 3px;
-		min-width: 550px;
+		width: 95%;
 	}
 
 	.box_instance {
 
-		/*width: 300px;*/
 		float: left;
 		display: block;
 		border: 1px solid #aaa;
@@ -28,51 +25,40 @@
 		padding: 1em;
 		/*margin: 0 0 1em 0;*/
 		margin: 3px;
-		min-width: 550px;
-		/*background-color: #cba39e;*/
+		width: 90%;
 	}
 	.box_yellow {
 
-		/*width: 300px;*/
 		float: left;
 		display: block;
 		border: 1px solid #aaa;
 		border-radius: 2px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
-		/*margin: 0 0 1em 0;*/
 		margin: 3px;
-		min-width: 550px;
+		width: 90%;
 		background-color: #e0d5d3;
 	}
 
 	.box_gray {
-
-		/*width: 300px;*/
 		float: left;
 		display: block;
 		border: 1px solid #aaa;
 		border-radius: 2px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
-		/*margin: 0 0 1em 0;*/
 		margin: 3px;
-		/*min-width: 550px;*/
 		background-color: #acacac;
 	}
 
 	.thin_box {
-
-		/*width: 300px;*/
 		float: left;
 		display: block;
 		border: 1px solid #aaa;
 		border-radius: 2px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 4px;
-		/*margin: 0 0 1em 0;*/
 		margin: 1px;
-		/*min-width: 550px;*/
 		background-color: #f1f1f1;
 	}
 

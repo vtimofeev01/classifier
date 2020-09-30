@@ -1,0 +1,28 @@
+[2020-09-30 21:07:28,749][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2020-09-30 21:08:19,925][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:08:19] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2020-09-30 21:08:19,950][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:08:19] "[37mGET /set_filter/none/all/none/no/none/none/all HTTP/1.1[0m" 200 -
+[2020-09-30 21:08:19,998][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:08:19] "[37mGET /get_label_value_on_image/none/0408_17_04_07___i1206_IN_______SM_______CR_TP1_ID29_CAM0_TP1_THR750_CN1586365449615953000_TCN-29_MN.png HTTP/1.1[0m" 200 -
+[2020-09-30 21:08:20,015][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:08:20] "[37mGET /marked_image/0408_17_04_07___i1206_IN_______SM_______CR_TP1_ID29_CAM0_TP1_THR750_CN1586365449615953000_TCN-29_MN.png HTTP/1.1[0m" 200 -
+[2020-09-30 21:08:40,341][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:08:40] "[37mGET /set_filter/none/all/l_carring/no/none/none/all HTTP/1.1[0m" 200 -
+[2020-09-30 21:08:40,417][w3classifier.app][ERROR] - Exception on /get_label_value_on_image/l_carring/0408_17_04_07___i1206_IN_______SM_______CR_TP1_ID29_CAM0_TP1_THR750_CN1586365449615953000_TCN-29_MN.png [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.6/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/views.py", line 59, in get_label_value_on_image
+    return jsonify(dbs.get_label_value_on_image(label, im))
+  File "/home/imt/work/pyqt5-images-classifier/w3classifier/app/module.py", line 268, in get_label_value_on_image
+    cs_v = where(f)[0][argmax(cs[f])]
+IndexError: boolean index did not match indexed array along dimension 0; dimension is 1 but corresponding boolean dimension is 48438
+[2020-09-30 21:08:40,419][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:08:40] "[35m[1mGET /get_label_value_on_image/l_carring/0408_17_04_07___i1206_IN_______SM_______CR_TP1_ID29_CAM0_TP1_THR750_CN1586365449615953000_TCN-29_MN.png HTTP/1.1[0m" 500 -

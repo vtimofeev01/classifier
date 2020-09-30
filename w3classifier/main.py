@@ -7,7 +7,7 @@ from w3classifier.app import app, dbs
 def app_run(cfg):
     print('settings:')
     print(cfg.pretty())
-    dbs.load(path=cfg.data.dataset)
+    dbs.load(path=cfg.data.dataset, persons_reidentificator=cfg.dnn.reidentificator)
     CORS(app)
     app.run(host=cfg.addr.host, port=cfg.addr.port, debug=cfg.debug)
 

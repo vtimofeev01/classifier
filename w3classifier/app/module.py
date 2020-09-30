@@ -6,14 +6,19 @@ from random import randint
 
 import cv2
 import pandas as pd
-from flask import Response
-from numpy import count_nonzero
+from numpy import count_nonzero, vstack, newaxis, argmax, where, zeros
 import numpy as np
+from openvino.inference_engine.ie_api import IECore
+from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
 from PIL import Image
+
+from dl_src.dnn import get_data_frame_from_folder, DNN
+
 opj = os.path.join
 image_extensions = ['.png', '.jpg']
 del_label = 'DELETE'
+ie = IECore()
 
 
 # TODO Make size output
@@ -67,6 +72,7 @@ def make_list_of_files_by_name(source, name):
 class Dbs:
 
     def __init__(self):
+        self.identifications = pd.DataFrame()
         self.path = ''
         self.labels = {}
         self._log = []
@@ -75,12 +81,14 @@ class Dbs:
         self.l1, self.l2, self.l2 = 0, 0, 0
         self.delete_path = ''
         self.items_to_check = {}
+        self.images_folders = []
+        self.dnn: DNN = None
 
     def log(self, s):
         self._log.append(s)
         print(s)
 
-    def load(self, path, loadsize=True):
+    def load(self, path, loadsize=True, persons_reidentificator=None):
         self.path = path
         self.delete_path = opj(self.path, del_label)
         if not os.path.exists(self.delete_path):
@@ -89,6 +97,13 @@ class Dbs:
         self.main = self.main.set_index('name')
         self.main['x'] = 0
         self.main['y'] = 0
+        self.main['folder'] = [os.path.split(x)[1] for x in self.main['path']]
+        self.images_folders = self.main['folder'].unique().tolist()
+        self.dnn = DNN(ie_core=ie, xml=persons_reidentificator, device='CPU', num_requests=10, get_full=True)
+        self.identifications = get_data_frame_from_folder(destination=path, dnn=self.dnn)
+        print(self.identifications[self.dnn.xml_name])
+        print(self.identifications.columns)
+
         if loadsize:
             fl = [opj(p, f) for p, f in zip(self.main['path'], self.main.index)]
             fl_sz = np.array([Image.open(x).size for x in tqdm(fl)])
@@ -104,7 +119,9 @@ class Dbs:
             self.log(f'loaded: {pth} {nm}')
             self.main[lbl] = ''
             l_df = pd.read_csv(self.labels[lbl]['file'])
-            lbls = [x.strip() for x in list(l_df.label.unique()) if x not in (del_label)]
+            self.log(f'loaded labels: {l_df.label.unique()}')
+            # self.log(f'zzz={l_df.index[l_df.label == list(l_df.label.unique())[-1]]}')
+            lbls = [x.strip() for x in list(l_df.label.unique()) if str(x) not in (del_label)]
             lbls2 = []
             if 'wrong' in lbls:
                 lbls2.append('wrong')
@@ -113,6 +130,8 @@ class Dbs:
             self.labels[lbl]['values'] = lbls2.copy()
             l_df.set_index('image', inplace=True)
             l_df.rename(columns={'label': lbl}, inplace=True)
+            f_delete = l_df[lbl] == 'DELETE'
+            l_df.loc[f_delete, lbl] = ''
             self.main.update(l_df)
             print(self.main[lbl].unique())
             items_to_check = opj(pth, 'files_to_check.csv')
@@ -120,6 +139,14 @@ class Dbs:
                 itc = pd.read_csv(items_to_check)
                 self.items_to_check[lbl] = {'file': itc['filename'].tolist(), 'text': itc['choice'].tolist()}
         self.filter = self.main.index
+        print(self.identifications.set_index('name'))
+        self.main[self.dnn.xml_name] = None
+        self.main.update(self.identifications.set_index('name'))
+        self.main_reid = vstack(self.main[self.dnn.xml_name].tolist())
+
+        print(self.main.columns)
+        print(self.main)
+        print(self.main.index[0])
 
     def store_label(self, label):
         if label not in self.labels:
@@ -159,8 +186,9 @@ class Dbs:
         except Exception as e:
             return {'res': f'fail: {e}'}
 
-    def set_filter(self, label, value, seek_label, seek_only_clear='no', size='none', filter_text='none'):
-        print(f'filter: label: "{label}" value: "{value}"  seek "{seek_label}"')
+    def set_filter(self, label, value, seek_label, seek_only_clear='no', size='none', filter_text='none', fldr='all', extraorder='True'):
+        print(f'[FILTER] label="{label}" value:="{value}"  seek="{seek_label}" seek_only_clear"{seek_only_clear}" '
+              f'size={size} filter_text={filter_text}')
 
         is_label = label not in ('none', '', None, 'all')
         is_value = value not in ('none', '', None, 'all')
@@ -204,6 +232,12 @@ class Dbs:
             self.filter = self.filter & f2
             print(f'label {is_label} {label}={value} {count_nonzero(self.filter)}')
 
+        if fldr != 'all':
+            f2 = self.main['folder'] == fldr
+            self.filter = self.filter & f2
+            print(f'[FILTER] selected folder="{fldr}" total folders = {len(self.images_folders)} '
+                  f'files in folder = {count_nonzero(f2)}')
+
         if (seek_label not in ('none', '', None)) and (seek_only_clear != 'no'):
             f3 = self.main[seek_label] == ''
             print(f'seek_label={seek_label} seek_only_clear={seek_only_clear} {count_nonzero(f3)}')
@@ -216,15 +250,28 @@ class Dbs:
                 'values': self.labels[label]['values'] if is_label else [],
                 'seekvalues': [] if seek_label == 'none' else self.labels[seek_label]['values'],
                 'counts': self.calc_counts(seeklabel=seek_label, filtervalue=value, filterlabel=label),
-                'text': itchk_text}
+                'text': itchk_text,
+                'folders': self.images_folders}
 
     def get_label_value_on_image(self, label, im):
         print(f'get_label_value_on_image(label={label}, im={im})')
-        if label in ('undefined', '', None, 'none'):
-            return {'imlabel': ''}
-        if im in ('undefined', '', None, 'none'):
-            return {'imlabel': ''}
-        return {'imlabel': self.main.at[im, label]}
+        if (label in ('undefined', '', None, 'none')) or ( im in ('undefined', '', None, 'none')):
+            return {'imlabel': '', 'icons': {'none': {'image': 'z', 'thr': -2}}}
+
+        imlabel = self.main.at[im, label]
+        out = {'imlabel': imlabel, 'icons': {}}
+
+        im_reis = self.main.at[im, self.dnn.xml_name]
+        cs = cosine_similarity(im_reis[newaxis, :], self.main_reid).flatten()
+        out['icons'] = {}
+        for iml in self.labels[label]['values']:
+            f = self.main[label] == iml
+            if np.any(f):
+                cs_v = where(f)[0][argmax(cs[f])]
+                out['icons'][iml] = {'image': self.main.index[cs_v], 'thr': float(cs[cs_v])}
+            else:
+                out['icons'][iml] = {'image': 'none', 'thr': -1}
+        return out
 
     def calc_counts(self, seeklabel, filterlabel, filtervalue):
         filter_set = (filterlabel not in ('undefined', 'none', '', None, 'all')) and \

@@ -219,7 +219,9 @@ if __name__ == '__main__':
 
         json_object = json.dumps({'labels_id_to_name': attributes.labels_id_to_name,
                                   'labels_name_to_id': attributes.labels_name_to_id}, indent=4)
-        with open(f'{args.workdir}/{data_type}/{core_name}.json', "w") as outfile:
+        file_name = f'{args.workdir}/{data_type}/{core_name}.json'
+        print(f'[JSON] stored to {file_name}')
+        with open(file_name, "w") as outfile:
             outfile.write(json_object)
 
     mean = [0.485, 0.456, 0.406]

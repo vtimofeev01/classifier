@@ -123,6 +123,7 @@ class CSVDataset(Dataset):
         }
         return dict_data
 
+
 class CSVDataset2(Dataset):
     def __init__(self, annotation_path, images_dir, attributes, transform=None):
         super().__init__()

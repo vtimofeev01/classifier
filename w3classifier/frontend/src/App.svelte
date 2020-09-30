@@ -1,6 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import Box from "./Box.svelte"
+    import CBtn from "./CBtn.svelte"
 
     let source_server = 'http://0.0.0.0:8081'
     let ims = {}            // ret dict
@@ -20,7 +21,13 @@
     let seekvalues = []
     let seekvalue = ''
     let seekrec = {}
+    let seek_icons = {}
     let seek_resp = {}
+
+    let c_folder = 'all'
+    let c_folders_show = true
+    let c_folders = []
+
 
     let index = 0
     let images = []
@@ -39,7 +46,10 @@
         const res = await fetch(`${source_server}/get_label_value_on_image/${seek_label}/${images[index]}`)
         seekrec = await res.json()
         seekvalue = seekrec.imlabel
-        console.log('seelvalue=', seekvalue)
+        seek_icons = seekrec.icons
+        console.log('seekrec=', seekrec)
+        console.log('seekrec icons=', seekrec.icons)
+        console.log('seekrec icons2=', seek_icons)
     }
 
     function on_seek() {
@@ -80,7 +90,7 @@
 
     async function loadData() {
         console.log('in', filter_label, filter_value, seek_label)
-        const res = await fetch(`${source_server}/set_filter/${filter_label}/${filter_value}/${seek_label}/${seek_only_clear}/${filter_size}/${filter_text}`);
+        const res = await fetch(`${source_server}/set_filter/${filter_label}/${filter_value}/${seek_label}/${seek_only_clear}/${filter_size}/${filter_text}/${c_folder}`);
         ims = await res.json()
         console.log('ims', ims)
         images = ims.images
@@ -92,6 +102,9 @@
         filter_values.push('to_check')
         // filter_values.push('all')
         filter_textes = ims.text
+        c_folders = ['all']
+        c_folders = c_folders.concat(ims.folders)
+        // c_folders = [..., ...[ims.folders]]
         console.log('filtertextes =', filter_textes)
         seekvalues = ims.seekvalues
         counts_table = ims.counts
@@ -180,20 +193,34 @@
         border-width: 0;
     }
 
-    /*.dataframe th {*/
-    /*	border-width: 1px;*/
-    /*	padding: 8px;*/
-    /*	border-style: solid;*/
-    /*	border-color: #3A3A3A;*/
-    /*	background-color: #B3B3B3;*/
-    /*}*/
-    /*td {*/
-    /*    border-width: 1px;*/
-    /*    padding: 8px;*/
-    /*    border-style: solid;*/
-    /*    border-color: #3A3A3A;*/
-    /*    background-color: #ffffff;*/
-    /*}*/
+    .but_sel {
+         position: relative;
+        display: inline-block;
+    }
+
+    .but_sel span {
+    background: rgba(0,0,0,0.7);
+    /*background: #222222;*/
+    color: #ffffff;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-size: 18px;
+    padding: 3px 5px;
+}
+
+
+    .button_im {
+        max-width: 90%;
+        height: 90%;
+        margin: 5px;
+    }
+
+    .button_icon {
+        max-width: 250px;
+        height: 250px;
+    }
 
 </style>
 
@@ -202,12 +229,11 @@
 
 <Box>
     {#if seek_label === 'none'}<h3>select label to edit</h3>{/if}
-    <!--{#if seek_label !== 'none'}<h3>XXXXX</h3>{/if}-->
     <button disabled='{seek_label === "none"}' on:click="{() => {seek_store()}}">{storetext}:{seek_label}</button>
     {#each all_labels as ilabel}
         {#if ilabel === seek_label || seek_label === 'none'}
-        <button class="label" class:selected="{seek_label === ilabel}"
-                on:click="{() => {seek_label = (seek_label === 'none')? ilabel:'none';loadData()}}">{ilabel}</button>
+            <button class="label" class:selected="{seek_label === ilabel}"
+                    on:click="{() => {seek_label = (seek_label === 'none')? ilabel:'none';loadData()}}">{ilabel}</button>
         {/if}
     {/each}
     <button class:selected="{seek_only_clear === 'yes'}" on:click="{() => {seek_only_clear = 'yes';loadData()}}">new
@@ -222,15 +248,20 @@
 <Box>
     <table>
         <tr>
+            <td><img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}"><br></td>
             <td>
 
-                <img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}"><br>
-            </td>
-            <td>
                 {#each seekvalues as sv, nn}
-                    <button class:active="{seekvalue === sv}" on:click="{() => {seekvalue = sv; set_new_label()}}">({nn}
-                        ) {sv}</button>
-                    <br>
+                    <button class:active="{seekvalue === sv}" on:click="{() => {seekvalue = sv; set_new_label()}}"
+                            class="button_icon">
+                        <div class="but_sel">
+                            {#if typeof seek_icons[sv] !== 'undefined'}
+                                <span>{(100 * seekrec['icons'][sv]['thr']).toFixed(1)}%</span>
+                                <img class='button_im' src="{source_server}/marked_image/{seek_icons[sv]['image']}"
+                                     alt="{seekrec['icons'][sv]['image']}"><br>
+                            {/if}
+                            ({nn}) {sv}</div>
+                    </button>
                 {/each}<br>
                 <button class:active="{seekvalue === 'DELETE'}"
                         on:click="{() => {seekvalue = 'DELETE'; set_new_label()}}">Del
@@ -275,9 +306,8 @@
                         on:click="{() => {filter_label = (filter_label === 'none')?ilabel:'none'; filter_value = 'all'; loadData()}}">{ilabel}</button>
             {/if}
         {/each}
-<!--        <button class="label" class:selected="{filter_label === 'none'}"-->
-<!--                on:click="{() => {filter_label = 'none'; loadData()}}">All-->
-<!--        </button>-->
+
+
     </Box>
     <!--    <br>-->
     {#if filter_label !== 'none'}
@@ -300,16 +330,23 @@
                 <button class:selected="{filter_text === ft}"
                         on:click="{() => {filter_text = (filter_text === 'none')?ft:'none'; loadData()}}">{ft}</button>
             {/each}
-<!--            <button class:selected="{filter_text === 'none'}"-->
-<!--                    on:click="{() => {filter_text = 'none'; loadData()}}">{'All'}</button>-->
+
         </Box>
     {/if}
 
     <Box cls="thin_box">
         {#each ['height', 'up', 'low', 'small'] as lv}
-            {#if filter_size ==='none' || filter_size === lv || lv === 'none'}
-            <button class:selected="{filter_size === lv}"
-                    on:click="{() => {filter_size = (filter_size==='none')?lv:'none'; loadData()}}">{lv}</button>
+            {#if filter_size === 'none' || filter_size === lv || lv === 'none'}
+                <button class:selected="{filter_size === lv}"
+                        on:click="{() => {filter_size = (filter_size==='none')?lv:'none'; loadData()}}">{lv}</button>
+            {/if}
+        {/each}
+    </Box>
+    <Box cls="thin_box">
+        {#each c_folders as folder}
+            {#if c_folders_show || c_folder === folder}
+                <button class:selected="{c_folder === folder}"
+                        on:click="{() => {c_folder = folder; c_folders_show = !c_folders_show ;  loadData()}}">{folder}</button>
             {/if}
         {/each}
     </Box>
