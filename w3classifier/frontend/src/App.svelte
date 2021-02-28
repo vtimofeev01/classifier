@@ -1,7 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import Box from "./Box.svelte"
-    import CBtn from "./CBtn.svelte"
+    // import CBtn from "./CBtn.svelte"
 
     let source_server = 'http://0.0.0.0:8081'
     let ims = {}            // ret dict
@@ -194,21 +194,34 @@
     }
 
     .but_sel {
-         position: relative;
+        position: relative;
         display: inline-block;
     }
 
-    .but_sel span {
-    background: rgba(0,0,0,0.7);
-    /*background: #222222;*/
-    color: #ffffff;
-    border-radius: 2px;
-    position: absolute;
-    left: 0;
-    top: 10px;
-    font-size: 18px;
-    padding: 3px 5px;
-}
+    .upleftgtay {
+        background: rgba(0, 0, 0, 0.7);
+        /*background: #222222;*/
+        color: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 10px;
+        font-size: 18px;
+        padding: 3px 5px;
+    }
+
+        .downleftgtay {
+        background: rgba(0, 0, 0, 0.7);
+        /*background: #222222;*/
+        color: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        /*top: 10px;*/
+        font-size: 18px;
+        padding: 3px 5px;
+    }
 
 
     .button_im {
@@ -226,6 +239,7 @@
 
 <svelte:window on:keydown={handleKeydown}/>
 
+<!--<img src="http://0.0.0.0:8081/marked_image/0125__11_14_00__i0643800__gcn0028419__0028419__person_32206048888487.png" alt="0">-->
 
 <Box>
     {#if seek_label === 'none'}<h3>select label to edit</h3>{/if}
@@ -248,20 +262,23 @@
 <Box>
     <table>
         <tr>
-            <td><img src="{source_server}/marked_image/{images[index]}" alt="{images[index]}"><br></td>
+            <td><img src="{source_server}/marked_image/{images[index]}" alt="{index}"/><br></td>
             <td>
 
                 {#each seekvalues as sv, nn}
-                    <button class:active="{seekvalue === sv}" on:click="{() => {seekvalue = sv; set_new_label()}}"
-                            class="button_icon">
-                        <div class="but_sel">
+                    <div class="but_sel">
+                        <button class:active="{seekvalue === sv}" on:click="{() => {seekvalue = sv; set_new_label()}}"
+                                class="button_icon">
+                            <!--                        <div class="but_sel">-->
                             {#if typeof seek_icons[sv] !== 'undefined'}
-                                <span>{(100 * seekrec['icons'][sv]['thr']).toFixed(1)}%</span>
+                                <span class="upleftgtay">{(100 * seekrec['icons'][sv]['thr']).toFixed(1)}%</span>
                                 <img class='button_im' src="{source_server}/marked_image/{seek_icons[sv]['image']}"
                                      alt="{seekrec['icons'][sv]['image']}"><br>
                             {/if}
-                            ({nn}) {sv}</div>
-                    </button>
+                            <span class="downleftgtay"> ({nn}) {sv}</span>
+                            <!--                        </div>-->
+                        </button>
+                    </div>
                 {/each}<br>
                 <button class:active="{seekvalue === 'DELETE'}"
                         on:click="{() => {seekvalue = 'DELETE'; set_new_label()}}">Del

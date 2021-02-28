@@ -85,7 +85,8 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
                 include_values=True, xticks_rotation='vertical')
             plt.title(f"{x}:{caption}")
             plt.tight_layout()
-            plt.show()
+            plt.show(block=False)
+
 
     model.train()
 
@@ -165,7 +166,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_file', type=str, required=True,
                         help="Part of the dataset that will be used for training. Rest - for validation")
     parser.add_argument('--n_epochs', type=int, default=50, help="number of training epoch's")
-    parser.add_argument('--batch_size', type=int, default=32, help="number of training epoch's")
+    parser.add_argument('--batch_size', type=int, default=16, help="number of training epoch's")
     parser.add_argument('--num_workers', type=int, default=10, help="number of workers")
     parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
     parser.add_argument('--graph_out', type=str, default='true', help="true* / false")
@@ -180,6 +181,7 @@ if __name__ == '__main__':
     batch_size = args.batch_size
     num_workers = args.num_workers  # number of processes to handle dataset loading
     device = torch.device("cuda" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
+    print(f'[DEVICE] {device}')
     if args.attributes_file is None:
         args.attributes_file = args.train_file
 

@@ -35,10 +35,9 @@ def marked_image(nm):
     jpeg = dbs.marked_image(nm)
 
     resp = (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
 
     return Response(resp, mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 
 @app.route('/set_value/<im>/<label>/<code>')

@@ -3,15 +3,15 @@ import os
 import shutil
 from queue import Queue
 from random import randint
-
+import yaml
 import cv2
-import pandas as pd
-from numpy import count_nonzero, vstack, newaxis, argmax, where, zeros
 import numpy as np
+import pandas as pd
+from PIL import Image
+from numpy import count_nonzero, vstack, newaxis, argmax, where
 from openvino.inference_engine.ie_api import IECore
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
-from PIL import Image
 
 from dl_src.dnn import get_data_frame_from_folder, DNN
 
@@ -120,7 +120,6 @@ class Dbs:
             self.main[lbl] = ''
             l_df = pd.read_csv(self.labels[lbl]['file'])
             self.log(f'loaded labels: {l_df.label.unique()}')
-            # self.log(f'zzz={l_df.index[l_df.label == list(l_df.label.unique())[-1]]}')
             lbls = [x.strip() for x in list(l_df.label.unique()) if str(x) not in (del_label)]
             lbls2 = []
             if 'wrong' in lbls:
@@ -138,15 +137,20 @@ class Dbs:
             if os.path.exists(items_to_check):
                 itc = pd.read_csv(items_to_check)
                 self.items_to_check[lbl] = {'file': itc['filename'].tolist(), 'text': itc['choice'].tolist()}
+            # store yaml (later read)
+            settings_file = opj(pth, 'settings.yaml')
+            if os.path.exists(settings_file):
+                loaded_values = yaml.load(open(settings_file, 'r'))['values']
+                # self.labels[lbl]['values'] += [x for x in loaded_values if x not in self.labels[lbl]['values']]
+                self.labels[lbl]['values'] = loaded_values + [x for x in self.labels[lbl]['values'] if x not in loaded_values]
+            yaml.dump(self.labels[lbl], open(settings_file, 'w'))
         self.filter = self.main.index
         print(self.identifications.set_index('name'))
         self.main[self.dnn.xml_name] = None
         self.main.update(self.identifications.set_index('name'))
+        self.main = self.main.sort_index()
         self.main_reid = vstack(self.main[self.dnn.xml_name].tolist())
 
-        print(self.main.columns)
-        print(self.main)
-        print(self.main.index[0])
 
     def store_label(self, label):
         if label not in self.labels:
@@ -186,7 +190,8 @@ class Dbs:
         except Exception as e:
             return {'res': f'fail: {e}'}
 
-    def set_filter(self, label, value, seek_label, seek_only_clear='no', size='none', filter_text='none', fldr='all', extraorder='True'):
+    def set_filter(self, label, value, seek_label, seek_only_clear='no', size='none', filter_text='none', fldr='all',
+                   extraorder='True'):
         print(f'[FILTER] label="{label}" value:="{value}"  seek="{seek_label}" seek_only_clear"{seek_only_clear}" '
               f'size={size} filter_text={filter_text}')
 
@@ -255,7 +260,7 @@ class Dbs:
 
     def get_label_value_on_image(self, label, im):
         print(f'get_label_value_on_image(label={label}, im={im})')
-        if (label in ('undefined', '', None, 'none')) or ( im in ('undefined', '', None, 'none')):
+        if (label in ('undefined', '', None, 'none')) or (im in ('undefined', '', None, 'none')):
             return {'imlabel': '', 'icons': {'none': {'image': 'z', 'thr': -2}}}
 
         imlabel = self.main.at[im, label]
@@ -295,9 +300,23 @@ class Dbs:
 
         # extracting frames
         im_name = opj(self.main.path[im], im)
-        frame = cv2.imread(im_name)
-        h, w = frame.shape[:2]
+        print(f'im_name:{im_name} exists:{os.path.exists(im_name)}')
+        frame_row = cv2.imread(im_name)
+        h, w = frame_row.shape[:2]
         lw = max(h // 150, 1)
+        # frame[:, 0:20] += 25
+        # frame[:, w - 20:w] += 25
+        # frame[0:20, :] += 25
+        # frame[h - 20:h, :] += 25
+        # frame_blanc = frame.copy()
+        # frame = np.clip(frame_row[:, :] + 40, 0, 250)
+        hsv = cv2.cvtColor(frame_row, cv2.COLOR_BGR2HSV)
+        value = 100
+        hsv[:, :, 2] = np.clip(hsv[:, :, 2], 0, 255 - value - 10) + value
+        # hsv[:, :, 1] = np.clip(hsv[:, :, 1], 15, 255) - 10
+        frame = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
+        frame[20: h-20, 20:w-20] = frame_row[20: h-20, 20:w-20]
+
         cv2.rectangle(frame, (+20, +20), (w - 20, h - 20), color=(0, 0, 255), thickness=lw)
         for hi in range(20, h - 20, 50):
             cv2.line(frame, (20, hi), (10, hi), color=(0, 0, 255), thickness=lw)

@@ -1,0 +1,25 @@
+[2021-02-09 01:45:43,312][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2021-02-09 01:45:58,382][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:45:58] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
+[2021-02-09 01:45:58,402][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:45:58] "[37mGET /set_filter/none/all/none/no/none/none/all HTTP/1.1[0m" 200 -
+[2021-02-09 01:45:58,434][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:45:58] "[37mGET /get_label_value_on_image/none/0000001__0716__19_24_47__________.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:45:58,452][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:45:58] "[37mGET /marked_image/0000001__0716__19_24_47__________.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:45:59,922][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:45:59] "[37mGET /set_filter/none/all/l_carring/no/none/none/all HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,084][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /get_label_value_on_image/l_carring/0000001__0716__19_24_47__________.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,127][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/0206_21_40_30_i10675445_id427952_tcn-427952_cn1581025271054489000_thr752.Sgl_different_place.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,128][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/2019-12-22%2009-33-06.i_624997.id_3324.cn_1577007188567676000.thr_619.descr_In%20.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,131][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/0424_20_08_25___i1241467_SB________________CR_TP1_ID151013_CAM0_TP1_THR747_CN1587758910497732000_TCN-151013___.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,132][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/2019-11-21_17-58-34_i=71635_id=9175_cn=1574359121511363000_thr=607_descr_Out@bord_.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,133][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/2019-11-23_13-53-57_i=184845_id=9106_cn=1574517254574988000_thr=960_descr_Out@bord_.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,143][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/0409_16_48_54___i15243__________SM_______CR_TP1_ID1679_CAM0_TP1_THR998_CN1586450935212895000_TCN-1679___.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,147][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/2019-11-22_16-42-33_i=80655_id=11036_cn=1574440956544999000_thr=864_descr_In@bord_looks_different.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:00,151][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:00] "[37mGET /marked_image/0422_19_49_41___i43195_SG___________________TP1_ID17465_CAM0_TP1_THR866_CN1587584983123767000_TCN-17465___.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,045][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /set_filter/l_carring/all/l_carring/no/none/none/all HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,054][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,150][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /get_label_value_on_image/l_carring/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,170][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/0521_14_57_04___i3167181__________SM_______CR_TP1_ID578531_CAM0_TP1_THR887_CN1590073033126878000_TCN-578531___.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,186][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/2019-11-25_14-23-22_i=3840_id=1580_cn=1574691804099440000_thr=980_descr_In@bord_.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,188][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/2019-11-26_13-02-05_i=61127_id=12876_cn=1574773333387451000_thr=630_descr_In_.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,189][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/2019-11-25_14-09-59_i=66772_id=9262_cn=1574691021054583000_thr=755_descr_In@bord_crossing.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,191][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/0409_07_42_12___i528096__________SM_______CR_TP1_ID18333_CAM0_TP1_THR995_CN1586418132148012000_TCN-18333___.png HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,192][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/2019-12-01_14-09-14_i=1161354_id=3826_cn=1575209356295532000_thr=997_descr__crossing.jpg HTTP/1.1[0m" 200 -
+[2021-02-09 01:46:03,208][werkzeug][INFO] - 127.0.0.1 - - [09/Feb/2021 01:46:03] "[37mGET /marked_image/2019-11-21_13-53-36_i=1875_id=1069_cn=1574344419068169000_thr=809_descr_Sgl_.jpg HTTP/1.1[0m" 200 -

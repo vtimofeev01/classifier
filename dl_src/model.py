@@ -15,6 +15,7 @@ class MultiOutputModel(nn.Module):
                  freeze=False, first_stage_dict = None):
         self.netname = netname
         self.first_stage_dict = first_stage_dict
+        print(f'[MODEL] {netname}')
         if netname == 'mobilenetv2':
             super().__init__()
             self.fld_names = trained_labels
@@ -33,7 +34,9 @@ class MultiOutputModel(nn.Module):
                 print(f'vreated <<{lbl}>> in_features={lt_chan}, out_features={count} ')
                 v = nn.Sequential(
                     nn.Dropout(p=0.2, inplace=False),
-                    nn.Linear(in_features=lt_chan, out_features=count)
+                    nn.ReLU(),
+                    nn.Linear(in_features=lt_chan, out_features=count),
+                    nn.Sigmoid()
                 )
                 # print(v)
                 self.add_module(lbl, v)
@@ -68,12 +71,20 @@ class MultiOutputModel(nn.Module):
             print(f'backbone output shape: {lt_chan}')
             self.pool = nn.AdaptiveAvgPool2d((1, 1))
             self.outs = {}
+            num_bottleneck = 512
             for lbl in trained_labels:
                 count = attrbts.num_labels[lbl]
-                print(f'created <<{lbl}>> in_features={lt_chan}, out_features={count} ')
+                print(f'created [{netname}] <<{lbl}>> in_features={lt_chan}, out_features={count} ')
                 v = nn.Sequential(
+                    # nn.LeakyReLU(),
+                    # nn.Sigmoid(),
+                    nn.LeakyReLU(0.1),
                     nn.Dropout(p=0.2),
-                    nn.Linear(in_features=lt_chan, out_features=count)
+                    nn.Linear(in_features=lt_chan, out_features=count),
+
+                    # nn.Sigmoid(),
+                    # nn.Dropout(p=0.2),
+                    # nn.Linear(in_features=lt_chan // 2, out_features=count)
                 )
                 self.add_module(lbl, v)
             for a in self._modules:

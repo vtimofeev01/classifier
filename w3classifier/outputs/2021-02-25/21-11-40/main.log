@@ -1,0 +1,5 @@
+[2021-02-25 21:12:03,370][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
+[2021-02-25 21:12:12,240][werkzeug][INFO] - 127.0.0.1 - - [25/Feb/2021 21:12:12] "[37mGET /set_filter/person/all/none/no/none/none/data_2021_02_o118 HTTP/1.1[0m" 200 -
+[2021-02-25 21:12:12,248][werkzeug][INFO] - 127.0.0.1 - - [25/Feb/2021 21:12:12] "[37mGET /get_label_value_on_image/none/0123__19_33_40__i0013530__gcn0000615__0000648__multy__P2_______.png HTTP/1.1[0m" 200 -
+[2021-02-25 21:12:13,148][werkzeug][INFO] - 127.0.0.1 - - [25/Feb/2021 21:12:13] "[37mGET /set_filter/person/all/identificable/no/none/none/data_2021_02_o118 HTTP/1.1[0m" 200 -
+[2021-02-25 21:12:13,253][werkzeug][INFO] - 127.0.0.1 - - [25/Feb/2021 21:12:13] "[37mGET /get_label_value_on_image/identificable/0123__19_33_40__i0013530__gcn0000615__0000648__multy__P2_______.png HTTP/1.1[0m" 200 -

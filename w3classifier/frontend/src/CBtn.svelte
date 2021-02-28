@@ -1,6 +1,6 @@
 <script>
     export let imname
-    export let thr = -10
+    // export let thr = -10
     export let source_server
 
 </script>

@@ -1,4 +1,6 @@
-LABEL=identificable
+LABEL=l_carring
+#LABEL=identificable
+#LABEL=person
 DATASET=/home/imt/dataset/dataset_for_multilabel_classification
 LABEL_PATH="$DATASET"/"$LABEL"
 WORK_DIR=/home/imt/work/pyqt5-images-classifier/dataset
@@ -6,7 +8,7 @@ echo "label:       $LABEL"
 echo "dataset:     $DATASET"
 echo "labels file: $LABEL_PATH"
 echo "work dir:    $WORK_DIR"
-
+#
 python3 /home/imt/work/pyqt5-images-classifier/prepare_train_label_files_from_dataset_normal_and_numeric.py \
     --attributes_file "$LABEL_PATH"/results.csv \
     --images_dir $DATASET
@@ -15,7 +17,7 @@ python3 /home/imt/work/pyqt5-images-classifier/prepare_train_label_files_from_da
 python3 train.py --images_dir $DATASET \
                  --train_file dataset/partial_big_train.csv \
                  --work_dir $WORK_DIR \
-                 --n_epochs 300 \
+                 --n_epochs 180 \
                  --attributes_file "$WORK_DIR"/data.csv \
                  --val_file "$WORK_DIR"/partial_big_val.csv \
                  --batch_size 16 \

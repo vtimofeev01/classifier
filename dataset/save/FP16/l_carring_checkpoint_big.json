@@ -3,18 +3,26 @@
         "label": {
             "0": "backpack",
             "1": "bag",
-            "2": "no",
-            "3": "non_visible",
-            "4": "utils"
+            "2": "cables",
+            "3": "household",
+            "4": "materials",
+            "5": "no",
+            "6": "papers",
+            "7": "utils",
+            "8": "wheelbarrow"
         }
     },
     "labels_name_to_id": {
         "label": {
             "backpack": 0,
             "bag": 1,
-            "no": 2,
-            "non_visible": 3,
-            "utils": 4
+            "cables": 2,
+            "household": 3,
+            "materials": 4,
+            "no": 5,
+            "papers": 6,
+            "utils": 7,
+            "wheelbarrow": 8
         }
     }
 }
