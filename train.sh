@@ -1,5 +1,5 @@
-LABEL=l_carring
-#LABEL=identificable
+#LABEL=l_carring
+LABEL=identificable
 #LABEL=person
 DATASET=/home/imt/dataset/dataset_for_multilabel_classification
 LABEL_PATH="$DATASET"/"$LABEL"
