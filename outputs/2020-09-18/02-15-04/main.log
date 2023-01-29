@@ -1,8 +1,0 @@
-[2020-09-18 02:15:07,402][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
-[2020-09-18 02:15:16,651][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:16] "[37mGET /set_filter/person/all/none/no/height/none HTTP/1.1[0m" 200 -
-[2020-09-18 02:15:16,673][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:16] "[37mGET /get_label_value_on_image/none/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
-[2020-09-18 02:15:18,411][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:18] "[37mGET /set_filter/person/all/none/no/up/none HTTP/1.1[0m" 200 -
-[2020-09-18 02:15:18,432][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:18] "[37mGET /get_label_value_on_image/none/0126_12_29_29_i2938160_id187811_tcn-187811_cn1580041771435995000_thr522.In_.jpg HTTP/1.1[0m" 200 -
-[2020-09-18 02:15:18,445][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:18] "[37mGET /marked_image/0126_12_29_29_i2938160_id187811_tcn-187811_cn1580041771435995000_thr522.In_.jpg HTTP/1.1[0m" 200 -
-[2020-09-18 02:15:19,900][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:19] "[37mGET /set_filter/person/all/none/no/low/none HTTP/1.1[0m" 200 -
-[2020-09-18 02:15:19,914][werkzeug][INFO] - 127.0.0.1 - - [18/Sep/2020 02:15:19] "[37mGET /get_label_value_on_image/none/0314_12_59_02___i1669500_INN_CLR_TP2_ID121756_CAM0_TP2_THR731_CN1584190751125378000_TCN-121756.png HTTP/1.1[0m" 200 -

@@ -1,6 +1,0 @@
-[2020-09-11 19:35:27,785][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
-[2020-09-11 19:41:44,220][werkzeug][INFO] - 127.0.0.1 - - [11/Sep/2020 19:41:44] "[37mGET /set_filter/person/all/none/no/none HTTP/1.1[0m" 200 -
-[2020-09-11 19:41:44,242][werkzeug][INFO] - 127.0.0.1 - - [11/Sep/2020 19:41:44] "[37mGET /get_label_value_on_image/none/0103_15_07_56_i4981_id276_cn1578064077907896000_thr540.In%20.jpg HTTP/1.1[0m" 200 -
-[2020-09-11 19:42:03,513][werkzeug][INFO] - 127.0.0.1 - - [11/Sep/2020 19:42:03] "[37mGET /set_filter/person/to_check/none/no/none HTTP/1.1[0m" 200 -
-[2020-09-11 19:42:03,521][werkzeug][INFO] - 127.0.0.1 - - [11/Sep/2020 19:42:03] "[37mGET /get_label_value_on_image/none/undefined HTTP/1.1[0m" 200 -
-[2020-09-11 19:42:03,525][werkzeug][INFO] - 127.0.0.1 - - [11/Sep/2020 19:42:03] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -

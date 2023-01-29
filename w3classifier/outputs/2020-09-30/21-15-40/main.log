@@ -1,5 +1,0 @@
-[2020-09-30 21:15:46,283][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
-[2020-09-30 21:15:50,710][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:15:50] "[37mGET /set_filter/none/all/none/no/none/none/all HTTP/1.1[0m" 200 -
-[2020-09-30 21:15:50,733][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:15:50] "[37mGET /get_label_value_on_image/none/0408_17_04_07___i1206_IN_______SM_______CR_TP1_ID29_CAM0_TP1_THR750_CN1586365449615953000_TCN-29_MN.png HTTP/1.1[0m" 200 -
-[2020-09-30 21:15:51,937][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:15:51] "[37mGET /set_filter/none/all/l_carring/no/none/none/all HTTP/1.1[0m" 200 -
-[2020-09-30 21:15:52,049][werkzeug][INFO] - 127.0.0.1 - - [30/Sep/2020 21:15:52] "[37mGET /get_label_value_on_image/l_carring/0408_17_04_07___i1206_IN_______SM_______CR_TP1_ID29_CAM0_TP1_THR750_CN1586365449615953000_TCN-29_MN.png HTTP/1.1[0m" 200 -

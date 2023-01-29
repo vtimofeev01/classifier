@@ -1,7 +1,0 @@
-addr:
-  host: 127.0.0.1
-  port: 8081
-data:
-  dataset: /home/imt/dataset/dataset_for_multilabel_classification
-dnn:
-  reidentificator: /home/imt/area_overwatch/grabbing/samples/models/intel/person-reidentification-retail-0249/1/FP16-INT8/person-reidentification-retail-0249.xml

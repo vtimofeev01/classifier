@@ -1,6 +1,7 @@
 <script>
     import {onMount} from "svelte";
     import Box from "./Box.svelte"
+    import Image from './Image.svelte'
     // import CBtn from "./CBtn.svelte"
 
     let source_server = 'http://0.0.0.0:8081'
@@ -240,6 +241,7 @@
 <svelte:window on:keydown={handleKeydown}/>
 
 <!--<img src="http://0.0.0.0:8081/marked_image/0125__11_14_00__i0643800__gcn0028419__0028419__person_32206048888487.png" alt="0">-->
+<!--<Image src="http://0.0.0.0:8081/marked_image/2803313__0720__01_16_14__________.png" alt="111" />-->
 
 <Box>
     {#if seek_label === 'none'}<h3>select label to edit</h3>{/if}
@@ -256,9 +258,6 @@
     </button>
     <br>
 </Box>
-<!--PICTURE AREA -->
-<!--PICTURE AREA -->
-<!--PICTURE AREA -->
 <Box>
     <table>
         <tr>

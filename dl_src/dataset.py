@@ -35,7 +35,7 @@ def make_list_of_files(source, extensions=None):
 
 class AttributesDataset:
     def __init__(self, annotation_path, echo=True):
-
+        print(f"[train] annotations {annotation_path}")
         with open(annotation_path) as f:
             reader = csv.DictReader(f)
 

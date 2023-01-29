@@ -7,6 +7,7 @@ import yaml
 import cv2
 import numpy as np
 import pandas as pd
+
 from PIL import Image
 from numpy import count_nonzero, vstack, newaxis, argmax, where
 from openvino.inference_engine.ie_api import IECore
@@ -15,10 +16,12 @@ from tqdm import tqdm
 
 from dl_src.dnn import get_data_frame_from_folder, DNN
 
+
 opj = os.path.join
 image_extensions = ['.png', '.jpg']
 del_label = 'DELETE'
 ie = IECore()
+EMPTY = ''
 
 
 # TODO Make size output
@@ -116,23 +119,25 @@ class Dbs:
         for pth, nm in zip(*make_list_of_files_by_name(self.path, 'results.csv')):
             lbl = os.path.split(pth)[1]
             self.labels[lbl] = {'file': os.path.join(pth, nm), 'path': pth, 'nm': nm}
-            self.log(f'loaded: {pth} {nm}')
             self.main[lbl] = ''
             l_df = pd.read_csv(self.labels[lbl]['file'])
-            self.log(f'loaded labels: {l_df.label.unique()}')
+
             lbls = [x.strip() for x in list(l_df.label.unique()) if str(x) not in (del_label)]
             lbls2 = []
             if 'wrong' in lbls:
                 lbls2.append('wrong')
             lbls2 += sorted([x for x in sorted(lbls) if x != 'wrong'])
-            print(f'lbl={lbl} lbls={lbls}  lbls2={lbls2}')
+            self.log(f'loaded labels: {l_df.label.unique()}')
+            print(f'[ {lbl} ] labels:{lbls}  labels2={lbls2}')
+            self.log(f'         loaded: {pth} {nm}')
             self.labels[lbl]['values'] = lbls2.copy()
             l_df.set_index('image', inplace=True)
             l_df.rename(columns={'label': lbl}, inplace=True)
             f_delete = l_df[lbl] == 'DELETE'
             l_df.loc[f_delete, lbl] = ''
             self.main.update(l_df)
-            print(self.main[lbl].unique())
+            idx_empty = self.main[lbl] == EMPTY
+            print(f"          uniwu labels end {self.main[lbl].unique()} Ne={sum(idx_empty)}")
             items_to_check = opj(pth, 'files_to_check.csv')
             if os.path.exists(items_to_check):
                 itc = pd.read_csv(items_to_check)
@@ -140,16 +145,17 @@ class Dbs:
             # store yaml (later read)
             settings_file = opj(pth, 'settings.yaml')
             if os.path.exists(settings_file):
-                loaded_values = yaml.load(open(settings_file, 'r'))['values']
+                loaded_values = yaml.load(open(settings_file, 'r'), Loader=yaml.loader.SafeLoader)['values']
                 # self.labels[lbl]['values'] += [x for x in loaded_values if x not in self.labels[lbl]['values']]
                 self.labels[lbl]['values'] = loaded_values + [x for x in self.labels[lbl]['values'] if x not in loaded_values]
             yaml.dump(self.labels[lbl], open(settings_file, 'w'))
         self.filter = self.main.index
-        print(self.identifications.set_index('name'))
+        # print(self.identifications.set_index('name'))
         self.main[self.dnn.xml_name] = None
         self.main.update(self.identifications.set_index('name'))
         self.main = self.main.sort_index()
         self.main_reid = vstack(self.main[self.dnn.xml_name].tolist())
+
 
 
     def store_label(self, label):
@@ -245,9 +251,9 @@ class Dbs:
 
         if (seek_label not in ('none', '', None)) and (seek_only_clear != 'no'):
             f3 = self.main[seek_label] == ''
-            print(f'seek_label={seek_label} seek_only_clear={seek_only_clear} {count_nonzero(f3)}')
+
             self.filter = self.filter & f3
-            print(f' self.filter={count_nonzero(self.filter)}')
+            print(f'[FILTER]  seek_label={seek_label} seek_only_clear={seek_only_clear} {count_nonzero(f3)} self.filter={count_nonzero(self.filter)}')
 
         return {'images': self.main.index[self.filter].to_list(),
                 'label': self.labels[label] if is_label else [],
@@ -300,8 +306,8 @@ class Dbs:
 
         # extracting frames
         im_name = opj(self.main.path[im], im)
-        print(f'im_name:{im_name} exists:{os.path.exists(im_name)}')
         frame_row = cv2.imread(im_name)
+        print(f'im_name:{frame_row.shape} {im_name} exists:{os.path.exists(im_name)}')
         h, w = frame_row.shape[:2]
         lw = max(h // 150, 1)
         # frame[:, 0:20] += 25
@@ -325,10 +331,11 @@ class Dbs:
             cv2.line(frame, (wi, 20), (wi, 10), color=(0, 0, 255), thickness=lw)
             cv2.line(frame, (wi, h - 10), (wi, h - 20), color=(0, 0, 255), thickness=lw)
         ret, jpeg = cv2.imencode('.jpg', frame)
+        print(f"out:{frame.shape}")
         return jpeg.tobytes()
 
 
 if __name__ == '__main__':
     d = Dbs()
-    d.load('/home/imt/dataset/dataset_for_multilabel_classification')
+    d.load('~/dataset/dataset_for_multilabel_classification')
     d.store_label('uniforme')

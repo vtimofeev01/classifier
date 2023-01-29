@@ -14,10 +14,9 @@ class DNN:
 
     def __init__(self, ie_core, xml, device, num_requests, get_full=False, show_tqdm=False):
         net = ie_core.read_network(model=xml, weights=os.path.splitext(xml)[0] + ".bin")
-        assert len(net.inputs.keys()) == 1, "Supports topologies with only 1 input"
-        self.input_blob = next(iter(net.inputs))
-        self.input_shape = net.inputs[self.input_blob].shape
-        self.n, self.c, self.h, self.w = net.inputs[self.input_blob].shape
+        self.input_blob = next(iter(net.input_info))
+        self.input_shape = net.input_info[self.input_blob].input_data.shape
+        self.n, self.c, self.h, self.w = net.input_info[self.input_blob].input_data.shape
         self.out_blob = next(iter(net.outputs))
         self.out_shape = net.outputs[self.out_blob].shape
         self.n_requests = num_requests
@@ -49,7 +48,7 @@ class DNN:
             if self.i >= self.n_requests:
                 self.exec_net.requests[index].wait()
                 out_frame = self.idents[index].copy()
-                res = self.exec_net.requests[index].outputs[self.out_blob].flatten()
+                res = self.exec_net.requests[index].output_blobs[self.out_blob].buffer.flatten()
                 out_frame[self.xml_name] = res if self.get_full else res.argmax()
                 yield out_frame
             in_frame = cv2.resize(frame['image'], (self.w, self.h), interpolation=cv2.INTER_CUBIC).transpose((2, 0, 1))
@@ -60,7 +59,7 @@ class DNN:
             if self.idents[ii] is None:
                 continue
             self.exec_net.requests[ii].wait()
-            res = self.exec_net.requests[ii].outputs[self.out_blob].flatten()
+            res = self.exec_net.requests[ii].output_blobs[self.out_blob].buffer.flatten()
             self.idents[ii][self.xml_name] = res if self.get_full else res.argmax()
             yield self.idents[ii]
             self.idents[ii] = None

@@ -1,5 +1,0 @@
-[2021-02-21 19:49:40,594][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
-[2021-02-21 19:49:43,440][werkzeug][INFO] - 127.0.0.1 - - [21/Feb/2021 19:49:43] "[37mGET /marked_image/undefined HTTP/1.1[0m" 200 -
-[2021-02-21 19:49:43,464][werkzeug][INFO] - 127.0.0.1 - - [21/Feb/2021 19:49:43] "[37mGET /set_filter/none/all/none/no/none/none/all HTTP/1.1[0m" 200 -
-[2021-02-21 19:49:43,503][werkzeug][INFO] - 127.0.0.1 - - [21/Feb/2021 19:49:43] "[37mGET /get_label_value_on_image/none/0000001__0716__19_24_47__________.png HTTP/1.1[0m" 200 -
-[2021-02-21 19:49:43,530][werkzeug][INFO] - 127.0.0.1 - - [21/Feb/2021 19:49:43] "[37mGET /marked_image/0000001__0716__19_24_47__________.png HTTP/1.1[0m" 200 -

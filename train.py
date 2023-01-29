@@ -172,6 +172,7 @@ if __name__ == '__main__':
     parser.add_argument('--graph_out', type=str, default='true', help="true* / false")
     parser.add_argument('--checkpoint_best', type=str, default='checkpoint-best', help="checkpoint-best")
     args = parser.parse_args()
+    print(f'[train] arguments')
     pprint(args.__dict__)
     TRAIN_PERIODE = 15
     COUNT_OF_LR_STEPS = 7
@@ -185,7 +186,9 @@ if __name__ == '__main__':
     if args.attributes_file is None:
         args.attributes_file = args.train_file
 
-    attributes = AttributesDataset(os.path.join(args.work_dir, 'data.csv'))
+    attributes_file = os.path.join(args.work_dir, 'data.csv')
+    print(f'[train] attributes: {attributes_file}')
+    attributes = AttributesDataset(attributes_file)
 
     # specify image transforms for augmentation during training
     train_transform = transforms.Compose([

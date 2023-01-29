@@ -1,2 +1,0 @@
-[2020-10-15 03:16:11,720][werkzeug][INFO] -  * Running on http://127.0.0.1:8081/ (Press CTRL+C to quit)
-[2020-10-15 03:16:24,065][werkzeug][INFO] - 127.0.0.1 - - [15/Oct/2020 03:16:24] "[37mGET /store_label/person HTTP/1.1[0m" 200 -

@@ -26,7 +26,7 @@ union_rule = {'corrupted': 'wrong'}  # , 'non_person': 'wrong', 'non_clear': 'cl
 # "non-person",
 # "wrong"
 
-export_dir = './dataset'
+
 # pattern = '{:0>5}.png'
 
 factor = .125
@@ -40,10 +40,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Inference pipeline')
     parser.add_argument('--images_dir', type=str, help="Folder containing images described in CSV file")
     parser.add_argument('--attributes_file', type=str, help="Path to the file with attributes")
+    parser.add_argument('--export_dir', type=str, help="Where to export")
     args = parser.parse_args()
 
     annotation_path = args.attributes_file
     images_dir = args.images_dir
+    export_dir = args.export_dir
 
     if not os.path.exists(export_dir):
         os.mkdir(export_dir)
@@ -135,7 +137,9 @@ if __name__ == '__main__':
         print(f'{df_l}={s}')
         label_to_numeric[df_l] = s
         df[df_l] = df[df_l].replace(s)
-    with open(os.path.join(export_dir, 'label_to_number.json'), 'w') as f:
+    json_fn = os.path.join(export_dir, 'label_to_number.json')
+    with open(json_fn, 'w') as f:
+        print(f'[settings] {json_fn}')
         json.dump(label_to_numeric, f)
     df.to_csv(os.path.join(export_dir, 'numeric_full_data_n.csv'), index=False)
     df[f1].to_csv(os.path.join(export_dir, 'numeric_full_test_n.csv'), index=False)
@@ -173,3 +177,4 @@ if __name__ == '__main__':
     #     df.to_csv(os.path.join(export_dir, 'val.csv'), index=False)
     #
     # #
+    print("END")
