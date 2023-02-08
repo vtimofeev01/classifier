@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
     nth = 8
     nth5 = 5
-    df = pd.DataFrame(data={data_name: fnames, 'height': heights, 'width': widths, **labels}, dtype='uint8')
+    df = pd.DataFrame(data={data_name: fnames, 'height': heights, 'width': widths, **labels})
     not_all_columns = [x for x in df.columns if x not in ('height', 'width')]
     f1 = df.index % nth == 0
     f2 = df.index % nth == 1

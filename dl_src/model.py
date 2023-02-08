@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
 from torch.nn import init
+from torchvision.models import MNASNet1_3_Weights, MNASNet1_0_Weights
+
 from dl_src.dataset import AttributesDataset
 
 mean = [0.485, 0.456, 0.406]
@@ -66,7 +68,7 @@ class MultiOutputModel(nn.Module):
             super().__init__()
             self.fld_names = trained_labels
             print(f'mnasnet Model trained attributes: {self.fld_names}')
-            self.base_model = models.mnasnet1_0(pretrained=True).layers  # take the model without classifier
+            self.base_model = models.mnasnet1_0(weights=MNASNet1_0_Weights.IMAGENET1K_V1).layers  # take the model without classifier
             lt_chan = 1280  # self.base_model.last_channel  # size of the layer before classifier
             print(f'backbone output shape: {lt_chan}')
             self.pool = nn.AdaptiveAvgPool2d((1, 1))

@@ -22,6 +22,7 @@ class AttributesDataset:
                     datas[fn].append(row[fn])
 
         self.fld_names = fld_names
+        print(f"[ANNOTATION] dataset: {dataset}")
         print(f"[ANNOTATION] attributes: {', '.join(self.fld_names)}")
         self.labels = {fn: np.unique(datas[fn]) for fn in fld_names}
         print(f"[ANNOTATION] labels: {self.labels}")

@@ -15,7 +15,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
 
 from dl_src.dnn import get_data_frame_from_folder, DNN
-
+FAVORITES = 'favorites.txt'
 
 opj = os.path.join
 image_extensions = ['.png', '.jpg']
@@ -86,6 +86,8 @@ class Dbs:
         self.items_to_check = {}
         self.images_folders = []
         self.dnn: DNN = None
+        self.navigation = []
+
 
     def log(self, s):
         self._log.append(s)
@@ -155,8 +157,19 @@ class Dbs:
         self.main.update(self.identifications.set_index('name'))
         self.main = self.main.sort_index()
         self.main_reid = vstack(self.main[self.dnn.xml_name].tolist())
+        assert len(self.main_reid) == len(self.main)
+        print(f'[integrity] main_reid={len(self.main_reid)} == main={len(self.main)}')
+        self.main['favorites'] = False
+        fav_name = os.path.join(path, FAVORITES)
+        print(f'[{path}] look for {FAVORITES} file: {fav_name}')
+        if os.path.exists(fav_name):
+            with open(fav_name, 'r') as f:
+                for name in f.readlines():
+                    self.main.at[name, 'favorites'] = True
+            print(f'[{path}] total favorites read {self.main["favorites"].sum()}')
 
-
+        self.navigation = self.main.index.to_list()
+        print(f'[integrity] main_reid={len(self.main_reid)} == main={len(self.main)}')
 
     def store_label(self, label):
         if label not in self.labels:
@@ -167,9 +180,17 @@ class Dbs:
         try:
             pd.DataFrame({'image': self.main.index[f],
                           'label': self.main.loc[f, label]}).to_csv(self.labels[label]['file'], index=False)
-            return 'ok'
+
         except Exception as e:
             return f'fail: {e}'
+
+        fav_name = os.path.join(self.path, FAVORITES)
+        with open(fav_name, 'w') as f:
+            f.writelines( self.main.index[self.main['favorites'] == True].tolist())
+            print(f'[{self.path}]stores favorites {(self.main["favorites"] == True).sum()}')
+
+        return 'ok'
+
 
     def image(self, im):
         # print(f'image: {self.main.path[im]} {im}')
@@ -264,6 +285,90 @@ class Dbs:
                 'text': itchk_text,
                 'folders': self.images_folders}
 
+
+    def return_filtered(self, label, seek_label, seek_value,
+                        seek_only_clear, size, folder, favorites):
+        print(f'[FILTER] label={label} seek_label:{seek_label}  seek_value={seek_value} seek_only_clear:{seek_only_clear} '
+              f'size={size} folder={folder} favorites={favorites}')
+        print(f'[integrity return_filtered] main_reid={len(self.main_reid)} == main={len(self.main)}')
+        self.filter = self.main['x'] > 0
+        print("[FILTER] init:", count_nonzero(self.filter))
+        # print(f'label: {label} total:{count_nonzero(self.filter)}')
+
+        if size:
+            if size == 'up':
+                self.filter &= (self.main['y'] >= self.l2) & (self.main['y'] <= self.l3)
+            elif size == 'height':
+                self.filter &= self.main['y'] >= self.l3
+            elif size == 'small':
+                self.filter &= (self.main['y'] >= self.l1) & (self.main['y'] <= self.l2)
+            else:
+                self.filter &= self.main['y'] <= self.l1
+            print(f'[FILTER] size="{size}" total:{count_nonzero(self.filter)}')
+
+
+        if seek_label and seek_value is not None:
+            if seek_value == 'to_check':
+                # print(f'items to check={self.items_to_check.keys()}')
+                # print(f'{label} items to check={seek_label in self.items_to_check.keys()}')
+                itchk_files = self.items_to_check.get(label, {}).get('file', [])
+                itchk_files = self.items_to_check.get(label, {}).get('file', [])
+                itchk_text = self.items_to_check.get(label, {}).get('text', [])
+                # print(f"cont of items={len(itchk_files)}")
+                f2 = self.main.index.isin(itchk_files)
+            else:
+                f2 = self.main[seek_label] == seek_value
+            self.filter &= f2
+            print(f'[FILTER] {seek_label}={seek_value} {count_nonzero(self.filter)}')
+
+
+        if folder:
+            self.filter &= self.main['folder'] == folder
+            print(f'[FILTER] selected folder="{folder}" total folders = {len(self.images_folders)} '
+                  f'files in folder = {count_nonzero(self.filter)}')
+
+        if favorites == "yes":
+            self.filter &= self.main['favorites'] == True
+            print(f'[FILTER] favorites="{folder}" total:{count_nonzero(self.filter)}')
+        elif favorites == "no":
+            self.filter &= self.main['favorites'] == False
+            print(f'[FILTER] favorites="{folder}" total:{count_nonzero(self.filter)}')
+
+        if label is not None and seek_only_clear == 'yes':
+            self.filter &= self.main[label] == ''
+            print(f'[FILTER] only new="{seek_only_clear}" total:{count_nonzero(self.filter)}')
+
+        # print(f"ZZZ={self.main.index[self.filter].to_list()}")
+        # print(f"ZZZ={self.filter}")
+        self.navigation = self.filter.index[self.filter].to_list()
+        print(f'[FILTER] end count :{count_nonzero(self.filter)} = {len(self.navigation)}')
+
+    def return_label_value_on_image(self, label, image_name):
+        print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
+        print(f'return_label_value_on_image(label={label}, im={image_name})')
+        if (label in ('undefined', '', None, 'none')) or (image_name in ('undefined', '', None, 'none')):
+            return {'label_value': '', 'icons': {'none': {'image': 'z', 'thr': -2}}}
+
+        im_identificator = self.main.at[image_name, self.dnn.xml_name]
+        image_ix = self.main.index.get_loc(image_name)
+        print(f"image_ix:{image_ix}")
+        cs = cosine_similarity(im_identificator[newaxis, :], self.main_reid).flatten()
+        cs[image_ix] = -10
+        out = []
+        for iml in self.labels[label]['values']:
+            f = self.main[label] == iml
+            if np.any(f):
+                print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
+                # print(f"f={sum(f)} iml={iml} where f = {where(f)} argmax(cs[f])={argmax(cs[f])}")
+                cs_v = where(f)[0][argmax(cs[f])]
+                out += [{'lbl': iml, 'image': self.main.index[cs_v], 'thr': f"{float(cs[cs_v]):.3f}"}]
+            else:
+                out += [{'lbl': iml, 'image': 'none', 'thr': -1}]
+        print(f"OUT:{out}")
+        return out
+
+
+
     def get_label_value_on_image(self, label, im):
         print(f'get_label_value_on_image(label={label}, im={im})')
         if (label in ('undefined', '', None, 'none')) or (im in ('undefined', '', None, 'none')):
@@ -294,10 +399,6 @@ class Dbs:
             'groupes': self.main[seeklabel],
             seeklabel: [1] * self.main.shape[0]
         })
-        # if filter_set:
-        #     pd2[f'{filterlabel}=={filtervalue}'] = self.main[filterlabel] == filtervalue
-
-        # print(pd2)
         grp = pd2.groupby(by='groupes').count()
         out = '<br>'.join([f'{"?" if k == "" else k:_<20} {v[seeklabel]}' for k, v in grp.iterrows()])
         return out

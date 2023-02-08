@@ -74,7 +74,8 @@ class CSVDataset(Dataset):
             data_name = reader.fieldnames[0]
             attr_names = reader.fieldnames[1:]
             print(f'[Dataset] path {annotation_path}')
-            print(f'[Dataset] attributes: {", ".join(attr_names)}')
+            print(f'[Dataset] attributes:{", ".join(attr_names)}')
+            print(f'[Dataset] attr_names:{attr_names}')
             self.attr_names = attr_names
             self.labels = {fn: list() for fn in self.attr_names}
             image2full = {a: os.path.join(b, a) for b, a in zip(*make_list_of_files(images_dir))}
@@ -85,10 +86,12 @@ class CSVDataset(Dataset):
                     continue
                 self.data.append(imfile)
                 for attr in attr_names:
+                    # print(f"attr:{attr} {row}")
                     self.labels[attr].append(self.attr.labels_name_to_id[attr][row[attr]])
 
         # print(f'[Dataset] labels: {self.labels}\n')
         print(f'[Dataset] number of images: {len(self.data)}\n')
+        print(f'[Dataset] path {self.attr}')
 
     def __len__(self):
         return len(self.data)

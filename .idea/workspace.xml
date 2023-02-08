@@ -23,509 +23,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="564829e6-5a90-4f4f-ab9d-cbbce38e3326" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/dataset/data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/label_to_number.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/numeric_full_data_n.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/numeric_full_test_n.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/numeric_full_train_n.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/numeric_full_val_n.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/partial_big_train.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/partial_big_val.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/partial_small_train.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/partial_small_val.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/test.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/train.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/val.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/w3classifier/frontend_01/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/css/quill.bubble.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/css/quill.core.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/css/quill.snow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/css/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/images/asc.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/images/bg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/images/desc.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/images/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/examples/bubble.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/examples/full (copy).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/examples/full.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/examples/snow (copy).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/examples/snow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/jquery.tablesorter.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/quill.core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/quill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/quill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/static/js/quill.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/templates/macro_command_url.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/templates/macro_icon.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/w3classifier/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dl_src/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dl_src/dnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/dnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dl_src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dl_src/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prepare_train_label_files_from_dataset_normal_and_numeric.py" beforeDir="false" afterPath="$PROJECT_DIR$/prepare_train_label_files_from_dataset_normal_and_numeric.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/batch_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/batch_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/AttrDataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/AttrDataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/annotation.md" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/annotation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/preprocess/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_pa100k.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/preprocess/format_pa100k.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_peta.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/preprocess/format_peta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_rap.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/preprocess/format_rap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/dataset/preprocess/format_rap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/dataset/preprocess/format_rap2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/loss/CE_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/loss/CE_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/loss/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/loss/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/models/base_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/models/base_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/models/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/models/resnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/models/senet.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/models/senet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/tools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/tools/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/tools/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/tools/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/tools/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/alternate_train/train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/alternate_train/train.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schrott/export_dataset_to_flat_format.py" beforeDir="false" afterPath="$PROJECT_DIR$/schrott______/export_dataset_to_flat_format.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/train.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/w3classifier/app/module.py" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/app/module.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/w3classifier/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/frontend/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend/package-lock.json___" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/public/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/public/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/rollup.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/scripts/setupTypeScript.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/src/App.svelte" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/w3classifier/frontend_01/src/main.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/w3classifier/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-31-25/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-31-25/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-31-25/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-31-25/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-34-38/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-34-38/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-34-38/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-34-38/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-51-26/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-51-26/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-51-26/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-51-26/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/w3classifier/frontend/src/Image.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-53-17/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-53-17/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-53-17/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-53-17/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-54-40/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-54-40/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-54-40/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-54-40/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-56-53/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-56-53/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-56-53/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/19-56-53/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-01-14/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-01-14/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-01-14/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-01-14/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-03-41/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-03-41/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-03-41/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-03-41/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-05-56/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-05-56/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-05-56/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-05-56/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-10-07/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-10-07/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-10-07/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-10-07/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-13-48/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-13-48/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-13-48/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-13-48/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-22-27/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-22-27/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-22-27/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-22-27/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-02/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-02/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-02/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-02/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-24/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-24/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-24/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-25-24/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-26-04/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-26-04/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-26-04/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-11/20-26-04/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/03-03-42/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/03-03-42/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/03-03-42/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/03-03-42/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/08-56-07/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-32/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-12/21-40-40/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-05-57/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-13/21-54-48/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-45-03/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-48-16/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-49-29/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-53-59/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-55-59/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/19-58-02/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-00-21/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/20-03-06/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-05-40/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-36-34/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/21-37-56/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-18-15/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-19-58/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-14/22-20-48/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-00-27/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-15/09-59-08/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/08-40-29/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/08-40-29/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/08-40-29/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/08-40-29/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-09-33/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-09-33/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-09-33/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-09-33/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-32/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-32/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-32/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-32/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-58/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-58/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-58/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-20-58/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-21-48/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-21-48/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-21-48/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-21-48/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-22-51/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-22-51/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-22-51/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-22-51/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-23-08/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-23-08/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-23-08/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-23/09-23-08/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-04-12/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-04-12/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-04-12/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-04-12/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-13-20/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-13-20/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-13-20/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-13-20/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-16-31/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-16-31/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-16-31/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-16-31/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-17-24/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-17-24/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-17-24/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-17-24/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-18-39/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-18-39/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-18-39/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-18-39/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-23-41/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-23-41/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-23-41/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-23-41/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-28-39/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-28-39/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-28-39/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-29/21-28-39/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-34-57/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-34-57/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-34-57/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-34-57/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-37-21/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-37-21/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-37-21/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-37-21/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-38-11/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-38-11/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-38-11/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/01-38-11/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-07-23/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-07-23/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-07-23/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-07-23/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-10-34/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-10-34/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-10-34/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-10-34/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-13/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-13/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-13/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-13/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-38/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-38/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-38/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-14-38/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-15-40/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-15-40/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-15-40/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-15-40/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-21-24/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-21-24/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-21-24/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-21-24/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-24-13/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-24-13/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-24-13/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-24-13/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-50-04/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-50-04/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-50-04/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-50-04/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-51-12/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-51-12/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-51-12/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-51-12/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-54-00/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-54-00/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-54-00/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/21-54-00/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/22-24-09/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/22-24-09/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/22-24-09/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-09-30/22-24-09/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-01/00-42-47/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-01/00-42-47/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-01/00-42-47/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-01/00-42-47/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-41/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-41/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-41/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-41/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-47/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-47/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-47/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/07-04-47/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/08-09-17/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/08-09-17/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/08-09-17/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-02/08-09-17/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/01-59-45/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/01-59-45/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/01-59-45/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/01-59-45/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-20-02/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-20-02/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-20-02/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-20-02/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-48-53/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-48-53/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-48-53/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/02-48-53/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/09-41-12/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/09-41-12/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/09-41-12/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/09-41-12/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-41-06/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-41-06/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-41-06/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-41-06/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-48-21/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-48-21/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-48-21/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-03/22-48-21/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-13-53/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-13-53/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-13-53/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-13-53/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-14-23/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-14-23/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-14-23/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-10-15/03-14-23/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-16/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-16/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-16/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-16/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-31/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-31/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-31/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2020-11-07/00-30-31/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-35-28/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-35-28/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-35-28/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-35-28/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-41-50/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-41-50/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-41-50/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-41-50/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-55-49/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-55-49/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-55-49/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/01-55-49/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/02-21-27/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/02-21-27/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/02-21-27/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/02-21-27/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/20-36-19/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/20-36-19/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/20-36-19/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/20-36-19/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/21-11-27/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/21-11-27/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/21-11-27/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-04/21-11-27/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-26-48/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-26-48/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-26-48/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-26-48/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-27-05/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-27-05/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-27-05/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-27-05/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-28-07/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-28-07/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-28-07/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-07/21-28-07/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-06-17/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-06-17/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-06-17/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-06-17/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-07-15/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-07-15/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-07-15/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-07-15/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-15-40/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-15-40/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-15-40/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-15-40/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-18-35/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-18-35/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-18-35/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/01-18-35/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/02-12-58/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/02-12-58/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/02-12-58/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-08/02-12-58/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-42-58/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-42-58/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-42-58/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-42-58/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-45-36/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-45-36/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-45-36/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-45-36/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-48-00/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-48-00/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-48-00/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-48-00/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-59-23/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-59-23/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-59-23/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/01-59-23/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/03-12-35/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/03-12-35/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/03-12-35/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/03-12-35/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-46/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-46/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-46/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-46/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-53/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-53/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-53/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-09/10-34-53/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-11/01-33-30/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-11/01-33-30/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-11/01-33-30/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-11/01-33-30/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-12/01-49-15/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-12/01-49-15/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-12/01-49-15/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-12/01-49-15/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-07-26/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-07-26/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-07-26/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-07-26/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-08-26/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-08-26/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-08-26/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-14/12-08-26/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-37-41/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-37-41/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-37-41/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-37-41/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-38-30/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-38-30/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-38-30/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-15/02-38-30/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-18/01-46-32/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-18/01-46-32/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-18/01-46-32/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-18/01-46-32/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/01-24-44/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/01-24-44/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/01-24-44/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/01-24-44/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/04-11-44/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/04-11-44/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/04-11-44/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/04-11-44/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-12-14/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-12-14/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-12-14/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-12-14/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-49-18/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-49-18/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-49-18/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-21/19-49-18/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/00-57-54/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/00-57-54/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/00-57-54/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/00-57-54/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/16-02-32/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/16-02-32/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/16-02-32/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-22/16-02-32/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-24/03-10-45/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-24/03-10-45/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-24/03-10-45/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-24/03-10-45/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-25/21-11-40/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-25/21-11-40/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-25/21-11-40/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-25/21-11-40/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/00-46-44/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/00-46-44/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/00-46-44/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/00-46-44/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/12-07-13/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/12-07-13/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/12-07-13/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/12-07-13/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/15-36-33/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/15-36-33/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/15-36-33/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-27/15-36-33/main.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-28/03-26-41/.hydra/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-28/03-26-41/.hydra/hydra.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-28/03-26-41/.hydra/overrides.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/w3classifier/outputs/2021-02-28/03-26-41/main.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -537,6 +102,7 @@
       <list>
         <option value="Python Script" />
         <option value="CBtn" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -574,33 +140,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/imt/work/django-todo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/snap/pycharm-professional/306/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/imt/work/classifier/w3classifier",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
+    "ts.external.directory.path": "/snap/pycharm-professional/306/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/w3classifier" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/w3classifier/frontend/src" />
+      <recent name="$PROJECT_DIR$/www-classifier/backend" />
+      <recent name="$PROJECT_DIR$/alternate_train" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/schrott" />
       <recent name="$PROJECT_DIR$/alternate_train" />
       <recent name="$PROJECT_DIR$/traindata" />
       <recent name="$PROJECT_DIR$/dl_src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/w3classifier/frontend/src" />
-      <recent name="$PROJECT_DIR$/www-classifier/backend" />
-      <recent name="$PROJECT_DIR$/alternate_train" />
-      <recent name="$PROJECT_DIR$/test_area" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main (2)">
@@ -929,6 +497,13 @@
       <workItem from="1667102881396" duration="20000" />
       <workItem from="1672005212466" duration="6062000" />
       <workItem from="1672604146565" duration="19000" />
+      <workItem from="1675024096220" duration="751000" />
+      <workItem from="1675024873421" duration="2418000" />
+      <workItem from="1675029033115" duration="3564000" />
+      <workItem from="1675096112831" duration="9074000" />
+      <workItem from="1675188687538" duration="33000" />
+      <workItem from="1675508299939" duration="34520000" />
+      <workItem from="1675802346093" duration="3538000" />
     </task>
     <task id="LOCAL-00001" summary="Initial load">
       <created>1586606827648</created>
@@ -1063,7 +638,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601505620959</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update">
+      <created>1675024201212</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1675024201212</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1104,7 +686,7 @@
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier.coverage" NAME="classifier Coverage Results" MODIFIED="1593240948506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$poligon.coverage" NAME="poligon Coverage Results" MODIFIED="1588272420966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$main.coverage" NAME="main Coverage Results" MODIFIED="1598911134095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/www-classifier/backend" />
-    <SUITE FILE_PATH="coverage/classifier$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1672177133502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/w3classifier" />
+    <SUITE FILE_PATH="coverage/classifier$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1675829970853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/w3classifier" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$export_dataset_to_flat_format_numeric.coverage" NAME="export_dataset_to_flat_format_numeric Coverage Results" MODIFIED="1593840246331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyqt5_images_classifier$classifier_face_visible.coverage" NAME="classifier_face_visible Coverage Results" MODIFIED="1598263309637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>

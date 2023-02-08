@@ -1,0 +1,214 @@
+{% from 'macro_command_url.html' import command_url %}
+{% from 'macro_command_url.html' import action_url %}
+{% from 'macro_icon.html' import draw_icon %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type='text/css'
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+<link rel="stylesheet" type='text/css'
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quill.snow.css') }}">
+
+<style>
+    .upleftgtay {
+        background: rgba(0, 0, 0, 0.7);
+        /*background: #222222;*/
+        color: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 18px;
+        padding: 3px 5px;
+    }
+
+    .up_left_rad {
+        background: rgba(255, 0, 0, 0.7);
+        /*background: #222222;*/
+        color: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 18px;
+        padding: 3px 5px;
+    }
+
+    .up_left_yellow {
+        background: yellow;
+        /*background: #222222;*/
+        color: #000448;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 18px;
+        font-weight: bolder;
+        padding: 3px 5px;
+    }
+
+    .downleftgtay {
+        background: rgba(0, 0, 0, 0.7);
+        /*background: #222222;*/
+        color: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        /*top: 10px;*/
+        font-size: 18px;
+        padding: 3px 5px;
+    }
+
+    .down_right_rad {
+        background: rgba(255, 0, 0, 0.7);
+        /*background: #222222;*/
+        color: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        /*top: 10px;*/
+        font-size: 18px;
+        padding: 3px 5px;
+    }
+
+    .but_sel {
+        position: relative;
+        display: inline-block;
+        padding: 5px;
+        background-color: rgba(49, 49, 49, 0.3);
+        margin: 2px;
+    }
+
+    .fit {
+        height: 300px;
+    {#border: 5px #3D3D3D;#}
+    }
+
+    .fit_big {
+    {#max-width: 100%;#} min-height: 300px;
+        max-height: 400px;
+    }
+</style>
+<body>
+
+
+<div>
+    Set label to edit:
+    {% if session['act_main_label'] %} <b>{{ session['act_main_label'] }}</b>
+        {{ command_url('act_main_label', 'ALL') }}
+    {% else %}
+        {% for lbl in dbs.labels.keys() %}
+            {{ command_url('act_main_label', lbl) }}
+        {% endfor %}
+    {% endif %}
+
+    Select only not set:
+    {% if session['f_seek_only_clear'] %}<b>{{ session['f_seek_only_clear'] }}</b>
+        {{ command_url('f_seek_only_clear', 'ALL') }}
+    {% else %}
+        {% for sz in ["yes","no"] %}
+            {{ command_url('f_seek_only_clear', sz) }}
+        {% endfor %}
+    {% endif %}
+
+</div>
+<dic><h6>{{ image_name }} {{ cur_value }}</h6></dic>
+<div class="but_sel">
+    {% if session['count'] %}
+        {% if image['favorites'] %} <span class="up_left_yellow">favorite {{ action_url('act_to_favorites', "X") }}</span>
+        {% else %} <span class="upleftgtay"> {{ action_url('act_to_favorites', "favorite") }}</span> {% endif %}
+    {% endif %}
+    <img class='fit_big' src="{{ url_for("marked_image", nm=image_name) }}" alt="{{ image_name }}">
+    <span class="down_right_rad">{{ cur_value }}</span>
+</div>
+
+{% for icon in icons %}
+    {% if icon['lbl'] == cur_value %}
+        {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "up_left_rad") }}
+    {% else %}
+        {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "upleftgtay") }}
+    {% endif %}
+    {{ loop.cycle('', '', '', '', '', '', '<br>') | safe }}
+{% endfor %}
+
+
+
+<div>
+    {% if session['index'] > 1000 %} {{ action_url('act_seek', "-1000") }} {% endif %}
+    {% if session['index'] > 100 %} {{ action_url('act_seek', "-100") }} {% endif %}
+    {% if session['index'] > 10 %} {{ action_url('act_seek', "-10") }} {% endif %}
+    {% if session['index'] > 1 %} {{ action_url('act_seek', "-1") }} {% endif %}
+    <strong>{{ session['index'] }}</strong>
+    {% if session['index'] < session['count'] - 1 %} {{ action_url('act_seek', "+1") }} {% endif %}
+    {% if session['index'] < session['count'] - 10 %} {{ action_url('act_seek', "+10") }} {% endif %}
+    {% if session['index'] < session['count'] - 100 %} {{ action_url('act_seek', "+100") }}{% endif %}
+    {% if session['index'] < session['count'] - 1000 %} {{ action_url('act_seek', "+1000") }} {% endif %}
+    <strong>{{ session['count'] }}</strong>
+</div>
+
+
+<div>
+    Filter labels:
+    {% if session['f_label'] %} <b>{{ session['f_label'] }}</b>
+        {{ command_url('f_label', 'ALL') }}
+        by value:
+        {% if session['f_label_value'] %} <b>{{ session['f_label_value'] }}</b>
+            {{ command_url('f_label_value', 'ALL') }}
+        {% else %}
+            {% for lbl_v in dbs.labels[session['f_label']]['values'] %}
+                {{ command_url('f_label_value', lbl_v) }}
+            {% endfor %}
+            {{ command_url('f_label_value', 'ITEMS_TO_CHECK') }}
+        {% endif %}
+
+    {% else %}
+        {% for lbl in dbs.labels.keys() %}
+            {{ command_url('f_label', lbl) }}
+        {% endfor %}
+    {% endif %}
+</div>
+<div>
+    Filter folders:
+    {% if session['folder'] %} <b>{{ session['folder'] }}</b>
+        {{ command_url('folder', 'ALL') }}
+    {% else %}
+        {% for fldr in dbs.images_folders %}
+            {{ command_url('folder', fldr) }}
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div>
+    Size:
+    {% if session['f_size'] %} <b>{{ session['f_size'] }}</b>
+        {{ command_url('f_size', 'ALL') }}
+    {% else %}
+        {% for sz in ["height","up","low", "small"] %}
+            {{ command_url('f_size', sz) }}
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div>
+    Select favorites:
+    {% if session['f_favorites'] %} <b>{{ session['f_favorites'] }}</b>
+        {{ command_url('f_favorites', 'ALL') }}
+    {% else %}
+        {% for sz in ["yes","no"] %}
+            {{ command_url('f_favorites', sz) }}
+        {% endfor %}
+    {% endif %}
+</div>
+<div>
+    {{ action_url('act_store', '[Store]') }} last:{{ session['act_store'] }}
+</div>
+</body>
+</html>

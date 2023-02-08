@@ -1,23 +1,26 @@
 import argparse
+import copy
+# from torch.utils.tensorboard import SummaryWriter
+import csv
 import os
+import random
+import time
 from datetime import datetime
 from pprint import pprint
+from random import randint
 
-from PIL import Image
+import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as transforms
+from PIL import Image
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-import matplotlib.pyplot as plt
+from torch import nn
 from torch.optim import lr_scheduler
+from torch.utils.data import DataLoader
 
 from dl_src.dataset import CSVDataset, AttributesDataset, mean, std
 from dl_src.model import MultiOutputModel
 from test import calculate_metrics, validate
-from torch.utils.data import DataLoader, random_split
-from torch.utils.tensorboard import SummaryWriter
-import csv
-import random
-from random import randint
 
 
 def checkpoint_load(model, name):
@@ -27,7 +30,8 @@ def checkpoint_load(model, name):
     return epoch
 
 
-def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, checkpoint=None, csv_filename=None, caption=''):
+def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, checkpoint=None, csv_filename=None,
+                   caption=''):
     if checkpoint is not None:
         checkpoint_load(model, checkpoint)
     model.eval()
@@ -86,7 +90,6 @@ def visualize_grid(model, dataloader, attr, device, show_cn_matrices=True, check
             plt.tight_layout()
             plt.show(block=False)
 
-
     model.train()
 
 
@@ -140,6 +143,7 @@ def cut_pil_image_v_old(image: Image, border=20, spread=.5):
         randint(w - border - dw, w - border + dw),
         randint(h - border - dh, h - border + dw)))
 
+
 def cut_pil_image_v_old(image: Image, border=20, spread=.05):
     w, h = image.size
     iw, ih = w - 2 * border, h - 2 * border
@@ -149,6 +153,75 @@ def cut_pil_image_v_old(image: Image, border=20, spread=.05):
         randint(border // 2, border + dh),
         randint(w - border - dw, w - border // 2),
         randint(h - border - dh, h - border // 2)))
+
+
+def train_model(model, criterion, optimizer, scheduler, dataloaders, dataset_sizes, num_epochs=25):
+    since = time.time()
+
+    best_model_wts = copy.deepcopy(model.state_dict())
+    best_acc = 0.0
+
+    for epoch in range(num_epochs):
+        print(f'Epoch {epoch}/{num_epochs - 1}')
+        print('-' * 10)
+
+        # Each epoch has a training and validation phase
+        for phase in ['train', 'val']:
+            if phase == 'train':
+                model.train()  # Set model to training mode
+            else:
+                model.eval()  # Set model to evaluate mode
+
+            running_loss = 0.0
+            running_corrects = 0
+
+            # Iterate over data.
+            for inputs, labels in dataloaders[phase]:
+                inputs = inputs.to(device)
+                labels = labels.to(device)
+
+                # zero the parameter gradients
+                optimizer.zero_grad()
+
+                # forward
+                # track history if only in train
+                with torch.set_grad_enabled(phase == 'train'):
+                    outputs = model(inputs)
+                    _, preds = torch.max(outputs, 1)
+                    loss = criterion(outputs, labels)
+
+                    # backward + optimize only if in training phase
+                    if phase == 'train':
+                        loss.backward()
+                        optimizer.step()
+
+                # statistics
+                running_loss += loss.item() * inputs.size(0)
+                running_corrects += torch.sum(preds == labels.data)
+            if phase == 'train':
+                scheduler.step()
+
+            epoch_loss = running_loss / dataset_sizes[phase]
+            epoch_acc = running_corrects.double() / dataset_sizes[phase]
+
+            print(f'{phase} Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}')
+
+            # deep copy the model
+            if phase == 'val' and epoch_acc > best_acc:
+                best_acc = epoch_acc
+                best_model_wts = copy.deepcopy(model.state_dict())
+                f = os.path.join(savedir, f'{args.checkpoint_best}.pth')
+                torch.save(model.state_dict(), f)
+
+        print()
+
+    time_elapsed = time.time() - since
+    print(f'Training complete in {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s')
+    print(f'Best val Acc: {best_acc:4f}')
+
+    # load best model weights
+    model.load_state_dict(best_model_wts)
+    return model
 
 
 if __name__ == '__main__':
@@ -172,6 +245,8 @@ if __name__ == '__main__':
     parser.add_argument('--checkpoint_best', type=str, default='checkpoint-best', help="checkpoint-best")
     args = parser.parse_args()
     print(f'[train] arguments')
+    for k, arg in args.__dict__.items():
+        print(f"{k:.<20}: {arg}")
     pprint(args.__dict__)
     TRAIN_PERIODE = 15
     COUNT_OF_LR_STEPS = 3
@@ -192,8 +267,8 @@ if __name__ == '__main__':
     # specify image transforms for augmentation during training
     train_transform = transforms.Compose([
         transforms.RandomHorizontalFlip(p=0.5),
-        transforms.RandomRotation(degrees=5),
-        transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1),
+        transforms.RandomRotation(degrees=10),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2),
         transforms.Lambda(lambd=cut_pil_image),
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -218,6 +293,17 @@ if __name__ == '__main__':
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
+    dataloaders = {'train': torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True,
+                                                        num_workers=num_workers)
+        , 'val': torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)}
+
+    dataset_sizes_ = {
+        'train': len(train_dataset.data), 'val': len(val_dataset.data)
+    }
+
+    # dataloaders_ = {
+    #     'train': train_dataloader, 'val': val_dataloader
+    # }
     netname = 'mnasnet'
     model = MultiOutputModel(trained_labels=train_dataset.attr_names,
                              attrbts=attributes, netname=netname).to(device)
@@ -240,15 +326,18 @@ if __name__ == '__main__':
     os.makedirs(logdir, exist_ok=True)
     os.makedirs(savedir, exist_ok=True)
 
-    logger = SummaryWriter(logdir)
+    # logger = SummaryWriter(logdir)
 
-    n_train_samples = len(train_dataloader)
+    n_train_samples = len(train_dataset.data)
 
     print("Starting training ...")
     best_acc = 0
     best_acc_epoch = 0
     best_acc_loads = 0
     best_acc_last_load = 0
+
+    # out_model = train_model(model, nn.CrossEntropyLoss(), optimizer, exp_lr_scheduler, dataloaders=dataloaders,
+    #                         dataset_sizes=dataset_sizes_, num_epochs=50)
 
     for epoch in range(start_epoch, N_epochs + 2):
         total_loss = 0
@@ -269,10 +358,10 @@ if __name__ == '__main__':
             loss_train.backward()
             optimizer.step()
 
-        print(f'epoch:{epoch} loss:{ total_loss / n_train_samples:.4f} ' +
+        print(f'epoch:{epoch} loss:{total_loss}   { total_loss / n_train_samples:.4f} ' +
               ' '.join([f'{a}: {accuracy[a] / n_train_samples:.4f}'
                         for a in train_dataset.attr_names]) + f' {datetime.now() - epoch_start_time}')
-        logger.add_scalar('train_loss', total_loss / n_train_samples, epoch)
+            # logger.add_scalar('train_loss', total_loss / n_train_samples, epoch)
 
         chk_point = None
         opt_chk_pnt = None
@@ -281,7 +370,7 @@ if __name__ == '__main__':
         cur_best_acc = validate(model=model,
                                 dataloader=val_dataloader,
                                 fld_names=train_dataset.attr_names,
-                                logger=logger,
+                                logger=None,
                                 iteration=epoch,
                                 device=device)
         if cur_best_acc > best_acc:
@@ -311,5 +400,4 @@ if __name__ == '__main__':
             exp_lr_scheduler.step()
             if best_acc_loads > COUNT_OF_LR_STEPS:
                 break
-
-
+#

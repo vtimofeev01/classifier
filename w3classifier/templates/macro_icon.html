@@ -1,0 +1,7 @@
+{% macro draw_icon(image, thr, label, tag_class) %}
+    <div class="but_sel">
+        <span class="{{ tag_class }}">{{ label }}</span>
+        <img src="{{ url_for("marked_image", nm=image) }}" class='fit' alt="{{ image_name }}">
+        <span class="downleftgtay">{{ thr }}</span>
+    </div>
+{% endmacro %}

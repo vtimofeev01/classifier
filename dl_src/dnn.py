@@ -8,7 +8,7 @@ import pandas as pd
 import shutil
 
 empty_image = zeros((30, 30, 3), dtype=np.uint8)
-
+FAVORITES = 'favorites.txt'
 
 class DNN:
 
@@ -162,4 +162,5 @@ def get_data_frame_from_folder(destination, dnn: DNN) -> pd.DataFrame:
     print(f'stored: {out_pd.shape[0]} records to: {full_file_name}')
     print(f'Data main record filled [{" ".join(out_pd.keys())}]')
     out_pd['name'] = [os.path.split(x)[1] for x in out_pd['file']]
+    print(f'[{destination}] look for {FAVORITES} file')
     return out_pd.set_index(np.arange(0, out_pd.shape[0]))

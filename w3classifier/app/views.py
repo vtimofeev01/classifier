@@ -1,13 +1,111 @@
-from flask import send_from_directory, send_file, jsonify, Response
+import datetime
+
+from flask import send_from_directory, send_file, jsonify, Response, render_template, session, request, redirect, \
+    url_for
+
+F_FOLDER = 'folder'
+F_LABEL = 'f_label'
+F_LABEL_VALUE = 'f_label_value'
+F_SIZE = 'f_size'
+F_SIZES = ["height", "up", "low", "small"]
+F_CLEAR = 'f_seek_only_clear'
+ACT_MAIN_LABEL = 'act_main_label'
+F_FAVORITES = 'f_favorites'
+ACT_TO_FAVORITES = 'act_to_favorites'
+ACT_SEEK = 'act_seek'
+ACT_STORE = 'act_store'
 
 from . import app, dbs
+
+
+def E(v):
+    return None if v == 'ALL' else v
+
+
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
 
 
 # Path for our main Svelte page
 @app.route("/")
 def base():
-    print(dbs.path_to_data)
-    return jsonify(dbs.path_to_data)
+    args = request.args
+    print(f'[integrity dbs] main_reid={len(dbs.main_reid)} == main={len(dbs.main)}')
+    if 'command' in args:
+        if F_FOLDER == args.get('command'):
+            session[F_FOLDER] = E(args.get('value'))
+            print(f'folder set to {session[F_FOLDER]}')
+        if F_LABEL == args.get('command'):
+            session[F_LABEL] = E(args.get('value'))
+            print(f'filter label set to {session[F_LABEL]}')
+            if session[F_LABEL] is None:
+                session[F_LABEL_VALUE] = None
+        if F_LABEL_VALUE == args.get('command'):
+            session[F_LABEL_VALUE] = E(args.get('value'))
+            print(f'filter label {session[F_LABEL]} by value {session[F_LABEL_VALUE]}')
+        if F_SIZE == args.get('command'):
+            session[F_SIZE] = E(args.get('value'))
+            print(f'size id set to  {session[F_SIZE]}')
+        if F_CLEAR == args.get('command'):
+            session[F_CLEAR] = E(args.get('value'))
+            print(f'clear is set to  {session[F_CLEAR]}')
+        if F_FAVORITES == args.get('command'):
+            session[F_FAVORITES] = E(args.get('value'))
+            print(f'clear id set to  {session[F_FAVORITES]}')
+        if ACT_MAIN_LABEL == args.get('command'):
+            session[ACT_MAIN_LABEL] = E(args.get('value'))
+            print(f'edit is set to  {session[ACT_MAIN_LABEL]}')
+        dbs.return_filtered(label=session[ACT_MAIN_LABEL],
+                            seek_label=session[F_LABEL],
+                            seek_value=session[F_LABEL_VALUE],
+                            seek_only_clear=session[F_CLEAR],
+                            size=session[F_SIZE],
+                            folder=session[F_FOLDER],
+                            favorites=session[F_FAVORITES]
+                            )
+        session['index'] = int(0)
+        session['count'] = int(dbs.filter.sum())
+        return redirect(url_for("base"))
+    if 'action' in args:
+        print(f'action:{args["action"]}')
+        if ACT_SEEK == args.get('action'):
+            session['index'] += int(args.get('value'))
+        if ACT_STORE == args.get('action') and session[ACT_MAIN_LABEL]:
+            dbs.store_label(session[ACT_MAIN_LABEL])
+            session[ACT_STORE] = f"{datetime.datetime.now():%d-%m-%y %H:%M:%S}"
+        if ACT_TO_FAVORITES == args.get('action'):
+            im_ix = session['index']
+            im_name = dbs.navigation[im_ix]
+            print(dbs.main)
+            dbs.main.at[im_name,'favorites'] = not dbs.main.at[im_name, 'favorites']
+            print(f'{im_name} id set to favorites: {session[F_FAVORITES]}')
+        return redirect(url_for("base"))
+
+    im_ix = session['index']
+    if im_ix >= len(dbs.navigation):
+        print(f"im_ix={im_ix} len(dbs.navigation)={len(dbs.navigation)}")
+        return render_template('main.html', dbs=dbs, image=None, icons={})
+
+    im_name = dbs.navigation[im_ix]
+    image = dbs.main.loc[im_name]
+
+    icons = dbs.return_label_value_on_image(
+        session[ACT_MAIN_LABEL],
+        image_name=im_name) if session[ACT_MAIN_LABEL] else {}
+
+    label_value = dbs.main[session[ACT_MAIN_LABEL]][im_name] if session[ACT_MAIN_LABEL] else ""
+    print(f"label_value={label_value}")
+
+    return render_template('main.html', dbs=dbs, image_name=im_name, image=image, icons=icons, cur_value=label_value)
 
 
 # Path for all the static files (compiled JS/CSS, etc.)
