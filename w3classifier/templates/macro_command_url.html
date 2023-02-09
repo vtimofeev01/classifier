@@ -2,6 +2,11 @@
     <a href="{{ url_for("base", command=param, value=value) }}">{{ value }}</a>
 {% endmacro %}
 
-{% macro action_url(param, value) %}
-    <a href="{{ url_for("base", action=param, value=value) }}">{{ value }}</a>
+{% macro action_url(param, value, id) %}
+    {% if id %}
+        <a id="{{ id }}" href="{{ url_for("base", action=param, value=value) }}">{{ value }}</a>
+    {% else %}
+        <a href="{{ url_for("base", action=param, value=value) }}">{{ value }}</a>
+    {% endif %}
 {% endmacro %}
+

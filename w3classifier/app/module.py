@@ -349,7 +349,7 @@ class Dbs:
         # self.return_counts_by_label(label)
 
     def return_label_value_on_image(self, label, image_name):
-        print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
+        # print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
         print(f'return_label_value_on_image(label={label}, im={image_name})')
         if (label in ('undefined', '', None, 'none')) or (image_name in ('undefined', '', None, 'none')):
             return {'label_value': '', 'icons': {'none': {'image': 'z', 'thr': -2}}}
@@ -363,7 +363,7 @@ class Dbs:
         for iml in self.labels[label]['values']:
             f = self.main[label] == iml
             if np.any(f):
-                print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
+                # print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
                 # print(f"f={sum(f)} iml={iml} where f = {where(f)} argmax(cs[f])={argmax(cs[f])}")
                 cs_v = where(f)[0][argmax(cs[f])]
                 out += [{'lbl': iml, 'image': self.main.index[cs_v], 'thr': f"{float(cs[cs_v]):.3f}"}]

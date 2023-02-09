@@ -1,0 +1,8 @@
+{% from 'macro_command_url.html' import action_url %}
+{% from 'macro_icon.html' import draw_icon %}
+
+{% macro action_imaged_link(image, command_param, thr, label, tag_class) %}
+    <a href="{{ url_for("base", action=command_param, value=label) }}">
+        {{ draw_icon(image, thr, label, tag_class) }}
+    </a>
+{% endmacro %}

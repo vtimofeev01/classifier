@@ -1,6 +1,7 @@
 {% from 'macro_command_url.html' import command_url %}
 {% from 'macro_command_url.html' import action_url %}
 {% from 'macro_icon.html' import draw_icon %}
+{% from 'action_imaged_link.html' import action_imaged_link %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/quill.snow.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <style>
     .upleftgtay {
@@ -141,11 +143,13 @@
 
 {% for icon in icons %}
     {% if icon['lbl'] == cur_value %}
-        {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "up_left_rad") }}
+        {#        {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "up_left_rad") }}#}
+        {{ action_imaged_link(icon['image'], 'act_set_label', icon['thr'], icon['lbl'], "up_left_rad") }}
     {% else %}
-        {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "upleftgtay") }}
+{#        {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "upleftgtay") }}#}
+                {{ action_imaged_link(icon['image'], 'act_set_label', icon['thr'], icon['lbl'], "upleftgtay") }}
     {% endif %}
-{#    {{ loop.cycle('', '', '', '', '', '', '<br>') | safe }}#}
+    {#    {{ loop.cycle('', '', '', '', '', '', '<br>') | safe }}#}
 {% endfor %}
 
 
@@ -154,9 +158,10 @@
     {% if session.get('index', 0) > 1000 %} {{ action_url('act_seek', "-1000") }} {% endif %}
     {% if session.get('index', 0) > 100 %} {{ action_url('act_seek', "-100") }} {% endif %}
     {% if session.get('index', 0) > 10 %} {{ action_url('act_seek', "-10") }} {% endif %}
-    {% if session.get('index', 0) > 1 %} {{ action_url('act_seek', "-1") }} {% endif %}
+    {% if session.get('index', 0) > 1 %} {{ action_url('act_seek', "-1", "prev") }} {% endif %}
     <strong>[ {{ session.get('index', 0) }} ]</strong>
-    {% if session.get('index', 0) < session.get('count', 0) - 1 %} {{ action_url('act_seek', "+1") }} {% endif %}
+    {% if session.get('index', 0) < session.get('count', 0) - 1 %}
+        {{ action_url('act_seek', "+1", "next") }} {% endif %}
     {% if session.get('index', 0) < session.get('count', 0) - 10 %} {{ action_url('act_seek', "+10") }} {% endif %}
     {% if session.get('index', 0) < session.get('count', 0) - 100 %} {{ action_url('act_seek', "+100") }}{% endif %}
     {% if session.get('index', 0) < session.get('count', 0) - 1000 %} {{ action_url('act_seek', "+1000") }} {% endif %}
@@ -230,5 +235,19 @@
         {% endfor %}
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        $('body').on('keydown', function (e) {
+            var code = e.keyCode || e.which;
+            console.log(code)
+            if ([39, 69].includes(code)) {
+                window.location.href = $('#next').attr('href');
+            } else if ([37, 81].includes(code)) {
+                window.location.href = $('#prev').attr('href');
+            }
+        })
+    });
+
+</script>
 </body>
 </html>

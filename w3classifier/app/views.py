@@ -15,6 +15,8 @@ ACT_TO_FAVORITES = 'act_to_favorites'
 F_ITEMS_TO_CHECK = 'ITEMS_TO_CHECK'
 ACT_SEEK = 'act_seek'
 ACT_STORE = 'act_store'
+IMAGE_NAME = 'image_name'
+ACT_SET_LABEL = 'act_set_label'
 
 from . import app, dbs
 
@@ -89,12 +91,12 @@ def base():
             print(dbs.main)
             dbs.main.at[im_name,'favorites'] = not dbs.main.at[im_name, 'favorites']
             print(f'{im_name} id set to favorites')
+        if ACT_SET_LABEL == args.get('action'):
+            print(f"dbs.main.at[{session[IMAGE_NAME]}, {session[ACT_MAIN_LABEL]}] = {args.get('value')}")
+            dbs.main.at[session[IMAGE_NAME], session[ACT_MAIN_LABEL]] = args.get('value')
+
         return redirect(url_for("base"))
 
-    # if 'index' not in session:
-    #     session['index'] = 0
-    # if 'count' not in session:
-    #     session['count'] = 0
     im_ix = session.get('index', 0)
     if im_ix >= len(dbs.navigation):
         print(f"im_ix={im_ix} len(dbs.navigation)={len(dbs.navigation)}")
@@ -103,12 +105,16 @@ def base():
     im_name = dbs.navigation[im_ix]
     image = dbs.main.loc[im_name]
 
-    icons = dbs.return_label_value_on_image(
-        session[ACT_MAIN_LABEL],
-        image_name=im_name) if ACT_MAIN_LABEL in session.keys() else {}
-    print(f'im_name={im_name} in {im_name in dbs.main}')
-    if ACT_MAIN_LABEL in session and im_name in dbs.main:
-        label_value = dbs.main[session[ACT_MAIN_LABEL]][im_name]
+    session[IMAGE_NAME] = im_name
+
+    if (ACT_MAIN_LABEL in session) and (session[ACT_MAIN_LABEL] is not None):
+        icons = dbs.return_label_value_on_image(session[ACT_MAIN_LABEL], image_name=im_name)
+    else:
+        icons = []
+    print(f'im_name={im_name} in {im_name in dbs.main.index} session[ACT_MAIN_LABEL]={session[ACT_MAIN_LABEL]}')
+    if (ACT_MAIN_LABEL in session)  and (session[ACT_MAIN_LABEL] is not None) \
+            and (im_name in dbs.main.index):
+        label_value = dbs.main.at[im_name, session[ACT_MAIN_LABEL]]
     else:
         label_value = ""
     print(f"label_value={label_value}")
