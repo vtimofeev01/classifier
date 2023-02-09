@@ -96,6 +96,14 @@
     {#max-width: 100%;#} min-height: 300px;
         max-height: 400px;
     }
+
+    div {
+        margin: 7px;
+    }
+
+    td {
+        padding: 0;
+    }
 </style>
 <body>
 
@@ -120,10 +128,11 @@
     {% endif %}
 
 </div>
-<dic><h6>{{ image_name }} {{ cur_value }}</h6></dic>
+<div><h6><strong>{{ image_name }}</strong> {{ cur_value }}</h6></div>
 <div class="but_sel">
     {% if session['count'] %}
-        {% if image['favorites'] %} <span class="up_left_yellow">favorite {{ action_url('act_to_favorites', "X") }}</span>
+        {% if image['favorites'] %}
+            <span class="up_left_yellow">favorite {{ action_url('act_to_favorites', "X") }}</span>
         {% else %} <span class="upleftgtay"> {{ action_url('act_to_favorites', "favorite") }}</span> {% endif %}
     {% endif %}
     <img class='fit_big' src="{{ url_for("marked_image", nm=image_name) }}" alt="{{ image_name }}">
@@ -136,22 +145,23 @@
     {% else %}
         {{ draw_icon(icon['image'], icon['thr'], icon['lbl'], "upleftgtay") }}
     {% endif %}
-    {{ loop.cycle('', '', '', '', '', '', '<br>') | safe }}
+{#    {{ loop.cycle('', '', '', '', '', '', '<br>') | safe }}#}
 {% endfor %}
 
 
 
-<div>
-    {% if session['index'] > 1000 %} {{ action_url('act_seek', "-1000") }} {% endif %}
-    {% if session['index'] > 100 %} {{ action_url('act_seek', "-100") }} {% endif %}
-    {% if session['index'] > 10 %} {{ action_url('act_seek', "-10") }} {% endif %}
-    {% if session['index'] > 1 %} {{ action_url('act_seek', "-1") }} {% endif %}
-    <strong>{{ session['index'] }}</strong>
-    {% if session['index'] < session['count'] - 1 %} {{ action_url('act_seek', "+1") }} {% endif %}
-    {% if session['index'] < session['count'] - 10 %} {{ action_url('act_seek', "+10") }} {% endif %}
-    {% if session['index'] < session['count'] - 100 %} {{ action_url('act_seek', "+100") }}{% endif %}
-    {% if session['index'] < session['count'] - 1000 %} {{ action_url('act_seek', "+1000") }} {% endif %}
+<div><h3>
+    {% if session.get('index', 0) > 1000 %} {{ action_url('act_seek', "-1000") }} {% endif %}
+    {% if session.get('index', 0) > 100 %} {{ action_url('act_seek', "-100") }} {% endif %}
+    {% if session.get('index', 0) > 10 %} {{ action_url('act_seek', "-10") }} {% endif %}
+    {% if session.get('index', 0) > 1 %} {{ action_url('act_seek', "-1") }} {% endif %}
+    <strong>[ {{ session.get('index', 0) }} ]</strong>
+    {% if session.get('index', 0) < session.get('count', 0) - 1 %} {{ action_url('act_seek', "+1") }} {% endif %}
+    {% if session.get('index', 0) < session.get('count', 0) - 10 %} {{ action_url('act_seek', "+10") }} {% endif %}
+    {% if session.get('index', 0) < session.get('count', 0) - 100 %} {{ action_url('act_seek', "+100") }}{% endif %}
+    {% if session.get('index', 0) < session.get('count', 0) - 1000 %} {{ action_url('act_seek', "+1000") }} {% endif %}
     <strong>{{ session['count'] }}</strong>
+</h3>
 </div>
 
 
@@ -209,6 +219,16 @@
 </div>
 <div>
     {{ action_url('act_store', '[Store]') }} last:{{ session['act_store'] }}
+</div>
+<div>
+    <table>
+        {% for a,b in dbs.return_counts_by_label(session['act_main_label']) %}
+            <tr>
+                <td>{{ a }}</td>
+                <td>{{ b }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </div>
 </body>
 </html>

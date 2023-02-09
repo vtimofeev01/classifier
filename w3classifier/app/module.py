@@ -23,7 +23,6 @@ del_label = 'DELETE'
 ie = IECore()
 EMPTY = ''
 
-
 # TODO Make size output
 
 def make_list_of_files_by_extension(source, extensions=None, escape_copies=True):
@@ -308,13 +307,13 @@ class Dbs:
 
 
         if seek_label and seek_value is not None:
-            if seek_value == 'to_check':
-                # print(f'items to check={self.items_to_check.keys()}')
-                # print(f'{label} items to check={seek_label in self.items_to_check.keys()}')
+            if seek_value == 'ITEMS_TO_CHECK':
+                print(f'items to check={self.items_to_check.keys()}')
+                print(f'{label} items to check={seek_label in self.items_to_check.keys()}')
                 itchk_files = self.items_to_check.get(label, {}).get('file', [])
                 itchk_files = self.items_to_check.get(label, {}).get('file', [])
                 itchk_text = self.items_to_check.get(label, {}).get('text', [])
-                # print(f"cont of items={len(itchk_files)}")
+                print(f"cont of items={len(itchk_files)}")
                 f2 = self.main.index.isin(itchk_files)
             else:
                 f2 = self.main[seek_label] == seek_value
@@ -334,14 +333,20 @@ class Dbs:
             self.filter &= self.main['favorites'] == False
             print(f'[FILTER] favorites="{folder}" total:{count_nonzero(self.filter)}')
 
-        if label is not None and seek_only_clear == 'yes':
-            self.filter &= self.main[label] == ''
-            print(f'[FILTER] only new="{seek_only_clear}" total:{count_nonzero(self.filter)}')
+        if label is not None:
+            if seek_only_clear == 'yes':
+                self.filter &= self.main[label] == ''
+                print(f'[FILTER] only new="{seek_only_clear}" total:{count_nonzero(self.filter)}')
+            elif seek_only_clear == 'no':
+                self.filter &= self.main[label] != ''
+                print(f'[FILTER] only new="{seek_only_clear}" total:{count_nonzero(self.filter)}')
 
         # print(f"ZZZ={self.main.index[self.filter].to_list()}")
         # print(f"ZZZ={self.filter}")
         self.navigation = self.filter.index[self.filter].to_list()
         print(f'[FILTER] end count :{count_nonzero(self.filter)} = {len(self.navigation)}')
+
+        # self.return_counts_by_label(label)
 
     def return_label_value_on_image(self, label, image_name):
         print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
@@ -368,7 +373,6 @@ class Dbs:
         return out
 
 
-
     def get_label_value_on_image(self, label, im):
         print(f'get_label_value_on_image(label={label}, im={im})')
         if (label in ('undefined', '', None, 'none')) or (im in ('undefined', '', None, 'none')):
@@ -389,6 +393,13 @@ class Dbs:
                 out['icons'][iml] = {'image': 'none', 'thr': -1}
         return out
 
+    def return_counts_by_label(self, lbl):
+        if lbl:
+            v = self.main[lbl].value_counts().to_dict()
+            return [(None if a == '' else a , v[a]) for a in sorted(v.keys())]
+        return []
+
+
     def calc_counts(self, seeklabel, filterlabel, filtervalue):
         filter_set = (filterlabel not in ('undefined', 'none', '', None, 'all')) and \
                      (filtervalue not in ('undefined', 'none', '', None, 'all'))
@@ -408,7 +419,7 @@ class Dbs:
         # extracting frames
         im_name = opj(self.main.path[im], im)
         frame_row = cv2.imread(im_name)
-        print(f'im_name:{frame_row.shape} {im_name} exists:{os.path.exists(im_name)}')
+        # print(f'im_name:{frame_row.shape} {im_name} exists:{os.path.exists(im_name)}')
         h, w = frame_row.shape[:2]
         lw = max(h // 150, 1)
         # frame[:, 0:20] += 25
@@ -432,7 +443,7 @@ class Dbs:
             cv2.line(frame, (wi, 20), (wi, 10), color=(0, 0, 255), thickness=lw)
             cv2.line(frame, (wi, h - 10), (wi, h - 20), color=(0, 0, 255), thickness=lw)
         ret, jpeg = cv2.imencode('.jpg', frame)
-        print(f"out:{frame.shape}")
+        # print(f"out:{frame.shape}")
         return jpeg.tobytes()
 
 

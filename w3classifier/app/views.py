@@ -12,6 +12,7 @@ F_CLEAR = 'f_seek_only_clear'
 ACT_MAIN_LABEL = 'act_main_label'
 F_FAVORITES = 'f_favorites'
 ACT_TO_FAVORITES = 'act_to_favorites'
+F_ITEMS_TO_CHECK = 'ITEMS_TO_CHECK'
 ACT_SEEK = 'act_seek'
 ACT_STORE = 'act_store'
 
@@ -64,13 +65,13 @@ def base():
         if ACT_MAIN_LABEL == args.get('command'):
             session[ACT_MAIN_LABEL] = E(args.get('value'))
             print(f'edit is set to  {session[ACT_MAIN_LABEL]}')
-        dbs.return_filtered(label=session[ACT_MAIN_LABEL],
-                            seek_label=session[F_LABEL],
-                            seek_value=session[F_LABEL_VALUE],
-                            seek_only_clear=session[F_CLEAR],
-                            size=session[F_SIZE],
-                            folder=session[F_FOLDER],
-                            favorites=session[F_FAVORITES]
+        dbs.return_filtered(label=session.get(ACT_MAIN_LABEL, None),
+                            seek_label=session.get(F_LABEL, None),
+                            seek_value=session.get(F_LABEL_VALUE, None),
+                            seek_only_clear=session.get(F_CLEAR, None),
+                            size=session.get(F_SIZE, None),
+                            folder=session.get(F_FOLDER, None),
+                            favorites=session.get(F_FAVORITES, None)
                             )
         session['index'] = int(0)
         session['count'] = int(dbs.filter.sum())
@@ -87,10 +88,14 @@ def base():
             im_name = dbs.navigation[im_ix]
             print(dbs.main)
             dbs.main.at[im_name,'favorites'] = not dbs.main.at[im_name, 'favorites']
-            print(f'{im_name} id set to favorites: {session[F_FAVORITES]}')
+            print(f'{im_name} id set to favorites')
         return redirect(url_for("base"))
 
-    im_ix = session['index']
+    # if 'index' not in session:
+    #     session['index'] = 0
+    # if 'count' not in session:
+    #     session['count'] = 0
+    im_ix = session.get('index', 0)
     if im_ix >= len(dbs.navigation):
         print(f"im_ix={im_ix} len(dbs.navigation)={len(dbs.navigation)}")
         return render_template('main.html', dbs=dbs, image=None, icons={})
@@ -100,9 +105,12 @@ def base():
 
     icons = dbs.return_label_value_on_image(
         session[ACT_MAIN_LABEL],
-        image_name=im_name) if session[ACT_MAIN_LABEL] else {}
-
-    label_value = dbs.main[session[ACT_MAIN_LABEL]][im_name] if session[ACT_MAIN_LABEL] else ""
+        image_name=im_name) if ACT_MAIN_LABEL in session.keys() else {}
+    print(f'im_name={im_name} in {im_name in dbs.main}')
+    if ACT_MAIN_LABEL in session and im_name in dbs.main:
+        label_value = dbs.main[session[ACT_MAIN_LABEL]][im_name]
+    else:
+        label_value = ""
     print(f"label_value={label_value}")
 
     return render_template('main.html', dbs=dbs, image_name=im_name, image=image, icons=icons, cur_value=label_value)
