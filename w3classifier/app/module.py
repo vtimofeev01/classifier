@@ -163,8 +163,10 @@ class Dbs:
         print(f'[{path}] look for {FAVORITES} file: {fav_name}')
         if os.path.exists(fav_name):
             with open(fav_name, 'r') as f:
-                for name in f.readlines():
-                    self.main.at[name, 'favorites'] = True
+                for name in f.read().splitlines():
+                    # print(f"n:{name} in {name in self.main.index}")
+                    if name in self.main.index:
+                        self.main.at[name, 'favorites'] = True
             print(f'[{path}] total favorites read {self.main["favorites"].sum()}')
 
         self.navigation = self.main.index.to_list()
@@ -185,8 +187,8 @@ class Dbs:
 
         fav_name = os.path.join(self.path, FAVORITES)
         with open(fav_name, 'w') as f:
-            f.writelines( self.main.index[self.main['favorites'] == True].tolist())
-            print(f'[{self.path}]stores favorites {(self.main["favorites"] == True).sum()}')
+            f.writelines("%s\n" % l for l in self.main.index[self.main['favorites'] == True].tolist())
+            print(f'[{self.path}] stores favorites {(self.main["favorites"] == True).sum()}')
 
         return 'ok'
 
@@ -349,7 +351,7 @@ class Dbs:
         # self.return_counts_by_label(label)
 
     def return_label_value_on_image(self, label, image_name):
-        # print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
+        print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
         print(f'return_label_value_on_image(label={label}, im={image_name})')
         if (label in ('undefined', '', None, 'none')) or (image_name in ('undefined', '', None, 'none')):
             return {'label_value': '', 'icons': {'none': {'image': 'z', 'thr': -2}}}
@@ -363,7 +365,7 @@ class Dbs:
         for iml in self.labels[label]['values']:
             f = self.main[label] == iml
             if np.any(f):
-                # print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
+                print(f'len main = {len(self.main)}  len reid = {len(self.main_reid)}')
                 # print(f"f={sum(f)} iml={iml} where f = {where(f)} argmax(cs[f])={argmax(cs[f])}")
                 cs_v = where(f)[0][argmax(cs[f])]
                 out += [{'lbl': iml, 'image': self.main.index[cs_v], 'thr': f"{float(cs[cs_v]):.3f}"}]

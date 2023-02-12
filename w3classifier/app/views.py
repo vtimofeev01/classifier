@@ -108,6 +108,7 @@ def base():
     session[IMAGE_NAME] = im_name
 
     if (ACT_MAIN_LABEL in session) and (session[ACT_MAIN_LABEL] is not None):
+        print(f'if (ACT_MAIN_LABEL in session) and (session[ACT_MAIN_LABEL] is not None): len main = {len(dbs.main)}  len reid = {len(dbs.main_reid)}')
         icons = dbs.return_label_value_on_image(session[ACT_MAIN_LABEL], image_name=im_name)
     else:
         icons = []
